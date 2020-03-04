@@ -44,7 +44,6 @@ Things you may want to cover:
 - has_many :buyer
 - has_many :destination_infos
 - has_many :credit_cards
-- has_one  :cart
 
 
 ## destination_infoテーブル
@@ -83,7 +82,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 | category_name | string | null: false |
-| ancestry |||
+| ancestry | string | nul:false |
 
 ### Association
 - has_many :product
@@ -106,7 +105,6 @@ Things you may want to cover:
 - belongs_to :seller
 - belongs_to :buyer
 - belongs_to :category
-- has_many :carts, through: :product_carts
 - has_many :product_images
 - has_many :brands
 
@@ -119,29 +117,6 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :product
-
-### Association
-
-
-## cartテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id| reference | null: false, foreign_key: true |
-|product_cart_id | reference | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-- belongs_to :product_cart
-
-## product_cartテーブル
-|Column|Type|Options|
-|------|----|-------|
-| product_id | reference | null: false, foreign_key: true |
-| cart_id | reference | null: false, foreign_key: true |
-
-### Association
-- belongs_to :product
-- belongs_to :cart
 
 
 ## brandテーブル
