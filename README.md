@@ -86,7 +86,7 @@ Things you may want to cover:
 | ancestry | string | nul:false |
 
 ### Association
-- has_many :product
+- has_many :products
 
 ## productテーブル
 
@@ -98,7 +98,6 @@ Things you may want to cover:
 | status | string | null: false |
 | category_id | integer | null: false, foreign_key: true |
 | brand_id | integer | null: false, foreign_key: true |
-| product_image_id | integer | null: false, foreign_key: true |
 | seller_id | integer | null: false, foreign_key: true |
 | buyer_id | integer | null: false, foreign_key: true |
 
@@ -106,8 +105,9 @@ Things you may want to cover:
 - belongs_to :seller
 - belongs_to :buyer
 - belongs_to :category
-- has_many :product_images
-- has_many :brands
+- belongs_to :brand
+- has_many   :product_images
+
 
 ### Association
 
@@ -138,7 +138,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :shipping_info
 - belongs_to :user
-- has_many :products
+- has_many   :products
 
 
 ## buyerテーブル
@@ -148,7 +148,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :products
+- has_many   :products
 
 ## shipping infoテーブル
 |Column|Type|Options|
