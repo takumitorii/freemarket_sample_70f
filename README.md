@@ -40,10 +40,10 @@ Things you may want to cover:
 | introduction | text ||
 
 ### Association
-- has_many :seller
-- has_many :buyer
-- has_many :destination_infos
-- has_many :credit_cards
+- has_many :seller dependent::destroy
+- has_many :buyer dependent::destroy
+- has_many :destination_infos dependent::destroy
+- has_many :credit_cards dependent::destroy
 
 
 ## destination_infoテーブル
@@ -77,6 +77,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+-
 
 ## categoryテーブル
 |Column|Type|Options|
