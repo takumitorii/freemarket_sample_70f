@@ -1,2 +1,236 @@
-%h1 Tops#index
-%p Find me in app/views/tops/index.html.haml
+.header
+  .header__image
+    = image_tag "material/logo/logo.png", height: "40", with: "60"
+  .header__form
+    %form
+      %input.input{type: "text", placeholder: "キーワードで検索"}
+      = button_tag type: 'submit', class: "submit" do
+        = icon('fa', 'search')
+  .header__btns
+    .btn
+      = link_to "#" do
+        カテゴリー
+      = link_to "#" do
+        ブランド
+    .btn
+      = link_to "#" do
+        ログイン
+      = link_to "#" do
+        新規登録
+.catch_copy
+  .catch_copy__text
+    %h1
+      人生を変えるフリマアプリ
+    %p
+      FURIMAはだれでもかんたんに出品・購入できる
+      %br
+      フリマアプリです
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+.choose
+  .choose__title
+    FURIMAが選ばれる3つの理由
+  .boder_bottom
+
+  .choose__contents
+    .choose__contents--content
+      .number 1
+      = image_tag "material/pict/pict-reason-01.jpg", height: "300", with: "300"
+      %h1
+        %span 
+          3分
+        ですぐに出品
+      %p
+        スマホで入力するだけで簡単に出品できる！
+    .choose__contents--content
+      .number 2
+      = image_tag "material/pict/pict-reason-02.jpg", height: "300", with: "300"
+      %h1
+        %span 
+          シンプル
+        で使いやすい
+      %p
+        めんどくさい入力は必要なく、検索も購入もスムーズ！
+    .choose__contents--content
+      .number 3
+      = image_tag "material/pict/pict-reason-03.jpg", height: "300", with: "300"
+      %h1
+        手数料
+        %span 
+          業界最安
+      %p.center
+        最大3%でお得に出品&購入！
+.publicity
+  .publicity__content
+    %h1
+      会員数日本一位
+    %p
+      FURIMAは、フリマアプリで最も人気。
+      %br/
+      出品・購入回数も業界最多です！
+      %br/
+      ほしかったあの商品に出会えるかもしれません。
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+.characteristic
+  %h1 FURIMAの特徴
+  .boder_bottom
+  .characteristic__contents
+    .characteristic__contents--content.margin_left
+      = image_tag "material/icon/icon-01.png", height: "300", with: "300"
+      %h2
+        簡単に売り買いできる
+      %p
+        スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+    .characteristic__contents--content.margin
+      = image_tag "material/icon/icon-02.png", height: "300", with: "300"
+      %h2
+        簡単に売り買いできる
+      %p
+        スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+    .characteristic__contents--content.margin_right
+      = image_tag "material/icon/icon-03.png", height: "300", with: "300"
+      %h2
+        簡単に売り買いできる
+      %p
+        スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+.pick_up
+  .pick_up__category
+    %h1 ピックアップカテゴリー
+    %h1.color 新規投稿商品
+    .pick_up__category--flex
+      = link_to "#" do
+        .product
+          .image
+            %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+          .info
+            %p 
+              product 
+              %br/
+              30000円
+              %br/
+              (税込)
+            %i.fas.fa-star
+              0
+
+      = link_to "#" do
+        .product
+          .image
+            %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+          .info
+            %p 
+              product 
+              %br/
+              30000円
+              %br/
+              (税込)
+            %i.fas.fa-star
+              0
+      = link_to "#" do
+        .product
+          .image
+            %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+          .info
+            %p 
+              product 
+              %br/
+              30000円
+              %br/
+              (税込)
+            %i.fas.fa-star
+              0
+
+  .pick_up__brand
+    %h1 ピックアップブランド
+    %h1.color アーカイバ
+    .pick_up__brand--flex
+      .pick_up__category--flex
+        = link_to "#" do
+          .product
+            .image
+              %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+            .info
+              %p 
+                product 
+                %br/
+                30000円
+                %br/
+                (税込)
+              %i.fas.fa-star
+                0
+        = link_to "#" do
+          .product
+            .image
+              %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+            .info
+              %p 
+                product 
+                %br/
+                30000円
+                %br/
+                (税込)
+              %i.fas.fa-star
+                0
+        = link_to "#" do
+          .product
+            .image
+              %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+            .info
+              %p 
+                product 
+                %br/
+                30000円
+                %br/
+                (税込)
+              %i.fas.fa-star
+                0
+
+
+.content_download
+  %p.font_size
+    だれでもかんたん、人生を変えるフリマアプリ
+  %p.margin_bottom
+    今すぐ無料ダウンロード！
+  .btn
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
+    %a.download(href="#")
+      %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+.footer
+  .footer__contents
+    .footer__contents--content
+      %h1
+        FURIMAについて
+      %ul
+        %li
+          = link_to "会社概要（運営会社）", "#"
+        %li
+          = link_to "プライバシーポリシー", "#"
+        %li
+          = link_to "FURIMA利用規約", "#"
+        %li
+          = link_to "ポイントに関する特約", "#"
+    .footer__contents--content
+      %h1
+        FURIMAを見る
+      %ul
+        %li
+          = link_to "カテゴリー一覧", "#"
+        %li
+          = link_to "ブランド一覧", "#"
+    .footer__contents--content
+      %h1
+        ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to "FURIMAガイド", "#"
+        %li
+          = link_to "FURIMAロゴ利用ガイドライン", "#"
+        %li
+          = link_to "お知らせ", "#"
+  .footer__icon
+    = image_tag  "material/logo/logo-white.png", height: "50", with: "200"
