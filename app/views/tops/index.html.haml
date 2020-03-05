@@ -1,29 +1,47 @@
 
-.exhibition
-  = link_to "#" do
-    %p
-      出品する
-    = image_tag "material/icon/icon_camera.png", height: "80", with: "80"
+- if user_signed_in? 
+  .exhibition
+    = link_to "#" do
+      %p
+        出品する
+      = image_tag "material/icon/icon_camera.png", height: "80", with: "80"
+  
+  .header
+    .header__image
+      = image_tag "material/logo/logo.png", height: "40", with: "60"
+    .header__form
+      %form
+        %input.input{type: "text", placeholder: "キーワードで検索"}
+        = button_tag type: 'submit', class: "submit" do
+          = icon('fa', 'search')
+    .header__btns
+      .btn
+        = link_to "#" do
+          カテゴリー
+        = link_to "#" do
+          ブランド
+      .btn
+        = link_to "#{current_user.nickname}さん", root_path
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+- else
+  .header
+    .header__image
+      = image_tag "material/logo/logo.png", height: "40", with: "60"
+    .header__form
+      %form
+        %input.input{type: "text", placeholder: "キーワードで検索"}
+        = button_tag type: 'submit', class: "submit" do
+          = icon('fa', 'search')
+    .header__btns
+      .btn
+        = link_to "#" do
+          カテゴリー
+        = link_to "#" do
+          ブランド
+      .btn
+        = link_to "ログイン", user_session_path
+        = link_to "新規登録", new_user_registration_path
 
-.header
-  .header__image
-    = image_tag "material/logo/logo.png", height: "40", with: "60"
-  .header__form
-    %form
-      %input.input{type: "text", placeholder: "キーワードで検索"}
-      = button_tag type: 'submit', class: "submit" do
-        = icon('fa', 'search')
-  .header__btns
-    .btn
-      = link_to "#" do
-        カテゴリー
-      = link_to "#" do
-        ブランド
-    .btn
-      = link_to "#" do
-        ログイン
-      = link_to "#" do
-        新規登録
 .catch_copy
   .catch_copy__text
     %h1
