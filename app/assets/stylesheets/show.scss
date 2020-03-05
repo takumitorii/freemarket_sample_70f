@@ -40,10 +40,26 @@
     &__sub {
       display: flex;
       justify-content: center;
+      margin-top: 10px;
     }
     &__second {
       width: 25%;
       margin: 0 10px 0 0;
+      align-items: center;
+    }
+  }
+  .product-price {
+    margin: 24px 0 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    span {
+      font-size: 46px;
+      font-weight: bold;
+      margin: 0 10px 0 0;
+    }
+    &__detail span{
+      font-size: 16px;
     }
   }
 }
