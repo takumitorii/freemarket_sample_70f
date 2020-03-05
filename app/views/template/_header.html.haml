@@ -1,0 +1,22 @@
+.header
+  .header__image
+    = image_tag "material/logo/logo.png", height: "40", with: "60"
+  .header__form
+    %form
+      %input.input{type: "text", placeholder: "キーワードで検索"}
+      = button_tag type: 'submit', class: "submit" do
+        = icon('fa', 'search')
+  .header__btns
+    .btn
+      = link_to "#" do
+        カテゴリー
+      = link_to "#" do
+        ブランド
+    - if user_signed_in? 
+      .btn
+        = link_to "ログイン", user_session_path
+        = link_to "新規登録", new_user_registration_path
+    - else
+      .btn
+        = link_to "#{current_user.nickname}さん", root_path
+        = link_to "ログアウト", destroy_user_session_path, method: :delete

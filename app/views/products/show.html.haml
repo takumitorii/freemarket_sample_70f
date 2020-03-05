@@ -1,3 +1,6 @@
+= render partial: "template/exhibition"
+= render partial: "template/header"
+
 .second-header
   .category-bar
     =link_to root_path, class:"transition" do
@@ -41,4 +44,6 @@
       .product-price__detail
         %span (税込)
         %span 送料込み
-
+        
+= render partial: "template/content_download"
+= render partial: "template/footer"

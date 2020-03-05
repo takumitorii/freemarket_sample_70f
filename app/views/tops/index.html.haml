@@ -1,46 +1,6 @@
+= render partial: "template/exhibition"
+= render partial: "template/header"
 
-- if user_signed_in? 
-  .exhibition
-    = link_to "#" do
-      %p
-        出品する
-      = image_tag "material/icon/icon_camera.png", height: "80", with: "80"
-  
-  .header
-    .header__image
-      = image_tag "material/logo/logo.png", height: "40", with: "60"
-    .header__form
-      %form
-        %input.input{type: "text", placeholder: "キーワードで検索"}
-        = button_tag type: 'submit', class: "submit" do
-          = icon('fa', 'search')
-    .header__btns
-      .btn
-        = link_to "#" do
-          カテゴリー
-        = link_to "#" do
-          ブランド
-      .btn
-        = link_to "#{current_user.nickname}さん", root_path
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-- else
-  .header
-    .header__image
-      = image_tag "material/logo/logo.png", height: "40", with: "60"
-    .header__form
-      %form
-        %input.input{type: "text", placeholder: "キーワードで検索"}
-        = button_tag type: 'submit', class: "submit" do
-          = icon('fa', 'search')
-    .header__btns
-      .btn
-        = link_to "#" do
-          カテゴリー
-        = link_to "#" do
-          ブランド
-      .btn
-        = link_to "ログイン", user_session_path
-        = link_to "新規登録", new_user_registration_path
 
 .catch_copy
   .catch_copy__text
@@ -214,48 +174,5 @@
               %i.fas.fa-star
                 0
 
-
-.content_download
-  %p.font_size
-    だれでもかんたん、人生を変えるフリマアプリ
-  %p.margin_bottom
-    今すぐ無料ダウンロード！
-  .btn
-    %a.download(href="#")
-      %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
-    %a.download(href="#")
-      %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
-.footer
-  .footer__contents
-    .footer__contents--content
-      %h1
-        FURIMAについて
-      %ul
-        %li
-          = link_to "会社概要（運営会社）", "#"
-        %li
-          = link_to "プライバシーポリシー", "#"
-        %li
-          = link_to "FURIMA利用規約", "#"
-        %li
-          = link_to "ポイントに関する特約", "#"
-    .footer__contents--content
-      %h1
-        FURIMAを見る
-      %ul
-        %li
-          = link_to "カテゴリー一覧", "#"
-        %li
-          = link_to "ブランド一覧", "#"
-    .footer__contents--content
-      %h1
-        ヘルプ＆ガイド
-      %ul
-        %li
-          = link_to "FURIMAガイド", "#"
-        %li
-          = link_to "FURIMAロゴ利用ガイドライン", "#"
-        %li
-          = link_to "お知らせ", "#"
-  .footer__icon
-    = image_tag  "material/logo/logo-white.png", height: "50", with: "200"
+= render partial: "template/content_download"
+= render partial: "template/footer"
