@@ -1,0 +1,351 @@
+$font-color:  white;
+$basic-color: rgb(93, 250, 255);
+
+@mixin title(){
+  color:       $font-color;
+  text-shadow: 1px 1px 5px rgb(51, 51, 51);
+}
+
+@mixin pic_up_content(){
+  height: 50%;
+  width:  100%;
+}
+
+@mixin pic_up_h1(){
+  text-align:   center;
+  font-size:    26px;
+  font-weight:  bold;
+  padding:      80px 0 10px;
+}
+
+@mixin pic_up_color(){
+  padding-top:  10px;
+  color:        $basic-color;
+}
+
+@mixin pic_up_flex(){
+  width:            100%;
+  height:           100%;
+  margin-top:       60px;
+  display:          flex;
+  justify-content:  center;
+}
+
+.download{
+  margin:   30px 20px 0 0;
+  :hover{
+    opacity: 0.4;
+  }
+  img{
+    height: 50px;
+  }
+}
+
+.boder_bottom{
+  margin:         10px auto 50px;
+  width:          90px;
+  border-bottom:  6px solid $basic-color;
+}
+
+.product{
+  margin:           0 25px;
+  padding:          0 10px;
+  background-color: $font-color;
+  .info{
+    display:    flex;
+    position:   relative;
+    p{
+      padding:      10px;
+      line-height:  25px;
+    }
+    i{
+      position:   absolute;
+      bottom:     10px;
+      right:      10px;
+    }
+  }
+}
+
+// ここから上は複数箇所で使用されているスタイルを書いています
+.header{
+  height:     110px;
+  width:      100%;
+  position:   relative;
+  &__image{
+    width:    25%;
+    position: absolute;
+    top:      20px;
+    left:     14%;
+  }
+  &__form{
+    height:   90px;
+    width:    75%;
+    position: absolute;
+    top:      20px;
+    left:     25%;
+    .input{
+      height:     20px;
+      width:      70%;
+      padding:    5px;
+      font-size:  16px;
+    }
+    .submit{
+      padding:          8px 15px;
+      background-color: $basic-color;
+      outline:          none;
+      i{
+        color:        $font-color;
+        font-size:    14px;
+      }
+    }
+  }
+  &__btns{
+    display:         flex;
+    justify-content: space-between;
+    .btn{
+      padding-top:   80px;
+      a{
+        margin:      0 40px;
+      }
+    }
+  }
+}
+
+
+.catch_copy{
+  height:             600px;
+  width:              100vw;
+  position:           relative;
+  background-image:   url("material/pict/bg-mainVisual-pict_pc.jpg");
+  background-size:    cover;
+  &__text{
+    @include      title();
+    position:     absolute;
+    top:          200px;
+    left:         60px;
+    h1{
+      font-size:      45px;
+      margin-bottom:  20px;
+    }
+    p{
+      font-size:    18px;
+      line-height:  30px;
+    }
+  }
+}
+
+
+.choose{
+  height:     600px;
+  width:      100vw;
+  &__title{
+    font-size:    25px;
+    font-weight:  bold;
+    text-align:   center;
+    margin-top:   80px;
+  }
+  &__contents{
+    width:            100%;
+    display:          flex;
+    justify-content:  space-around;
+    margin:           0 auto;
+    &--content{
+      width:      20%;
+      margin:     0 auto;
+      position:   relative;
+      .number{
+        position:         absolute;
+        top:              0;
+        left:             0;
+        width:            50px;
+        height:           50px;
+        color:          white;
+        font-size:        24px;
+        font-weight:      bold;
+        background-color: $basic-color;
+        border-radius:    2px;
+        line-height:      50px;
+        text-align:       center;
+      }
+      h1{
+        text-align:       center;
+        font-size:        26px;
+        font-weight:      bold;
+        margin:           20px 0 40px;
+        span{
+          color: $basic-color;
+        }
+      }
+      .center{
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+.publicity{
+  height:           400px;
+  width:            100vw;
+  background-image: url("material/pict/bg-topMiddleDl-pict.jpg");
+  background-size:  cover;
+  position:         relative;
+  &__content{
+    @include  title();
+    position: absolute;
+    top:      20%;
+    left:     10%;
+    h1{
+      font-size:      35px;
+      font-weight:    bold;
+      margin-bottom:  30px;
+    }
+    p{
+      font-size:    18px;
+      line-height:  25px;
+    }
+  }
+}
+
+
+.characteristic{
+  height:   700px;
+  width:    100vw;
+  h1{
+    text-align:    center;
+    font-size:     26px;
+    font-weight:   bold;
+    margin:        50px 0 20px;
+  }
+  &__contents{
+    width:            100%;
+    display:          flex;
+    justify-content:  center;
+    margin:           0 auto;
+    .margin_left{
+      margin-right: 20px; 
+    }
+    .margin{
+      margin: 0 30px;
+    }
+    .margin_right{
+      margin-left: 20px;
+    }
+    &--content{
+      width:    18%;
+      margin:   0 auto;
+      position: relative;
+      h2{
+        text-align:   center;
+        font-size:    18px;
+        font-weight:  bold;
+        margin:       20px 0;
+      }
+      p{
+        line-height:  25px;
+      }
+    }
+  }
+}
+
+
+
+.pick_up{
+  height:           1200px;
+  width:            100vw;
+  background-color: rgb(250, 250, 250);
+  &__category{
+    @include pic_up_content();
+    h1{
+      @include pic_up_h1();
+    }
+    .color{
+      @include pic_up_color();
+    }
+    &--flex{
+      @include pic_up_flex();
+      :hover{
+        opacity: 0.8;
+      }
+    }
+  }
+  &__brand{
+    @include pic_up_content();
+    h1{
+      @include pic_up_h1();
+    }
+    .color{
+      @include pic_up_color();
+    }
+    &--flex{
+      @include pic_up_flex();
+      :hover{
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+
+
+.content_download{
+  height:           400px;
+  width:            100vw;
+  background-image: url("material/pict/bg-appBanner-pict.jpg");
+  background-size:  cover;
+  position:         relative;
+  .font_size{
+    font-size: 22px;
+    padding: 120px 0 20px;
+  }
+  p{
+    text-align:   center;
+    color:        $font-color;
+    text-shadow:  1px 1px 5px rgb(51, 51, 51);
+    font-size:    30px;
+    font-weight:  bold;
+  }
+  .margin_bottom{
+    margin-bottom: 70px;
+  }
+  .btn{
+    position: absolute;
+    bottom:   30%;
+    left:     35%;
+  }
+}
+
+
+.footer{
+  height:             300px;
+  width:              100vw;
+  background-color: rgb(32, 32, 32);
+  position:           relative;
+  &__contents{
+    display:          flex;
+    justify-content:  center;
+    &--content{
+      margin:40px 30px 20px;
+      h1{
+        font-size:    18px;
+        color:        $font-color;
+      }
+      ul{
+        margin:40px 0 20px;
+        li{
+          margin-bottom: 10px;
+          a{
+            color:      $font-color;
+            font-size:  12px;
+          }
+        }
+      }
+    }
+  }
+  &__icon{
+    margin:     0 auto;
+    position:   absolute;
+    bottom:     10%;
+    left:       43%;
+  }
+}
