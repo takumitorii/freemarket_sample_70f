@@ -1,74 +1,79 @@
 <div class = "section">
-  新規登録
+  <div class="sign-up">
+    新規登録
+  </div>
+
+
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :nickname（必須）, class:"title" %><br />
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image, class:"title" %><br />
+      <%= f.file_field :user_image, autofocus: true, autocomplete: "user_image" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :プロフィール, class:"title" %><br />
+      <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email（必須）, class:"title" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password（必須）, class:"title" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation（必須）, class:"title" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="sign-up">
+      本人確認
+    </div>
+
+    <div class="field">
+      <div class="name-space">
+        <%= f.label :お名前（必須）, class:"title" %><br />
+        <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓"%>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="name-space">
+        <%= f.label :ふりがな（必須）, class:"title" %><br />
+        <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい" %>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="birth">
+        <%= f.label :生年月日（必須）, class:"title" %><br />
+        <%= f.text_field :birth_year, autofocus: true, autocomplete: "birth_year" %>年
+        <%= f.text_field :birth_month, autofocus: true, autocomplete: "birth_month" %>月
+        <%= f.text_field :birth_day, autofocus: true, autocomplete: "birth_day" %>月
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 </div>
-
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :nickname（必須） %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :user_image, autofocus: true, autocomplete: "user_image" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :プロフィール %><br />
-    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email（必須） %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password（必須） %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation（必須） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <h3>本人確認</h3>
-
-  <div class="field">
-    <div class="name-space">
-      <%= f.label :お名前（必須） %><br />
-      <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓"%>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名" %>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="name-space">
-      <%= f.label :ふりがな（必須） %><br />
-      <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい" %>
-      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい" %>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="birth">
-      <%= f.label :生年月日（必須） %><br />
-      <%= f.text_field :birth_year, autofocus: true, autocomplete: "birth_year" %>年
-      <%= f.text_field :birth_month, autofocus: true, autocomplete: "birth_month" %>月
-      <%= f.text_field :birth_day, autofocus: true, autocomplete: "birth_day" %>月
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

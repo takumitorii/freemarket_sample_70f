@@ -1,4 +1,21 @@
 .section{
-  
-  padding-top: 20px;
+  text-align: center;
+
+  .sign-up{
+    font-size: 30px;
+    padding-top: 20px;
+  }
+
+  .field{
+    padding-top: 20px;
+
+    .title{
+      height: 80px;
+    }
+  }
+
+  .action{
+    
+  }
+
 }
