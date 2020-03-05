@@ -67,6 +67,26 @@ $basic-color: rgb(93, 250, 255);
 }
 
 // ここから上は複数箇所で使用されているスタイルを書いています
+.exhibition{
+  width:            150px;
+  height:           150px;
+  background-color: $basic-color;
+  border-radius:    5px;
+  position:         fixed;
+  bottom:           50px;
+  right:            50px;
+  z-index:          9999;
+  p{
+    color:    white;
+    font-size:  20px;
+    margin: 10px 0 0 35px;
+  }
+  img{
+    margin: 20px 0 0 33px;
+  }
+}
+
+
 .header{
   height:     110px;
   width:      100%;
