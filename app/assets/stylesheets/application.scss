@@ -15,7 +15,9 @@
  */
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @import 'style.scss';
- @import 'reset.scss';
- @import 'devise';
+ @import 'reset';
+ @import 'tops/style';
+ @import 'products/index';
+ @import 'products/show';
+ @import 'devise/devise';
  
