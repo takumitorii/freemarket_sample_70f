@@ -60,9 +60,7 @@
   <div class="field">
     <div class="birth">
       <%= f.label :生年月日（必須） %><br />
-      <%= f.text_field :birth_year, autofocus: true, autocomplete: "birth_year" %>年
-      <%= f.text_field :birth_month, autofocus: true, autocomplete: "birth_month" %>月
-      <%= f.text_field :birth_day, autofocus: true, autocomplete: "birth_day" %>月
+      <%= f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例: 1999-05-07" %>
     </div>
   </div>
 
