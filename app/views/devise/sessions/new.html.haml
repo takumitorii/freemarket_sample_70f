@@ -7,11 +7,11 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .session-form
         .field
-          = f.label :email
+          = f.label :email, class:"text"
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email", class:"size"
         .field
-          = f.label :password
+          = f.label :password, class:"text"
           %br/
           = f.password_field :password, autocomplete: "current-password", placeholder:"半角７文字以上", class:"size"
         - if devise_mapping.rememberable?
