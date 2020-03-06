@@ -48,14 +48,15 @@
                     %br/
                     = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例: 1999-05-07", class:"confi"
         .form-registration__profile
-          .field
-            = f.label :image
-            %br/
-            = f.file_field :user_image, autofocus: true, autocomplete: "user_image", class:"user_image"
-          .field
-            = f.label :プロフィール
-            %br/
-            = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"user_profile"
+          = f.label :user_image do
+            .profile-image
+              = icon("fas","image", class:"image-icon")
+              = f.file_field :user_image, autofocus: true, autocomplete: "user_image", style: "display: none;"
+
+          .user_profile
+            -# = f.label :プロフィール
+            -# %br/
+            = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"profile", placeholder:"プロフィールを入力してください"
       .actions
         = f.submit "新規登録", class:"actions__b"
 -# = render "devise/shared/links"
