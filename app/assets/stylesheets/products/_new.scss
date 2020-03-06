@@ -1,0 +1,159 @@
+$font-color:    white;
+$basic-color:   rgb(93, 250, 255);
+$border-color:  rgb(201, 201, 201);
+$form-color:    rgb(161, 161, 161);
+
+@mixin selle_btns(){
+  color:         $form-color;
+  font-size:     22px;
+  font-weight:   bold;
+  line-height:   25px;
+  display:       inline-block;
+  padding:       10px;
+  margin:        30px auto 10px;
+  border:        1px solid $font-color;
+  border-radius: 5px;
+}
+
+@mixin select(){
+  width:          95%;
+  height:         50px;
+  font-size:      18px;
+  border:         1px solid $border-color;
+  color:          $form-color;
+  padding-right:  10px;
+}
+
+#_category{
+  @include select();
+}
+
+#_status{
+  @include select();
+}
+
+.border_bottom{
+  border-bottom: 1px solid $border-color;
+}
+
+.split{
+  padding: 20px 0;
+}
+
+.selle_border{
+  width:          100%;
+  border-bottom:  1px solid $border-color;
+}
+
+.final_value{
+  display:          flex;
+  justify-content:  space-between;
+  padding:          50px 40px;
+}
+
+.input{
+  width:      90%;
+  font-size:  24px;
+  padding:    10px;
+  color:    gray;
+}
+
+.file_icon{
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  text-align: center;
+  color: $form-color;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  line-height: 200px;
+  font-size: 30px;
+}
+
+.requir{
+  color:               $font-color;
+  background-color:    $basic-color;
+  padding:             4px 10px;
+  border-radius:       3px;
+  display:             inline-block;
+}
+
+.any{
+  color:               $font-color;
+  background-color:    rgb(6, 255, 193);
+  padding:             4px 10px;
+  border-radius:       3px;
+  display:             inline-block;
+}
+
+// ここから上の記述は、複数のセレクタに共通適用させている物です
+
+.selle_icon{
+  width     : 100%;
+  height    : 10%;
+  padding   : 50px 0;
+  position  : relative;
+  img{
+    text-align: center;
+    position: absolute;
+    left: 40%;
+  }
+}
+
+.selle_contents{
+  h1{
+    display:        inline-block;
+    font-size:      18px;
+    margin-right:    20px;
+    letter-spacing:   6px;
+  }
+  width             : 80%;
+  height            : auto;
+  margin            : 0 auto 60px;
+  background-color  : rgb(245, 245, 245);
+  &__content{
+    padding   : 60px;
+    height    : auto;
+    &--title{
+      padding-bottom: 20px;
+    }
+    .text_area{
+      margin      : 0px;
+      width       : 90%;
+      height      : 300px;
+      font-size   : 16px;
+      padding     : 10px;
+      border      : 1px solid gainsboro;
+      color       : gray;
+    }
+    &--navi{
+      color          : $form-color;
+      font-size      : 18px;
+      margin-bottom  : 40px;
+    }
+    &--info{
+      color: $form-color;
+      font-size       : 18px;
+      padding-bottom  : 20px;
+    }
+    &--profit{
+      .selle_submit{
+        text-align: center;
+        .submit{
+          width               : 50%;
+          @include             selle_btns();
+          color               : $font-color;
+          background-color    : $basic-color;
+          outline             : none;
+          cursor              : pointer;
+        }
+        .return{
+          width               : 48%;
+          @include            selle_btns();
+          background-color    : $font-color;
+          border-radius       : 5px;
+        }
+      }
+    }
+  }
+}
