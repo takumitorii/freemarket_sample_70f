@@ -1,99 +1,27 @@
-.selle_icon
-  = image_tag "material/logo/logo.png", height: "60", width: "180"
+= render partial: "template/exhibition"
+= render partial: "template/header"
 
-.selle_contents
-  = form_for ("#") do |f|
-    .selle_contents__content
-      .selle_contents__content--title
-        %h1
-          出品画像
-        .requir
-          必須
-      .selle_contents__content--info
-        10枚までアップロード出来ます。
-      .selle_contents__content--form
-        = f.label :image, class: "fa fa-image file_icon" do
-          = f.file_field :image, style: "display: none;"
-    .border_bottom
-
-
-    .selle_contents__content
-      .selle_contents__content--title
-        %h1 商品名
-        .requir
-          必須
-      .selle_contents__content--form
-        = f.text_field :content, class: "input", placeholder: "例）ボールペン"
-
-      .split
-
-      .selle_contents__content--title
-        %h1 商品の説明
-        .requir
-          必須
-      .selle_contents__content--form
-        = f.text_area :content, class: "text_area", placeholder: "商品の説明（購入時期、色、素材、用途など）"
-    .border_bottom
-
-
-
-    .selle_contents__content
-      .selle_contents__content--navi 
-        商品の詳細
-      .selle_contents__content--title
-        %h1 カテゴリー
-        .requir
-          必須
-      .selle_contents__content--form
-        = f.select :category, [["衣類","衣類"], ["家電","家電"]]
-      .split
-
-      .selle_contents__content--title
-        %h1 商品状態
-        .requir
-          必須
-      .selle_contents__content--form
-        = f.select :status, [["新品", "新品"], ["目立った傷なし","目立った傷なし"],  ["やや傷あり","やや傷あり"],  ["傷あり","傷あり"]]
-      .split
-
-      .selle_contents__content--title
-        %h1 ブランド
-        .any
-          任意
-      .selle_contents__content--form
-        = f.text_field :category, class: "input", placeholder: "例）Apple"
-    .border_bottom
-
-
-
-    .selle_contents__content
-      .selle_contents__content--navi 
-        価格(300~9,999,999円)
-      .selle_contents__content--price
-        .selling_price
-          .selle_contents__content--title
-            %h1 販売価格
-            .requir
-              必須
-          .selle_contents__content--form
-            = f.text_field :image, class: "input yen", value: "円", style: "text-align: right;"
-        .final_value
-          .commission
-            販売手数料(10%)
-          .total_price
-            ー
-            
-      .split
-      .selle_border
-      .split
-
-      .selle_contents__content--profit
-        .final_value
-          .profit
-            利益
-          .total_profit
-            ー
-        .selle_submit
-          = f.submit "出品する", class: "submit"
-          = link_to "もどる", root_path, class: "return"
-= render partial: "template/footer"
+.second-header
+  .category-bar
+    =link_to "#", class:"transition" do
+      %p.category-btn
+        FURIMA
+    %p.space
+      >
+    =link_to "#", class:"transition" do
+      %p.category-btn
+        親カテゴリ
+    %p.space
+      >
+    =link_to "#", class:"transition" do
+      %p.category-btn
+        子カテゴリ
+    %p.space
+      >
+    =link_to "#", class:"transition" do
+      %p.category-btn
+        孫カテゴリ
+    %p.space
+      >
+    %p.category-btn
+      商品名
