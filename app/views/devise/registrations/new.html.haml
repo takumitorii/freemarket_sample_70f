@@ -2,12 +2,12 @@
   .header_logo
     = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
   .registration
-    .registration__title
-      ユーザー登録
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-registration
         .form-registration__info
+          .form-registration__title
+            ユーザー登録
           .field
             = f.label :nickname（必須）
             %br/
@@ -27,6 +27,26 @@
             = f.label :password_confirmation（必須）
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード確認", class:"size"
+          .user-confirmation
+            .user-confirmation__title
+              本人確認
+            = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              .confirmation-box
+                .confirmation-box__form
+                  .field
+                    = f.label :お名前（必須）
+                    %br/
+                    = f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓", class:"confi"
+                    = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名", class:"confi"
+                  .field
+                    = f.label :ふりがな（必須）
+                    %br/
+                    = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい", class:"confi"
+                    = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい", class:"confi"
+                  .field
+                    = f.label :生年月日（必須）
+                    %br/
+                    = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例: 1999-05-07", class:"confi"
         .form-registration__profile
           .field
             = f.label :image
@@ -36,28 +56,8 @@
             = f.label :プロフィール
             %br/
             = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"user_profile"
-  .user-confirmation
-    .user-confirmation__title
-      本人確認
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      .confirmation-box
-        .confirmation-box__form
-          .field
-            = f.label :お名前（必須）
-            %br/
-            = f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓", class:"confi"
-            = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名", class:"confi"
-          .field
-            = f.label :ふりがな（必須）
-            %br/
-            = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい", class:"confi"
-            = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい", class:"confi"
-          .field
-            = f.label :生年月日（必須）
-            %br/
-            = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例: 1999-05-07", class:"confi"
-        .confirmation-box__actions
-          = f.submit "新規登録", class:"confirmation-box__actions__b"
+      .actions
+        = f.submit "新規登録", class:"actions__b"
 -# = render "devise/shared/links"
 = render partial: "template/content_download"
 = render partial: "template/footer"
