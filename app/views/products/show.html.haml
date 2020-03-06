@@ -10,17 +10,17 @@
       >
     =link_to "#", class:"transition" do
       %p.category-btn
-        カテゴリ親
+        親カテゴリ
     %p.space
       >
     =link_to "#", class:"transition" do
       %p.category-btn
-        カテゴリ子
+        子カテゴリ
     %p.space
       >
     =link_to "#", class:"transition" do
       %p.category-btn
-        カテゴリ孫
+        孫カテゴリ
     %p.space
       >
     %p.category-btn
@@ -40,7 +40,7 @@
         .product-image__second
           =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
     .product-price
-      %span 値段
+      %span ¥10000
       .product-price__detail
         %span (税込)
         %span 送料込み
@@ -56,13 +56,13 @@
             %th カテゴリー
             %td
               =link_to "#", class:"transition table__category" do
-                カテゴリ親
+                親カテゴリ
               %br
               =link_to "#", class:"transition table__category" do
-                カテゴリ子
+                子カテゴリ
               %br
               =link_to "#", class:"transition table__category" do
-                カテゴリ孫
+                孫カテゴリ
           %tr
             %th ブランド
             %td
@@ -78,12 +78,44 @@
           %tr
             %th 発送元の地域
             %td
-              =link_to "#", class:"transition" do
+              =link_to "#", class:"transition table__category" do
                 %p.table__area
                   地域名
           %tr
             %th 発送日の目安
             %td 4-7日で発送
-        
+    .option-area
+      %ul
+        %li.optional-btn.like-btn#like-btn
+          %i.fa.fa-star
+          お気に入り 0
+      %ul
+        %li.optional-btn
+          =link_to "#" do
+            %i.fa.fa-flag
+            不適切な商品の通報
+
+  .product-form
+    = form_for(@product) do |f|
+      %textarea
+      %p.notice-message
+        相手のことを考え丁寧なコメントを心がけましょう。
+        %br
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %br
+      %button.comment-btn{ type: 'submit' }
+        %i.fa.fa-comment
+        コメントする
+  .links
+    %p.links_left
+      = link_to "#" do
+        < 前の商品
+    %p.links_right
+      = link_to "#" do
+        後ろの商品 >
+  .related-items
+    =link_to "#" do
+      親カテゴリをもっとみる
+
 = render partial: "template/content_download"
 = render partial: "template/footer"
