@@ -5,76 +5,97 @@
 .selle_contents
   = form_for ("#") do |f|
     .selle_contents__content
-      .selle_content__content--title
+      .selle_contents__content--title
         %h1
           出品画像
         .requir
           必須
-      .selle_content__content--info
+      .selle_contents__content--info
         10枚までアップロード出来ます。
-      .selle_content__content--form
-        = f.label :image
+      .selle_contents__content--form
+        = f.text_field :image, class: "input"
     .border_bottom
 
+
     .selle_contents__content
-      .selle_content__content--title
+      .selle_contents__content--title
         %h1 商品名
         .requir
           必須
-      .selle_content__content--form
-        = f.text_field :content
+      .selle_contents__content--form
+        = f.text_field :content, class: "input"
 
-      .selle_content__content--title
+      .split
+
+      .selle_contents__content--title
         %h1 商品の説明
         .requir
           必須
-      .selle_content__content--form
-        = f.text_area :content
+      .selle_contents__content--form
+        = f.text_area :content, class: "text_area"
     .border_bottom
 
+
+
     .selle_contents__content
-      .selle_content__content--navi 
+      .selle_contents__content--navi 
         商品の詳細
-      .selle_content__content--title
+      .selle_contents__content--title
         %h1 カテゴリー
         .requir
           必須
-      .selle_content__content--form
-        = f.label :category
+      .selle_contents__content--form
+        = f.text_field :image, class: "input"
 
-      .selle_content__content--title
+      .split
+
+      .selle_contents__content--title
         %h1 ブランド
         .requir
           任意
-      .selle_content__content--form
-        = f.text_field :category
+      .selle_contents__content--form
+        = f.text_field :category, class: "input"
 
-      .selle_content__content--title
+      .split
+
+      .selle_contents__content--title
         %h1 商品状態
         .requir
           必須
-      .selle_content__content--form
-        = f.label :status
+      .selle_contents__content--form
+        = f.text_field :image
     .border_bottom
 
 
+
     .selle_contents__content
+      .selle_contents__content--navi 
+        価格(300~9,999,999円)
       .selle_contents__content--price
-        .price_range
-          価格(300 ~ 9,999,999円)
         .selling_price
-          .selle_content__content--title
+          .selle_contents__content--title
             %h1 販売価格
             .requir
               必須
-          .selle_content__content--form
-            = f.label :price
-        .commissiontotal_price
+          .selle_contents__content--form
+            = f.text_field :image, class: "input"
+        .final_value
           .commission
             販売手数料(10%)
           .total_price
             ー
+            
+      .split
+      .selle_border
+      .split
 
       .selle_contents__content--profit
-
+        .final_value
+          .profit
+            利益
+          .total_profit
+            ー
+        .selle_submit
+          = f.submit "出品する", class: "submit"
+          = link_to "もどる", root_path, class: "return"
 = render partial: "template/footer"
