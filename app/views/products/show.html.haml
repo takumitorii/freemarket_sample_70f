@@ -3,22 +3,22 @@
 
 .second-header
   .category-bar
-    =link_to root_path, class:"transition" do
+    =link_to "#", class:"transition" do
       %p.category-btn
         FURIMA
     %p.space
       >
-    =link_to root_path, class:"transition" do
+    =link_to "#", class:"transition" do
       %p.category-btn
         カテゴリ親
     %p.space
       >
-    =link_to root_path, class:"transition" do
+    =link_to "#", class:"transition" do
       %p.category-btn
         カテゴリ子
     %p.space
       >
-    =link_to root_path, class:"transition" do
+    =link_to "#", class:"transition" do
       %p.category-btn
         カテゴリ孫
     %p.space
@@ -34,16 +34,56 @@
         =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
       .product-image__sub
         .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "75x75"
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
         .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "75x75"
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
         .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "75x75"
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
     .product-price
       %span 値段
       .product-price__detail
         %span (税込)
         %span 送料込み
+    .product-detail
+      %p 商品名
+    .table
+      %table
+        %tbody
+          %tr
+            %th 出品者
+            %td hoghog
+          %tr
+            %th カテゴリー
+            %td
+              =link_to "#", class:"transition table__category" do
+                カテゴリ親
+              %br
+              =link_to "#", class:"transition table__category" do
+                カテゴリ子
+              %br
+              =link_to "#", class:"transition table__category" do
+                カテゴリ孫
+          %tr
+            %th ブランド
+            %td
+          %tr
+            %th 商品のサイズ
+            %td
+          %tr
+            %th 商品の状態
+            %td 新品に近い
+          %tr
+            %th 配送料の負担
+            %td 送料込み（出品者負担）
+          %tr
+            %th 発送元の地域
+            %td
+              =link_to "#", class:"transition" do
+                %p.table__area
+                  地域名
+          %tr
+            %th 発送日の目安
+            %td 4-7日で発送
         
 = render partial: "template/content_download"
 = render partial: "template/footer"
