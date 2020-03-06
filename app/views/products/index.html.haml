@@ -13,7 +13,8 @@
       .selle_contents__content--info
         10枚までアップロード出来ます。
       .selle_contents__content--form
-        = f.text_field :image, class: "input"
+        = f.label :image, class: "fa fa-image file_icon" do
+          = f.file_field :image, style: "display: none;"
     .border_bottom
 
 
@@ -23,7 +24,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_field :content, class: "input"
+        = f.text_field :content, class: "input", placeholder: "例）ボールペン"
 
       .split
 
@@ -32,7 +33,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_area :content, class: "text_area"
+        = f.text_area :content, class: "text_area", placeholder: "商品の説明（購入時期、色、素材、用途など）"
     .border_bottom
 
 
@@ -45,17 +46,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_field :image, class: "input"
-
-      .split
-
-      .selle_contents__content--title
-        %h1 ブランド
-        .requir
-          任意
-      .selle_contents__content--form
-        = f.text_field :category, class: "input"
-
+        = f.select :category, [["衣類","衣類"], ["家電","家電"]]
       .split
 
       .selle_contents__content--title
@@ -63,7 +54,15 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_field :image
+        = f.select :status, [["新品", "新品"], ["目立った傷なし","目立った傷なし"],  ["やや傷あり","やや傷あり"],  ["傷あり","傷あり"]]
+      .split
+
+      .selle_contents__content--title
+        %h1 ブランド
+        .any
+          任意
+      .selle_contents__content--form
+        = f.text_field :category, class: "input", placeholder: "例）Apple"
     .border_bottom
 
 
@@ -78,7 +77,7 @@
             .requir
               必須
           .selle_contents__content--form
-            = f.text_field :image, class: "input"
+            = f.text_field :image, class: "input yen", value: "円", style: "text-align: right;"
         .final_value
           .commission
             販売手数料(10%)
