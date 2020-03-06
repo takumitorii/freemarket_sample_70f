@@ -1,18 +1,80 @@
-= render partial: "template/exhibition"
-= render partial: "template/header"
-
-.basic_info
-  .name
-  .price
-  .status
-  .image
-  .description
-
-.additional_info
-  .category
-  .brand
+.selle_icon
+  = image_tag "material/logo/logo.png", height: "60", width: "180"
 
 
+.selle_contents
+  = form_for ("#") do |f|
+    .selle_contents__content
+      .selle_content__content--title
+        %h1
+          出品画像
+        .requir
+          必須
+      .selle_content__content--info
+        10枚までアップロード出来ます。
+      .selle_content__content--form
+        = f.label :image
+    .border_bottom
 
-= render partial: "template/content_download"
+    .selle_contents__content
+      .selle_content__content--title
+        %h1 商品名
+        .requir
+          必須
+      .selle_content__content--form
+        = f.text_field :content
+
+      .selle_content__content--title
+        %h1 商品の説明
+        .requir
+          必須
+      .selle_content__content--form
+        = f.text_area :content
+    .border_bottom
+
+    .selle_contents__content
+      .selle_content__content--navi 
+        商品の詳細
+      .selle_content__content--title
+        %h1 カテゴリー
+        .requir
+          必須
+      .selle_content__content--form
+        = f.label :category
+
+      .selle_content__content--title
+        %h1 ブランド
+        .requir
+          任意
+      .selle_content__content--form
+        = f.text_field :category
+
+      .selle_content__content--title
+        %h1 商品状態
+        .requir
+          必須
+      .selle_content__content--form
+        = f.label :status
+    .border_bottom
+
+
+    .selle_contents__content
+      .selle_contents__content--price
+        .price_range
+          価格(300 ~ 9,999,999円)
+        .selling_price
+          .selle_content__content--title
+            %h1 販売価格
+            .requir
+              必須
+          .selle_content__content--form
+            = f.label :price
+        .commissiontotal_price
+          .commission
+            販売手数料(10%)
+          .total_price
+            ー
+
+      .selle_contents__content--profit
+
 = render partial: "template/footer"
