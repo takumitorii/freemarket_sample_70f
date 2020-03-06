@@ -1,3 +1,8 @@
+$font-color:    white;
+$basic-color:   rgb(93, 250, 255);
+$border-color:  rgb(201, 201, 201);
+$form-color:    rgb(161, 161, 161);
+
 @mixin selle_btns(){
   color:         $form-color;
   font-size:     22px;
