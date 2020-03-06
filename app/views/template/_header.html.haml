@@ -1,6 +1,6 @@
 .header
   .header__image
-    = image_tag "material/logo/logo.png", height: "40", with: "60"
+    = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
   .header__form
     %form
       %input.input{type: "text", placeholder: "キーワードで検索"}
