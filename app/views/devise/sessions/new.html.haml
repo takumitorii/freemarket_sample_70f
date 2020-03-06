@@ -1,25 +1,25 @@
+.header_logo
+  = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 .section
-  .header_logo
-    = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
   .session
-    .session__title
+    .session__title.sign_color
       ログイン
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .session-form
-        .field
+        .field.sign_color
           = f.label :email, class:"text"
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email", class:"size"
-        .field
+        .field.sign_color
           = f.label :password, class:"text"
           %br/
           = f.password_field :password, autocomplete: "current-password", placeholder:"半角７文字以上", class:"size"
         - if devise_mapping.rememberable?
-          .field
+          .field.sign_color
             = f.check_box :remember_me
             = f.label :remember_me
         .actions
           = f.submit "ログイン", class:"actions__b"
-    = render partial: "template/content_download"
-    = render partial: "template/footer"
+= render partial: "template/content_download"
+= render partial: "template/footer"
 
