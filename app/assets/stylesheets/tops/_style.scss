@@ -135,7 +135,7 @@ $basic-color: rgb(93, 250, 255);
   height:             600px;
   width:              100vw;
   position:           relative;
-  background-image:   url("material/pict/bg-mainVisual-pict_pc.jpg");
+  background-image:   image-url("material/pict/bg-mainVisual-pict_pc.jpg");
   background-size:    cover;
   &__text{
     @include      title();
@@ -206,7 +206,7 @@ $basic-color: rgb(93, 250, 255);
 .publicity{
   height:           400px;
   width:            100vw;
-  background-image: url("material/pict/bg-topMiddleDl-pict.jpg");
+  background-image: image-url("material/pict/bg-topMiddleDl-pict.jpg");
   background-size:  cover;
   position:         relative;
   &__content{
@@ -310,7 +310,7 @@ $basic-color: rgb(93, 250, 255);
 .content_download{
   height:           400px;
   width:            100vw;
-  background-image: url("material/pict/bg-appBanner-pict.jpg");
+  background-image: image-url("material/pict/bg-appBanner-pict.jpg");
   background-size:  cover;
   position:         relative;
   .font_size{
