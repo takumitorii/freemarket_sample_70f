@@ -1,0 +1,85 @@
+.section{
+  width: 100%;
+  height: 100%;
+
+  .header_logo{
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .registration{
+    padding: 20px 0;
+    text-align: left;
+    font-size: 20px;
+    height: 250px;
+    &__title{
+      padding-left: 150px;
+    }
+
+    .form-registration{
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-around;
+      &__info{
+        font-size: 15px;
+      }
+      &__profile{
+        font-size: 15px;
+        .user_image{
+          height: 100px;
+        }
+        .user_profile{
+          height: 250px;
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  
+  .user-confirmation{
+    padding-top: 30px;
+    text-align: left;
+    font-size: 20px;
+    height: 250px;
+    &__title{
+      padding-left: 150px;
+
+    }
+    
+    .confirmation-box{
+      padding-top: 30px;
+      width: auto;
+
+      &__form{
+        font-size: 15px;
+        padding-left: 175px;
+      }
+
+      &__actions{
+        text-align: center;
+        padding-top: 15px;
+        &__b{
+          height: 40px;
+          width: 200px;
+          font-size: 20px;
+          background-color: lightcyan;
+        }
+      }
+    }
+  }
+}
+
+.field{
+  margin-bottom: 20px;
+
+}
+
+.size{
+  width: 300px;
+  height: 20px;
+}
+
+.confi{
+  height: 20px;
+}
