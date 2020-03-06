@@ -1,29 +1,29 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from Exception, with: :rescue_from_exception
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found 
+  # rescue_from Exception, with: :rescue_from_exception
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found 
 
 
-  def rescue_from_exception(e)
-    @exception = e 
-    render 'errors/500'
-  end 
+  # def rescue_from_exception(e)
+  #   @exception = e 
+  #   render 'errors/500'
+  # end 
 
-  def record_not_found(e) 
-    @exception = e
-    render 'errors/500'
-  end 
+  # def record_not_found(e) 
+  #   @exception = e
+  #   render 'errors/500'
+  # end 
 
-  class Forbidden < ActionController::ActionControllerError
-  end 
+  # class Forbidden < ActionController::ActionControllerError
+  # end 
   
-  rescue_from Forbidden, with: :forbidden  
+  # rescue_from Forbidden, with: :forbidden  
   
-  def forbidden(e)
-    @exception = e 
-    render 'errors/500'
-  end 
+  # def forbidden(e)
+  #   @exception = e 
+  #   render 'errors/500'
+  # end 
 
 
   private
