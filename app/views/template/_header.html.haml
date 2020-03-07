@@ -14,7 +14,7 @@
         ブランド
     - if user_signed_in? 
       .btn
-        = link_to "#{current_user.nickname}さん", root_path
+        = link_to "#{current_user.nickname}さん", "/users/#{current_user.id}"
         = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
       .btn

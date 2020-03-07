@@ -1,0 +1,64 @@
+$font-color:        white;
+$basic-color:       rgb(93, 250, 255);
+$border-color:      rgb(201, 201, 201);
+$form-color:        rgb(161, 161, 161);
+$background-color:  rgb(245, 245, 245);
+
+@mixin object(){
+  height: 28%;
+  padding: 20px;
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  overflow: auto;
+  .objects{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .object{
+      width: 30%;
+      margin-top: 30px;
+      border: 1px solid $border-color;
+      img{
+        width: 100%;
+        height: 60%;
+        display: block;
+        margin: 0 auto;
+      }
+      .parts{
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+.user_show{
+  width: 90%;
+  height: auto;
+  margin: 0 auto 30px;
+  display: flex;
+  &__product{
+    width: 60%;
+    .title{
+      font-size: 24px;
+      font-weight: bold;
+      margin: 30px 0 10px;
+      background-color: white;
+    }
+    &--sell{
+      @include object();
+    }
+    &--sold{
+      @include object();
+    }
+    &--buy{
+      @include object();
+    }
+  }
+  &__devise{
+    height: 2000px;
+    width: 40%;
+    background-color: yellow;
+  }
+}

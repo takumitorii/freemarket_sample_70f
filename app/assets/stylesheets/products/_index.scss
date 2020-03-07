@@ -2,7 +2,7 @@ $font-color:    white;
 $basic-color:   rgb(93, 250, 255);
 $border-color:  rgb(201, 201, 201);
 $form-color:    rgb(161, 161, 161);
-
+$background-color: rgb(245, 245, 245);
 
 @mixin selle_btns(){
   color:         $form-color;
@@ -111,7 +111,7 @@ $form-color:    rgb(161, 161, 161);
   width             : 80%;
   height            : auto;
   margin            : 0 auto 60px;
-  background-color  : rgb(245, 245, 245);
+  background-color  : $background-color;
   &__content{
     padding   : 60px;
     height    : auto;
