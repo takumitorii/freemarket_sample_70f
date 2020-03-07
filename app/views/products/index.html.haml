@@ -3,9 +3,14 @@
 
 .second-header
   .category-bar
-    =link_to "#", class:"transition" do
+    =link_to "/", class:"transition" do
       %p.category-btn
         FURIMA
+    %p.space
+      >
+    =link_to "#", class:"transition" do
+      %p.category-btn
+        カテゴリー一覧
     %p.space
       >
     =link_to "#", class:"transition" do
@@ -21,7 +26,29 @@
     =link_to "#", class:"transition" do
       %p.category-btn
         孫カテゴリ
-    %p.space
-      >
-    %p.category-btn
-      商品名
+.show-main
+  .index
+    .index-main
+      .index-title
+        %h2 孫カテゴリーの商品一覧
+      .product-lists
+        - @products.each do |product|
+          .product-list
+            =link_to "/products/#{product.id}" do
+              %figure.product-list__image
+                =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+              .product-list__body
+                %h3
+                  = product.name
+                .product-list__detail
+                  %ul
+                    %li
+                      = product.price
+                    %li
+                      %i.fa.fa-star
+                      0
+                  %p (税込)
+
+
+= render partial: "template/content_download"
+= render partial: "template/footer"
