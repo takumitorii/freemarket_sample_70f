@@ -1,5 +1,39 @@
 = render partial: "template/header"
 
-
-
+.user_show
+  .user_show__product
+    .title
+      商品一覧
+    .user_show__product--sell
+      .objects
+        .object
+          .image
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+          .parts
+            商品名 : (name)
+          .parts
+            値段 : (price)円
+          .parts
+            = link_to "詳細", "#"
+    .title
+      売却済み
+    .user_show__product--sold 
+    .title
+      購入一覧
+    .user_show__product--buy
+      
+  .user_show__devise
+    .icon
+      アイコン
+      name
+    .description
+      プロフィール
+      テキスト
+    .info
+      本人情報  名前、メールアドレス、パスワード、住所（発送元、届け先）
+    .credit_card
+      クレジットカード情報（link）
+    .log_out
+      - if user_signed_in?
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
 = render partial: "template/footer"
