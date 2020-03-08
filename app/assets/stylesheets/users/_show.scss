@@ -5,47 +5,69 @@ $form-color:        rgb(161, 161, 161);
 $background-color:  rgb(245, 245, 245);
 
 @mixin object(){
-  height: 28%;
-  padding: 20px;
-  border: 1px solid $border-color;
+  height:           28%;
+  padding:          20px;
+  border:           1px solid $border-color;
   background-color: $background-color;
-  overflow: auto;
+  overflow:         auto;
   .objects{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display:            flex;
+    justify-content:    space-between;
+    flex-wrap:          wrap;
     .object{
-      width: 30%;
-      margin-top: 30px;
-      border: 1px solid $border-color;
+      width:          30%;
+      margin-top:     30px;
+      border:         1px solid $border-color;
       img{
-        width: 100%;
-        height: 60%;
-        display: block;
-        margin: 0 auto;
+        width:      100%;
+        height:     60%;
+        display:    block;
+        margin:     0 auto;
       }
       .parts{
-        font-size: 16px;
-        font-weight: bold;
-        margin: 10px;
+        font-size:    16px;
+        font-weight:  bold;
+        margin:       10px;
       }
     }
   }
 }
 
-.user_show{
-  width: 90%;
-  height: auto;
-  margin: 0 auto 30px;
-  display: flex;
-  &__product{
-    width: 60%;
-    .title{
-      font-size: 24px;
-      font-weight: bold;
-      margin: 30px 0 10px;
-      background-color: white;
+.show_title{
+  font-size:    24px;
+  font-weight:  bold;
+  text-align:   center;
+  margin:       30px 0 10px;
+}
+
+.show_form_flex{
+  margin-top:       20px;
+  display:          flex;
+  justify-content:  space-between;
+  .show_user_title{
+    margin-bottom:    33px;
+    font-size:        18px;
+  }
+  .show_user_form{
+    padding-right:    50px;
+    .show_user_input{
+      font-size:      16px;
+      height:         30%;
+      padding:        5px;
+      width:          120%;
+      margin-bottom:  19px;
     }
+  }
+}
+// ここから上には、複数箇所で適用されるスタイルが書かれています。
+.user_show{
+  width:      90%;
+  height:     auto;
+  margin:     0 auto 30px;
+  display:    flex;
+  position:   relative;
+  &__product{
+    width:    60%;
     &--sell{
       @include object();
     }
@@ -57,8 +79,94 @@ $background-color:  rgb(245, 245, 245);
     }
   }
   &__devise{
-    height: 2000px;
-    width: 40%;
-    background-color: yellow;
+    height:       1900px;
+    width:        40%;
+    padding:      30px 50px;
+    margin-left:  20px;
+    border:       1px solid $border-color;
+    &--title{
+      width:          100%;
+      margin-bottom:  80px;
+      font-size:      26px;
+      font-weight:    bold;
+      text-align:     center;
+    }
+    &--icon{
+      width:          100%;
+      padding-bottom: 30px;
+      margin-bottom:  50px;
+      border-bottom:  1px solid $border-color;
+      text-align:     center;
+      .icon{
+        font-size:      140px;
+        color:          $basic-color;
+        margin-bottom:  30px;
+      }
+      .nickname{
+        font-size:      22px;
+        font-weight:    bold;
+        margin-bottom:  30px;
+      }
+      .profile{
+        font-size:      18px;
+        margin-bottom:  10px;
+      }
+      .text_area{
+        width:          80%;
+        height:         300px;
+        font-size:      14px;
+        padding:        10px;
+        border-radius:  5px;
+        outline:        none;
+      }
+    }
+    &--info{
+      height:         30%;
+      width:          100%;
+      border-bottom:  1px solid $border-color;
+      margin-bottom:  30px;
+      .real_name{
+        margin-bottom:    10px;
+        font-size:        20px;
+        display:          flex;
+        justify-content:  space-between;
+        margin-top:       60px;
+        .name_title{
+          margin-bottom: 30px;
+        }
+        .name_form{
+          margin-bottom: 10px;
+          .user_input_name{
+            width:      80%;
+            font-size:  16px;
+            padding:    5px;
+          }
+        }
+      }
+    }
+    &--credit_card{
+      width:        100%;
+      text-align:   center;
+      .credit{
+        margin-bottom: 60px;
+      }
+    }
+    &--log_out{
+      height:       5%;
+      width:        100%;
+      text-align:   center;
+      font-size:    22px;
+      font-weight:  bold;
+      a{
+        color:            $font-color;
+        width:            18%;
+        background-color: $basic-color;
+        padding:          15px;
+        border-radius:    5px;
+        position:         absolute;
+        bottom:           60px;
+        right:            11%;
+      }
+    }
   }
 }
