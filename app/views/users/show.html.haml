@@ -1,9 +1,10 @@
 = render partial: "template/header"
+= render partial: "template/exhibition"
 
 .user_show
   .user_show__product
-    .title
-      商品一覧
+    .show_title
+      出品一覧
     .user_show__product--sell
       .objects
         .object
@@ -15,25 +16,106 @@
             値段 : (price)円
           .parts
             = link_to "詳細", "#"
-    .title
+    .show_title
       売却済み
     .user_show__product--sold 
-    .title
+    .show_title
       購入一覧
     .user_show__product--buy
-      
   .user_show__devise
-    .icon
-      アイコン
-      name
-    .description
-      プロフィール
-      テキスト
-    .info
-      本人情報  名前、メールアドレス、パスワード、住所（発送元、届け先）
-    .credit_card
-      クレジットカード情報（link）
-    .log_out
+    .user_show__devise--title
+      ユーザー情報
+    .user_show__devise--icon
+      = form_for ("#") do |f|
+        .icon
+          = f.label :user_image, class: "fas fa-smile" do
+            = f.file_field :user_image, style: "display: none;"
+        .nickname
+          nickname
+        .profile
+          プロフィール
+        .description
+          = f.text_area :description, placeholder: "ご自身のプロフィール", class: "text_area"
+    .user_show__devise--info
+      .show_title
+        本人情報
+      = form_for ("#") do |f|
+        .real_name
+          .first_name
+            .name_title
+              性
+            .name_title
+              せい
+          .first_name_form
+            .name_form
+              = f.text_field :family_name, class: "user_input_name", placeholder: "性"
+            .name_form
+              = f.text_field :family_name_kana, class: "user_input_name", placeholder: "せい"
+          .first_name
+            .name_title
+              名
+            .name_title
+              めい
+          .first_name_form
+            .name_form
+              = f.text_field :first_name, class: "user_input_name", placeholder: "名"
+            .name_form
+              = f.text_field :first_name_kana, class: "user_input_name", placeholder: "めい"
+        .show_form_flex
+          .show_user_titles
+            .show_user_title
+              メールアドレス
+            .show_user_title
+              パスワード
+            .show_user_title
+              郵便番号
+            .show_user_title
+              都道府県
+            .show_user_title
+              市区町村
+            .show_user_title
+              丁目番地
+            .show_user_title
+              建物名、号室
+          .show_user_form
+            .email
+              = f.text_field :email, class: "show_user_input", placeholder: "メールアドレス"
+            .password
+              = f.text_field :password, class: "show_user_input", placeholder: "パスワード"
+            .post_code
+              = f.text_field :post_code, class: "show_user_input", placeholder: "郵便番号"
+            .prefecture
+              = f.text_field :prefecture, class: "show_user_input", placeholder: "都道府県"
+            .city
+              = f.text_field :city, class: "show_user_input", placeholder: "市区町村"
+            .adress
+              = f.text_field :adress, class: "show_user_input", placeholder: "丁目番地"
+            .building_name
+              = f.text_field :building_name, class: "show_user_input", placeholder: "建物名、号室"
+    .user_show__devise--credit_card
+      .show_title.credit
+        クレジットカード情報
+      .show_form_flex
+        .show_user_titles
+          .show_user_title
+            セキュリティーコード
+          .show_user_title
+            カードナンバー
+          .show_user_title
+            有効期限（年）
+          .show_user_title
+            有効期限（月）
+        .show_user_form
+          = form_for ("#") do |f|
+            .security_code
+              = f.text_field :security_code, class: "show_user_input"
+            .card_number
+              = f.text_field :card_number, class: "show_user_input"
+            .expiration_year
+              = f.text_field :expiration_yaer, class: "show_user_input"
+            .expiration_month
+              = f.text_field :expiration_month, class: "show_user_input"
+    .user_show__devise--log_out
       - if user_signed_in?
         = link_to "ログアウト", destroy_user_session_path, method: :delete
 = render partial: "template/footer"
