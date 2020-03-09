@@ -151,7 +151,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_many   :products
 
-## shipping infoテーブル
+## shipping_infoテーブル
 |Column|Type|Options|
 |------|----|-------|
 | shipping_cost | integer | null:false |
