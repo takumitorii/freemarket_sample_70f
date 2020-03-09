@@ -1,3 +1,3 @@
-class Shipping_info < ApplicationRecord
+class ShippingInfo < ApplicationRecord
   belongs_to :seller
 end
