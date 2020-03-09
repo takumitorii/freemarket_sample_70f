@@ -35,7 +35,7 @@
         - @products.each do |product|
           - if true
             .product-list
-              =link_to product_path(@products) do
+              =link_to product_path(product) do
                 %figure.product-list__image
                   =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
                 .product-list__body
@@ -51,7 +51,7 @@
                     %p (税込)
           - else
             .product-list
-              =link_to product_path(@products) do
+              =link_to product_path(product) do
                 %figure.product-list__image
                   =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
                 .product-list__body
