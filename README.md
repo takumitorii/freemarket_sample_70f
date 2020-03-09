@@ -78,7 +78,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
--
+
 
 ## categoryテーブル
 |Column|Type|Options|
