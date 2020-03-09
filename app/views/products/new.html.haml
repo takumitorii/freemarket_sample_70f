@@ -2,7 +2,7 @@
   = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 
 .selle_contents
-  = form_for ("#") do |f|
+  = form_for @product do |f|
     .selle_contents__content
       .selle_contents__content--title
         %h1
@@ -23,7 +23,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_field :content, class: "input", placeholder: "例）ボールペン"
+        = f.text_field :name, class: "input", placeholder: "例）ボールペン"
 
       .split
 
@@ -32,7 +32,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.text_area :content, class: "text_area", placeholder: "商品の説明（購入時期、色、素材、用途など）"
+        = f.text_area :description, class: "text_area", placeholder: "商品の説明（購入時期、色、素材、用途など）"
     .border_bottom
 
 
@@ -61,7 +61,7 @@
         .any
           任意
       .selle_contents__content--form
-        = f.text_field :category, class: "input", placeholder: "例）Apple"
+        = f.text_field :brand, class: "input", placeholder: "例）Apple"
     .border_bottom
 
 
@@ -76,7 +76,7 @@
             .requir
               必須
           .selle_contents__content--form
-            = f.text_field :image, class: "input yen", value: "円", style: "text-align: right;"
+            = f.text_field :price, class: "input yen", value: "円", style: "text-align: right;"
         .final_value
           .commission
             販売手数料(10%)
