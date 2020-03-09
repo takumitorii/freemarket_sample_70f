@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+lady = Category.create(:category_name=>"レディース")
+
+lady_tops = lady.children.create(:category_name=>"トップス")
+lady_jacket = lady.children.create(:category_name=>"ジャケット/アウター")
+
+lady_tops.children.create([{:category_name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:category_name=>"Tシャツ/カットソー(七分/長袖)"},{:category_name=>"その他"}])
+lady_jacket.children.create([{:category_name=>"テーラードジャケット"}, {:category_name=>"ノーカラージャケット"}, {:category_name=>"Gジャン/デニムジャケット"},{:category_name=>"その他"}])
