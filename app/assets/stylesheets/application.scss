@@ -13,17 +13,12 @@
  *= require_tree .
  *= require_self
  */
-$font-color:    white;
-$basic-color:   rgb(93, 250, 255);
-$border-color:  rgb(201, 201, 201);
-$form-color:    rgb(161, 161, 161);
-
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import 'reset';
  @import 'tops/style';
  @import 'products/new';
  @import 'products/show';
+ @import 'users/show';
  @import 'devise/log_in';
  @import 'devise/sign_up';
- 
