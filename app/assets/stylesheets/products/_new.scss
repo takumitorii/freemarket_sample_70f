@@ -129,10 +129,12 @@ $form-color:    rgb(161, 161, 161);
     #product_category{
       @include select();
       width: 60%;
+      outline: none;
     }
     #product_status{
       @include select();
       width: 60%;
+      outline: none;
     }
     &--navi{
       color          : $form-color;
