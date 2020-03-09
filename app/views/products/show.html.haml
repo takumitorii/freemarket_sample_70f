@@ -44,7 +44,9 @@
           =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
     .product-price
       %span
+        ¥
         = @products.price
+        円
       .product-price__detail
         %span (税込)
         %span 送料込み
@@ -91,6 +93,7 @@
             %th 発送日の目安
             %td 
               = @products.seller.shipping_info.shipping_days
+              日
     .option-area
       %ul
         %li.optional-btn.like-btn#like-btn
