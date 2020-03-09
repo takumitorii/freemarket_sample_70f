@@ -53,7 +53,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.select :status, [["新品", "新品"], ["目立った傷なし","目立った傷なし"],  ["やや傷あり","やや傷あり"],  ["傷あり","傷あり"]]
+        = f.select :brand, [["新品", "新品"], ["目立った傷なし","目立った傷なし"],  ["やや傷あり","やや傷あり"],  ["傷あり","傷あり"]]
       .split
 
       .selle_contents__content--title
@@ -61,7 +61,7 @@
         .any
           任意
       .selle_contents__content--form
-        = f.text_field :brand, class: "input", placeholder: "例）Apple"
+        = f.text_field :name, class: "input", placeholder: "例）Apple"
     .border_bottom
 
 
