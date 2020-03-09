@@ -4,7 +4,7 @@ class CreateShippingInfos < ActiveRecord::Migration[5.2]
       t.integer :shipping_cost,   null: false
       t.string  :shipping_area,   null: false
       t.integer :shipping_days,   null: false
-      t.reference :seller_id,     null: false
+      t.integer :seller_id,     null: false
 
       t.timestamps
     end
