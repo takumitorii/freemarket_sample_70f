@@ -1,6 +1,6 @@
-class CreateShippings < ActiveRecord::Migration[5.2]
+class CreateShipping_infos < ActiveRecord::Migration[5.2]
   def change
-    create_table :shippings do |t|
+    create_table :shipping_infos do |t|
       t.integer :shipping_cost,   null: false
       t.string  :shipping_area,   null: false
       t.integer :shipping_days,   null: false
