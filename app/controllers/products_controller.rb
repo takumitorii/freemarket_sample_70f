@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @parents = Category.all.order("id ASC").limit(1)
   end
 
   def new
@@ -15,7 +16,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.new
     @products = Product.find(params[:id])
   end
 

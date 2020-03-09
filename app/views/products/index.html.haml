@@ -15,17 +15,25 @@
       >
     =link_to "#", class:"transition" do
       %p.category-btn
-        親カテゴリ
+        - @parents.each do |parent|
+          =parent.category_name
+          %br
     %p.space
       >
     =link_to "#", class:"transition" do
       %p.category-btn
-        子カテゴリ
+        - @parents.each do |parent|
+          - parent.children.each do |child|
+            =child.category_name
+            %br
     %p.space
       >
     =link_to "#", class:"transition" do
-      %p.category-btn
-        孫カテゴリ
+      - @parents.each do |parent|
+        - parent.children.each do |child|
+          - child.children.each do |grandchild|
+            =grandchild.category_name
+            %br
 .show-main
   .index
     .index-main
