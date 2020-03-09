@@ -1,48 +1,63 @@
+.header_logo
+  = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
+
 .section
-  .header_logo
-    = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
   .registration
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-registration
         .form-registration__info
-          .form-registration__title
+          .form-registration__title.sign_color
             ユーザー登録
-          .field
-            = f.label :nickname（必須）
+          .field.sign_color
+            = f.label :nickname
+            .requir
+              必須
             %br/
             = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class:"size"
-          .field
-            = f.label :email（必須）
+          .field.sign_color
+            = f.label :email
+            .requir
+              必須
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", class:"size"
-          .field
-            = f.label :password（必須）
+          .field.sign_color
+            = f.label :password
+            .requir
+              必須
             - if @minimum_password_length
               %em
             %br/
             = f.password_field :password, autocomplete: "new-password", placeholder:"半角７文字以上", class:"size"
-          .field
-            = f.label :password_confirmation（必須）
+          .field.sign_color
+            = f.label :password_confirmation
+            .requir
+              必須
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード確認", class:"size"
           .user-confirmation
-            .user-confirmation__title
+            .user-confirmation__title.sign_color
               本人確認
               .confirmation-box
                 .confirmation-box__form
                   .field
-                    = f.label :お名前（必須）
+                    = f.label :お名前
+                    .requir
+                      必須
                     %br/
                     = f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓", class:"confi"
                     = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名", class:"confi"
                   .field
-                    = f.label :ふりがな（必須）
+                    = f.label :ふりがな
+                    .requir
+                      必須
                     %br/
                     = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい", class:"confi"
                     = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい", class:"confi"
                   .field
-                    = f.label :生年月日（必須）
+                    = f.label :生年月日
+                    .requir
+                      必須
                     %br/
                     = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例） 1999-05-07", class:"confi"
         .form-registration__profile
