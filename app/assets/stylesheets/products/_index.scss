@@ -35,7 +35,26 @@
           position: relative;
           overflow: hidden;
           margin: 0;
-          z-index: auto;
+          z-index: 1;
+          .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+          }
+          &--second{
+            z-index: 2;
+            position: relative;
+            .image_second {
+              z-index: 2;
+              width: 100px;
+              height: 50px;
+            }
+          }
         }
         a {
           text-decoration: none;
@@ -43,25 +62,7 @@
           margin: 0 0 20px 0;
           position: relative;
           background-color: #fff;
-          .product-list__image {
-            width: 220px;
-            height: 150px;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            z-index: auto;
-            img {
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              width: 100%;
-              z-index: auto;
-              height: 150px;
-              object-fit: cover;
-            }
-          }
+         
           .product-list__body {
             background-color: white;
             color: #333;

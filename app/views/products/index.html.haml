@@ -37,7 +37,7 @@
             .product-list
               =link_to product_path(product) do
                 %figure.product-list__image
-                  =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+                  =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", class:"image"
                 .product-list__body
                   %h3
                     = product.name
@@ -53,7 +53,9 @@
             .product-list
               =link_to product_path(product) do
                 %figure.product-list__image
-                  =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+                  =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", class:"image"
+                  %figure.product-list__image--second
+                    =image_tag "https://3.bp.blogspot.com/-nsmeh2q3S3c/U-8GiO6Sx8I/AAAAAAAAk6Q/ICL70NoWs8Y/s800/pop_sold_out.png", class:"image_second"
                 .product-list__body
                   %h3
                     = product.name
