@@ -2,6 +2,12 @@
 = render partial: "template/exhibition"
 = render partial: "template/purchase"
 
+.product_btns
+  .edit
+    = link_to "この商品を編集する", "#"
+  .destroy
+    = link_to "この商品を削除する", "#", method: :delete
+    
 
 .second-header
   .category-bar
