@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category_name", null: false
-    t.string "ancestry", null: false
+    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "post_cpde", null: false
+    t.string "post_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "adress", null: false
