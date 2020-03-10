@@ -74,5 +74,6 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'fog-aws'
 gem "carrierwave"
+# gem 'mini_magick'
 gem 'pry-rails'
 gem 'ancestry'

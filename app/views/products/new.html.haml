@@ -12,8 +12,9 @@
       .selle_contents__content--info
         10枚までアップロード出来ます。
       .selle_contents__content--form
-        = f.label :image, class: "fa fa-image file_icon" do
-          = f.file_field :image, style: "display: none;"
+        = f.fields_for :product_images, @images do |i|
+          = i.label :image, class: "fa fa-image file_icon" 
+          = i.file_field :image, style: "display: none;"
     .border_bottom
 
 
@@ -45,7 +46,8 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.select :category, [["衣類","衣類"], ["家電","家電"]], class: "category"
+        = f.fields_for :category, @category do |c|
+          = c.select :category_name, [["衣類","衣類"], ["家電","家電"]], class: "category"
       .split
 
       .selle_contents__content--title
@@ -61,7 +63,8 @@
         .any
           任意
       .selle_contents__content--form
-        = f.text_field :brand, class: "input", placeholder: "例）Apple"
+        = f.fields_for :brand, @brand do |b|
+          = b.text_field :name, class: "input", placeholder: "例）Apple"
     .border_bottom
 
 

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "post_cpde", null: false
+    t.string "post_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "adress", null: false
@@ -59,7 +59,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
   end
 
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "product_image", null: false
+    t.string "image", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,23 +71,25 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.string "description", null: false
     t.string "status", null: false
     t.integer "category_id", null: false
-    t.integer "brand_id", null: false
+    t.integer "brand_id"
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
+    t.integer "product_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sellers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "shipping_info_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shipping_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "shipping_cost", null: false
+    t.string "shipping_cost", null: false
     t.string "shipping_area", null: false
-    t.integer "shipping_days", null: false
+    t.string "shipping_days", null: false
     t.integer "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
