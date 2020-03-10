@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @parents = Category.all.order("id ASC").limit(1)
+    @parents = Category.where(ancestry: nil)
   end
 
   def new
