@@ -8,7 +8,7 @@
       = link_to "#" do
         %p 商品を編集
     .destroy
-      = link_to "#", method: :delete do
+      = link_to product_path(@products.id), method: :delete do
         %p 商品を削除
     
 
