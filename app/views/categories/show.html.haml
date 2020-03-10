@@ -13,32 +13,27 @@
         カテゴリー一覧
     %p.space
       >
+    - if @parent
+      =link_to "#", class:"transition" do
+        %p.category-btn
+          =@parent.name
+      %p.space
+        >
+    - if @child
+      =link_to "#", class:"transition" do
+        %p.category-btn
+          =@child.name
+      %p.space
+        >
     =link_to "#", class:"transition" do
       %p.category-btn
-        - @parents.each do |parent|
-          =parent.name
-          %br
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        - @parents.each do |parent|
-          - parent.children.each do |child|
-            =child.name
-            %br
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      - @parents.each do |parent|
-        - parent.children.each do |child|
-          - child.children.each do |grandchild|
-            =grandchild.name
-            %br
+        =@grandchild.name
 .show-main
   .index
     .index-main
       .index-title
-        %h2 孫カテゴリーの商品一覧
+        %h2 
+          ="#{@grandchild.name}の商品一覧"
       .product-lists
         - @products.each do |product|
           - if true

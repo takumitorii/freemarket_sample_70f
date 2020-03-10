@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "category_name", null: false
+    t.string "name", null: false
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.string "description", null: false
     t.string "status", null: false
     t.integer "category_id", null: false
-    t.integer "brand_id", null: false
+    t.integer "brand_id"
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
     t.datetime "created_at", null: false
