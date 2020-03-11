@@ -76,3 +76,6 @@ gem 'fog-aws'
 gem "carrierwave"
 gem 'pry-rails'
 gem 'ancestry'
+gem 'payjp'
+gem "jquery-rails"
+gem 'dotenv-rails'
