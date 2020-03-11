@@ -1,0 +1,40 @@
+$font-color:        white;
+$basic-color:       rgb(93, 250, 255);
+$border-color:      rgb(201, 201, 201);
+$form-color:        rgb(161, 161, 161);
+$background-color:  rgb(245, 245, 245);
+
+// card/newのデザインを適用できるようにclass名を一部同一
+.card{
+  &__title{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 60px;
+  }
+  &__flex{
+    &--info{
+      font-size: 20px;
+    }
+  }
+  #charge-form{
+    text-align: center;
+    margin: 40px;
+    button{
+      width: 50%;
+      font-size: 20px;
+      color: gray;
+      background-color: $background-color;
+      padding: 10px;
+    }
+  }
+  .card_margin{
+    margin: 30px 0;
+  }
+  .card_note{
+    color: rgb(53, 53, 53);
+    font-style: oblique;
+    text-align: center;
+    margin: 50px 0 30px;
+  }
+}
