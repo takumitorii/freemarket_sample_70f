@@ -14,28 +14,30 @@
 
 .second-header
   .category-bar
-    =link_to "#", class:"transition" do
+    =link_to "/", class:"transition" do
       %p.category-btn
         FURIMA
     %p.space
       >
-    =link_to "#", class:"transition" do
+    - if @parent
+      =link_to "/categories/#{@parent.id}", class:"transition" do
+        %p.category-btn
+          =@parent.name
+      %p.space
+        >
+    - if @child
+      =link_to "/categories/#{@child.id}", class:"transition" do
+        %p.category-btn
+          =@child.name
+      %p.space
+        >
+    =link_to "/categories/#{@grandchild.id}", class:"transition" do
       %p.category-btn
-        親カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        子カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        孫カテゴリ
+        =@grandchild.name
     %p.space
       >
     %p.category-btn
-      商品名
+      =@products.name
 .show-main
   .product-main
     .product-name
@@ -71,14 +73,14 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "#", class:"transition table__category" do
-                親カテゴリ
+              =link_to "/categories/#{@parent.id}", class:"transition table__category" do
+                =@parent.name
               %br
-              =link_to "#", class:"transition table__category" do
-                子カテゴリ
+              =link_to "/categories/#{@child.id}", class:"transition table__category" do
+                =@child.name
               %br
-              =link_to "#", class:"transition table__category" do
-                孫カテゴリ
+              =link_to "/categories/#{@grandchild.id}", class:"transition table__category" do
+                =@grandchild.name
           %tr
             %th 
               ブランド
@@ -134,8 +136,8 @@
       = link_to "#" do
         後ろの商品 >
   .related-items
-    =link_to "#" do
-      親カテゴリをもっとみる
+    =link_to "/categories/#{@parent.id}" do
+      ="#{@parent.name}をもっとみる"
       
 = render partial: "template/content_download"
 = render partial: "template/footer"

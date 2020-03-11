@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @grandchild = Category.find(@products.category_id)
+    @child = @grandchild.parent
+    if @child
+      @parent = @child.parent
+    end
   end
 
   def destroy

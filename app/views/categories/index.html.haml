@@ -1,0 +1,19 @@
+= render partial: "template/exhibition"
+= render partial: "template/header"
+
+.test
+  -@parents.each do |parent|
+    =parent.name
+    %br
+
+-# .test
+-#   -@children.each do |child|
+-#     =child.name
+
+-# .test
+-#   -@grandchildren.each do |grandchild|
+-#     =grandchild.name
+
+
+= render partial: "template/content_download"
+= render partial: "template/footer"
