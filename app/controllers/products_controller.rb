@@ -25,6 +25,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    # gon.product = @product
+    # gon.product_images = @product.product_images
   end
 
   def update
@@ -34,7 +37,8 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :price, :description, :status).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :price, :description, :status,
+    product_images_attributes: [:product_image, :id]).merge(seller_id: current_user.id)
   end
 
 end
