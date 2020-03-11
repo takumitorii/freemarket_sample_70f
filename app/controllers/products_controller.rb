@@ -14,9 +14,7 @@ class ProductsController < ApplicationController
     @products = Product.find(params[:id])
     @grandchild = Category.find(@products.category_id)
     @child = @grandchild.parent
-    if @child
-      @parent = @child.parent
-    end
+    @parent = @child.parent if @child
   end
 
   def destroy
