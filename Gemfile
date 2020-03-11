@@ -78,3 +78,4 @@ gem 'pry-rails'
 gem 'ancestry'
 gem 'payjp'
 gem "jquery-rails"
+gem 'dotenv-rails'
