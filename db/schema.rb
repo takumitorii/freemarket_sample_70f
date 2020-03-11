@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
     t.integer "product_image_id", null: false
+    t.integer "shipping_info_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_015355) do
     t.string "shipping_cost", null: false
     t.string "shipping_area", null: false
     t.string "shipping_days", null: false
-    t.integer "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
