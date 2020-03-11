@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
-  def index
-    @products = Product.all
-    @parents = Category.where(ancestry: nil)
-  end
-
   def new
     @product = Product.new
   end
@@ -17,6 +12,9 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @grandchild = Category.find(@products.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent if @child
   end
 
   def destroy
