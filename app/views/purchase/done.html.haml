@@ -1,10 +1,11 @@
 = render partial: "template/header"
 
-
-.purchase_title
-  購入が完了しました！
-
-.confirm
-  = link_to "TOPページへ", root_path, class: "confirm__btn"
+.done
+  .done__title
+    購入が完了しました！
+    %br/
+    ナイス〜
+  .done__btn
+    = link_to "TOPページへ", root_path
 
 = render partial: "template/footer"
