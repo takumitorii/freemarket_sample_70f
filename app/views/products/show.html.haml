@@ -20,18 +20,18 @@
     %p.space
       >
     - if @parent
-      =link_to "/categories/#{@parent.id}", class:"transition" do
+      =link_to category_path(@parent), class:"transition" do
         %p.category-btn
           =@parent.name
       %p.space
         >
     - if @child
-      =link_to "/categories/#{@child.id}", class:"transition" do
+      =link_to category_path(@child), class:"transition" do
         %p.category-btn
           =@child.name
       %p.space
         >
-    =link_to "/categories/#{@grandchild.id}", class:"transition" do
+    =link_to category_path(@grandchild), class:"transition" do
       %p.category-btn
         =@grandchild.name
     %p.space
@@ -73,13 +73,13 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "/categories/#{@parent.id}", class:"transition table__category" do
+              =link_to category_path(@parent), class:"transition table__category" do
                 =@parent.name
               %br
-              =link_to "/categories/#{@child.id}", class:"transition table__category" do
+              =link_to category_path(@child), class:"transition table__category" do
                 =@child.name
               %br
-              =link_to "/categories/#{@grandchild.id}", class:"transition table__category" do
+              =link_to category_path(@grandchild), class:"transition table__category" do
                 =@grandchild.name
           %tr
             %th 
@@ -136,7 +136,7 @@
       = link_to "#" do
         後ろの商品 >
   .related-items
-    =link_to "/categories/#{@parent.id}" do
+    =link_to category_path(@parent) do
       ="#{@parent.name}をもっとみる"
       
 = render partial: "template/content_download"

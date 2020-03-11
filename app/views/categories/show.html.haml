@@ -8,24 +8,24 @@
         FURIMA
     %p.space
       >
-    =link_to "#", class:"transition" do
+    =link_to categories_path, class:"transition" do
       %p.category-btn
         カテゴリー一覧
     %p.space
       >
     - if @parent
-      =link_to "/categories/#{@parent.id}", class:"transition" do
+      =link_to category_path(@parent), class:"transition" do
         %p.category-btn
           =@parent.name
       %p.space
         >
     - if @child
-      =link_to "/categories/#{@child.id}", class:"transition" do
+      =link_to category_path(@child), class:"transition" do
         %p.category-btn
           =@child.name
       %p.space
         >
-    =link_to "/categories/#{@grandchild.id}", class:"transition" do
+    =link_to category_path(@grandchild), class:"transition" do
       %p.category-btn
         =@grandchild.name
 .show-main
