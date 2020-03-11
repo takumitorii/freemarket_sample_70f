@@ -93,28 +93,8 @@
             .building_name
               = f.text_field :building_name, class: "show_user_input", placeholder: "建物名、号室"
     .user_show__devise--credit_card
-      .show_title.credit
-        クレジットカード情報
-      .show_form_flex
-        .show_user_titles
-          .show_user_title
-            セキュリティーコード
-          .show_user_title
-            カードナンバー
-          .show_user_title
-            有効期限（年）
-          .show_user_title
-            有効期限（月）
-        .show_user_form
-          = form_for ("#") do |f|
-            .security_code
-              = f.text_field :security_code, class: "show_user_input"
-            .card_number
-              = f.text_field :card_number, class: "show_user_input"
-            .expiration_year
-              = f.text_field :expiration_yaer, class: "show_user_input"
-            .expiration_month
-              = f.text_field :expiration_month, class: "show_user_input"
+      - if user_signed_in?
+        = link_to "クレジットカード情報", card_index_path
     .user_show__devise--log_out
       - if user_signed_in?
         = link_to "ログアウト", destroy_user_session_path, method: :delete
