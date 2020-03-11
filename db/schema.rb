@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "category_name", null: false
+    t.string "name", null: false
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,9 +66,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.integer "product_id"
+  create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "product_image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,7 +81,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.integer "brand_id"
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
-    t.integer "images_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

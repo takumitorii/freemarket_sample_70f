@@ -1,11 +1,24 @@
 = render partial: "template/exhibition"
 = render partial: "template/header"
 
-.test
-  -@parents.each do |parent|
-    =parent.name
-    %br
-
+.show-main
+  .product-main
+    .parents-categories
+      -@parents.each do |parent|
+        .parents-category
+          = link_to "#{parent.name}", categories_path(parent, anchor: "#{parent.name}")
+    -@parents.each do |parent|
+      .children-categories
+        = link_to "#{parent.name}", category_path(parent), class:"main-title", id:"#{parent.name}"
+        -parent.children.each do |child|
+          .children-category
+            .child-category
+              = link_to "#{child.name}", category_path(child), class:"sub-title"
+            .grandchildren-categories
+              -child.children.each do |grandchild|
+                .grandchildren-category
+                  = link_to "#{grandchild.name}", category_path(grandchild), class:"grandchildren-title"
+    
 
 
 = render partial: "template/content_download"
