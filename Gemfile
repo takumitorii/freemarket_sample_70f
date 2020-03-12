@@ -78,3 +78,6 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem 'ancestry'
 gem 'active_hash'
+gem 'payjp'
+gem "jquery-rails"
+gem 'dotenv-rails'

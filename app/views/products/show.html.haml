@@ -3,36 +3,41 @@
 = render partial: "template/purchase"
 
 .product_btns
-  .edit
-    = link_to "この商品を編集する", "#"
-  .destroy
-    = link_to "この商品を削除する", "#", method: :delete
+  - if user_signed_in? && current_user.id == @products.seller.user_id
+    .edit
+      = link_to "#" do
+        %p 商品を編集
+    .destroy
+      = link_to product_path(@products.id), method: :delete do
+        %p 商品を削除
     
 
 .second-header
   .category-bar
-    =link_to "#", class:"transition" do
+    =link_to "root_path", class:"transition" do
       %p.category-btn
         FURIMA
     %p.space
       >
-    =link_to "#", class:"transition" do
+    - if @parent
+      =link_to category_path(@parent), class:"transition" do
+        %p.category-btn
+          =@parent.name
+      %p.space
+        >
+    - if @child
+      =link_to category_path(@child), class:"transition" do
+        %p.category-btn
+          =@child.name
+      %p.space
+        >
+    =link_to category_path(@grandchild), class:"transition" do
       %p.category-btn
-        親カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        子カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        孫カテゴリ
+        =@grandchild.name
     %p.space
       >
     %p.category-btn
-      商品名
+      =@products.name
 .show-main
   .product-main
     .product-name
@@ -68,19 +73,20 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "#", class:"transition table__category" do
-                親カテゴリ
+              =link_to category_path(@parent), class:"transition table__category" do
+                =@parent.name
               %br
-              =link_to "#", class:"transition table__category" do
-                子カテゴリ
+              =link_to category_path(@child), class:"transition table__category" do
+                =@child.name
               %br
-              =link_to "#", class:"transition table__category" do
-                孫カテゴリ
+              =link_to category_path(@grandchild), class:"transition table__category" do
+                =@grandchild.name
           %tr
             %th 
               ブランド
             %td
-              = @products.brand.name
+              - if @products.brand.name.present?
+                = @products.brand.name
           %tr
             %th 商品のサイズ
             %td
@@ -130,8 +136,8 @@
       = link_to "#" do
         後ろの商品 >
   .related-items
-    =link_to "#" do
-      親カテゴリをもっとみる
+    =link_to category_path(@parent) do
+      ="#{@parent.name}をもっとみる"
       
 = render partial: "template/content_download"
 = render partial: "template/footer"

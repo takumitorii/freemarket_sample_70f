@@ -1,6 +1,6 @@
-- if user_signed_in? 
+- if user_signed_in? && current_user.id != @products.seller.user_id
   .purchase
-    = link_to "#" do
+    = link_to "/purchase" do
       %p
         購入する
       = image_tag "material/icon/sozai_cman_jp_20200309122734.png", height: "80", with: "80"

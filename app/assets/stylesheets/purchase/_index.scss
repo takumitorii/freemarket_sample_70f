@@ -1,0 +1,64 @@
+$font-color:        white;
+$basic-color:       rgb(93, 250, 255);
+$border-color:      rgb(201, 201, 201);
+$form-color:        rgb(161, 161, 161);
+$background-color:  rgb(245, 245, 245);
+
+.purchase_space{
+  margin: 50px 0;
+}
+
+.purchase_title{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0 50px;
+}
+
+.purchase_okay{
+  width: 80%;
+  height: auto;
+  background-color: $background-color;
+  padding: 60px;
+  margin: 0 auto;
+  &__title{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 60px;
+  }
+  &__flex{
+    height: 80px;
+    width: 70%;
+    padding: 30px;
+    margin: 10px auto;
+    border: 1px solid $border-color;
+    display: flex;
+    justify-content: space-between;
+    &--name{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    &--info{
+      font-size: 17px;
+      font-weight: bold;
+    }
+  }
+}
+
+.confirm{
+  text-align: center;
+  margin: 50px;
+  &__btn{
+    font-size: 18px;
+    padding: 8px;
+    color: $form-color;
+    font-weight: bold;
+    width: 50%;
+    border: 1px solid $border-color; 
+    outline: none;
+  }
+  :hover{
+    color: black;
+  }
+}

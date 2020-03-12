@@ -1,0 +1,68 @@
+$font-color:        white;
+$basic-color:       rgb(93, 250, 255);
+$border-color:      rgb(201, 201, 201);
+$form-color:        rgb(161, 161, 161);
+$background-color:  rgb(245, 245, 245);
+
+.note{
+  width: auto;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 40px;
+}
+
+.card{
+  width: 80%;
+  height: auto;
+  background-color: $background-color;
+  padding: 60px;
+  margin: 0 auto;
+  &__flex{
+    height: 80px;
+    width: 70%;
+    padding: 30px;
+    margin: 10px auto;
+    border: 1px solid $border-color;
+    display: flex;
+    justify-content: space-between;
+    &--title{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    #card_number, #cvc{
+      width: 300px;
+      font-size: 16px;
+      padding: 5px;
+      outline: none;
+    }
+    .exp{
+      font-size: 20px;
+      color: $form-color;
+      outline: none;
+    }
+    span{
+      font-size: 18px;
+    }
+  }
+  #token_submit{
+    width: 40%;
+    font-size: 20px;
+    color: $form-color;
+    margin: 30px auto 50px;
+    padding: 10px;
+    border: 1px solid $border-color;
+    display: block;
+    outline: none;
+    cursor: pointer;
+  }
+  .back{
+    font-size: 18px;
+    a{
+      color: $form-color;
+    }
+    :hover{
+      color: black;
+    }
+  }
+}

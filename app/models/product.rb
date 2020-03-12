@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
-  belongs_to :seller, optional: true
-  belongs_to :buyer, optional: true
+  belongs_to :seller, dependent: :destroy, optional: true
+  belongs_to :buyer, dependent: :destroy, optional: true
   belongs_to :shipping_info, optional: true
-  belongs_to :category, optional: true
-  belongs_to :brand, optional: true
-  has_many   :product_images, dependent: :destroy
+  belongs_to :category, dependent: :destroy, optional: true
+  belongs_to :brand, dependent: :destroy, optional: true
+  has_many   :images, dependent: :destroy
 
   accepts_nested_attributes_for :category, allow_destroy: true
   accepts_nested_attributes_for :brand, allow_destroy: true

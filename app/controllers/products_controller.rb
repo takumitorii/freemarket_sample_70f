@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-
-  def index
-    @products = Product.all
-    @parents = Category.all.order("id ASC").limit(1)
-  end
-
+  
   def new
     @product = Product.new
     @images = ProductImage.new
@@ -28,11 +23,15 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @grandchild = Category.find(@products.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent if @child
   end
 
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    redirect_to root_path
   end
 
   def edit
