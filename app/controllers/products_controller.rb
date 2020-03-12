@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:id])
     @brand = Brand.find(params[:id])
     gon.product = @product
-    gon.product_images = @product.product_images
+    gon.image = @product.image
   end
 
   def update
@@ -68,12 +68,12 @@ class ProductsController < ApplicationController
       :name, :price, 
       :description, 
       :status, 
-      :product_image_id,
-      product_images_attributes: [{image: []}, :product_id],
+      :images_id,
+      images_attributes: [{image: []}, :product_id],
       category_attributes: [:category_name], 
       brand_attributes: [:name],
-      shipping_info_attributes: [:shipping_cost, :shipping_days, :prefecture_id]
-    ).merge(seller_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_info_id:current_user.id )
+      shipping_attributes: [:cost, :days, :prefecture_id]
+    ).merge(category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
 
   end
 
