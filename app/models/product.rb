@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 
+
   belongs_to :user
   belongs_to :category, dependent: :destroy, optional: true
   belongs_to :brand, dependent: :destroy, optional: true
@@ -13,4 +14,5 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :shipping_info, allow_destroy: true
 
   validates :name, :price, :description, presence: true
+
 end

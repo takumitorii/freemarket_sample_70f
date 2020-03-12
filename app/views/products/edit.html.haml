@@ -1,0 +1,121 @@
+.selle_icon
+  = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
+
+.selle_contents
+  = form_for @product do |f|
+    .selle_contents__content
+      .selle_contents__content--title
+        %h1 商品の情報を入力
+        %br
+        %h1 出品画像
+        .requir
+          必須
+      .selle_contents__content--info
+        %p 最大10枚までアップロードできます
+      .selle_contents__content--form
+        = f.fields_for :product_images, @product.product_images.first do |image|
+          .product__image__dropzone.clearfix
+            #preview
+            .product__image__dropzone__input
+              = image.label :product_image, for: "upload-image" do
+                .input__area
+                  = image.file_field :product_image, id: "upload-image", class: "upload-image", 'data-image': 0
+                .product__image__dropzone__input__description
+                  .product__image__dropzone__input__description__text
+                    ドラッグアンドドロップ
+                    %br/
+                    またはクリックしてファイルをアップロード
+          .product__image__dropzone2.clearfix
+            #preview2
+            .product__image__dropzone2__input2
+              = image.label :product_image, for: "upload-image" do
+                .input-area
+                  = image.file_field :product_image, id: "upload-image", class: "upload-image", 'data-image': 0
+                .product__image__dropzone2__input2__description
+                  .product__image__dropzone2__input2__description__text
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+    .border_bottom
+
+    .selle_contents__content
+      .selle_contents__content--title
+        %h1 商品名
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.text_field :name, class: "input", placeholder: "例）ボールペン"
+
+      .split
+
+      .selle_contents__content--title
+        %h1 商品の説明
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.text_area :description, class: "text_area", placeholder: "商品の説明（購入時期、色、素材、用途など）"
+    .border_bottom
+
+    .selle_contents__content
+      .selle_contents__content--navi 
+        商品の詳細
+      .selle_contents__content--title
+        %h1 カテゴリー
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :category, @category do |category|
+          = category.select :category_name, [["家電","家電"],["衣類","衣類"]], class: "category"
+      .split
+
+      .selle_contents__content--title
+        %h1 商品状態
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.select :status, [["新品", "新品"], ["目立った傷なし","目立った傷なし"],  ["やや傷あり","やや傷あり"],  ["傷あり","傷あり"]]
+      .split
+
+      .selle_contents__content--title
+        %h1 ブランド
+        .any
+          任意
+      .selle_contents__content--form
+        = f.fields_for :brand, @brand do |brand|
+          = brand.text_field :name, class: "input", placeholder: "例) Apple"
+    .border_bottom
+
+
+    .selle_contents__content
+      .selle_contents__content--navi 
+        価格(300~9,999,999円)
+      .selle_contents__content--price
+        .selling_price
+          .selle_contents__content--title
+            %h1 販売価格
+            .requir
+              必須
+          .selle_contents__content--form
+            = f.text_field :price, class: "input yen", style: "text-align: right;"
+        .final_value
+          .commission
+            販売手数料(10%)
+          .total_price
+            ー
+            
+      .split
+      .selle_border
+      .split
+
+      .selle_contents__content--profit
+        .final_value
+          .profit
+            利益
+          .total_profit
+            ー
+
+        .selle_submit
+          = f.submit "更新する", class: "submit"
+          = link_to "もどる", product_path, class: "return"
+
+= render partial: "template/footer"
