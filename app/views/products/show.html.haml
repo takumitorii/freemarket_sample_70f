@@ -3,7 +3,7 @@
 = render partial: "template/purchase"
 
 .product_btns
-  - if user_signed_in? && current_user.id == @products.seller.user_id
+  - if user_signed_in? && current_user.id == @products.user_id
     .edit
       = link_to "#" do
         %p 商品を編集
@@ -69,7 +69,7 @@
           %tr
             %th 出品者
             %td
-              = @products.seller.user.nickname
+              = @products.user.nickname
           %tr
             %th カテゴリー
             %td
@@ -96,15 +96,15 @@
           %tr
             %th 配送料の負担
             %td 
-              = @products.seller.shipping_info.shipping_cost
+              = @products.shipping.cost
           %tr
             %th 発送元の地域
             %td
-              = @products.seller.shipping_info.prefecture.name
+              = @products.shipping.prefecture.name
           %tr
             %th 発送日の目安
             %td 
-              = @products.seller.shipping_info.shipping_days
+              = @products.shipping.days
               日
     .option-area
       %ul

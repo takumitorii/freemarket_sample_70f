@@ -3,11 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
-  has_many :sellers, dependent: :destroy
-  has_many :buyers, dependent: :destroy
-  has_many :destination_infos, dependent: :destroy
-  has_many :credit_cards, dependent: :destroy
+      
+  # 購入者
+  belongs_to  :card,  optional: true, dependent: :destroy
+  belongs_to  :destinations,  optional: true, dependent: :destroy
+
+  # 出品者及び出品中商品
+  has_many :products, dependent: :destroy
+  has_many :shippings, dependent: :destroy
 
   mount_uploader :user_image, ImageUploader
+
 end
