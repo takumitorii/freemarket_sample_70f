@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function(){
                                 ${insertHTML}
                               </select>
                             </div>`;
-    $('.selle_contents__content--category').append(grandchildSelectHtml);
+    $('#children_wrapper').append(grandchildSelectHtml);
   }
   // 親カテゴリー選択後のイベント
   $('#product_category').on('change', function(){
@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function(){
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
-        data: { parent_name: parentCategory },
+        data: { parent_name: parentCategory},
         dataType: 'json'
       })
       .done(function(children){
@@ -68,6 +68,7 @@ window.addEventListener('DOMContentLoaded', function(){
         dataType: 'json'
       })
       .done(function(grandchildren){
+        console.log(grandchildren)
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
           $('#size_wrapper').remove();

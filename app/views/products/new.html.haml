@@ -42,7 +42,7 @@
         %h1 カテゴリー
         .requir
           必須
-      .selle_contents__content--catefory
+      .selle_contents__content--category
         = f.fields_for :category, @category do |n|
           = n.select :name, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
       .split
