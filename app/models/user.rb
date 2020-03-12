@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
       
   # 購入者
-  belongs_to  :card
-  belongs_to  :destinations
+  belongs_to  :card,  optional: true
+  belongs_to  :destinations,  optional: true
 
   # 出品者及び出品中商品
   has_many :products
