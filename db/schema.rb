@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 2020_03_12_044646) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "images", null: false
+    t.string "image", null: false
     t.integer "product_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,12 +67,14 @@ ActiveRecord::Schema.define(version: 2020_03_12_044646) do
     t.integer "judgment", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
+
     t.integer "user_id", null: false
     t.integer "images_id", null: false
     t.integer "shipping_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "cost", null: false
