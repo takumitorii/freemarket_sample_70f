@@ -67,7 +67,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
   end
 
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "product_image", null: false
+    t.string "image", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "seller_id", null: false
-    t.integer "buyer_id", null: false
+    t.integer "shipping_info_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,9 +95,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
 
   create_table "shipping_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "shipping_cost", null: false
-    t.string "shipping_area", null: false
     t.string "shipping_days", null: false
-    t.integer "seller_id", null: false
+    t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,8 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :destination_infos
-  has_many :credit_cards
-  has_many :sellers
-  has_many :buyers
+         
+  has_many :sellers, dependent: :destroy
+  has_many :buyers, dependent: :destroy
+  has_many :destination_infos, dependent: :destroy
+  has_many :credit_cards, dependent: :destroy
+
+  mount_uploader :user_image, ImageUploader
 end
