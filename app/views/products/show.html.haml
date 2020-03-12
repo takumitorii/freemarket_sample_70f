@@ -3,39 +3,41 @@
 = render partial: "template/purchase"
 
 .product_btns
-  - if user_signed_in? && current_user.id == @products.seller.user_id
+  - if user_signed_in? && current_user.id == @products.user_id
     .edit
       = link_to edit_product_path(@products) do
         %p 商品を編集
     .destroy
-      = link_to "#", method: :delete do
+      = link_to product_path(@products.id), method: :delete do
         %p 商品を削除
     
 
 .second-header
   .category-bar
-    =link_to "#", class:"transition" do
+    =link_to "root_path", class:"transition" do
       %p.category-btn
         FURIMA
     %p.space
       >
-    =link_to "#", class:"transition" do
+    - if @parent
+      =link_to category_path(@parent), class:"transition" do
+        %p.category-btn
+          =@parent.name
+      %p.space
+        >
+    - if @child
+      =link_to category_path(@child), class:"transition" do
+        %p.category-btn
+          =@child.name
+      %p.space
+        >
+    =link_to category_path(@grandchild), class:"transition" do
       %p.category-btn
-        親カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        子カテゴリ
-    %p.space
-      >
-    =link_to "#", class:"transition" do
-      %p.category-btn
-        孫カテゴリ
+        =@grandchild.name
     %p.space
       >
     %p.category-btn
-      商品名
+      =@products.name
 .show-main
   .product-main
     .product-name
@@ -67,18 +69,18 @@
           %tr
             %th 出品者
             %td
-              = @products.seller.user.nickname
+              = @products.user.nickname
           %tr
             %th カテゴリー
             %td
-              =link_to "#", class:"transition table__category" do
-                親カテゴリ
+              =link_to category_path(@parent), class:"transition table__category" do
+                =@parent.name
               %br
-              =link_to "#", class:"transition table__category" do
-                子カテゴリ
+              =link_to category_path(@child), class:"transition table__category" do
+                =@child.name
               %br
-              =link_to "#", class:"transition table__category" do
-                孫カテゴリ
+              =link_to category_path(@grandchild), class:"transition table__category" do
+                =@grandchild.name
           %tr
             %th 
               ブランド
@@ -94,15 +96,15 @@
           %tr
             %th 配送料の負担
             %td 
-              = @products.seller.shipping_info.shipping_cost
+              = @products.shipping.cost
           %tr
             %th 発送元の地域
             %td
-              = @products.seller.shipping_info.shipping_area
+              = @products.shipping.prefecture.name
           %tr
             %th 発送日の目安
             %td 
-              = @products.seller.shipping_info.shipping_days
+              = @products.shipping.days
               日
     .option-area
       %ul
@@ -134,8 +136,8 @@
       = link_to "#" do
         後ろの商品 >
   .related-items
-    =link_to "#" do
-      親カテゴリをもっとみる
+    =link_to category_path(@parent) do
+      ="#{@parent.name}をもっとみる"
       
 = render partial: "template/content_download"
 = render partial: "template/footer"

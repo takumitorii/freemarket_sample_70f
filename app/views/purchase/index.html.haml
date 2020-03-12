@@ -1,0 +1,51 @@
+= render partial: "template/header"
+
+.purchase_title
+  購入確認
+
+.purchase_okay
+  .purchase_okay__title
+    商品情報
+  .purchase_okay__flex
+    .purchase_okay__flex--name
+      商品名
+    .purchase_okay__flex--info
+      商品ごとに変わります
+  .purchase_okay__flex
+    .purchase_okay__flex--name
+      値段
+    .purchase_okay__flex--info
+      商品ごtに変わります
+
+.purchase_space
+
+.card
+  .card__title
+    支払いクレジットカード
+  - if @default_card_information
+    .card__flex
+      .card__flex--title
+        カード番号
+      .card__flex--info
+        = "**** **** **** " + @default_card_information.last4
+
+  .card__flex
+    .card__flex--title
+      有効期限
+    .card__flex--info
+      - exp_month = @default_card_information.exp_month.to_s
+      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      = exp_month + "月" + " / " + exp_year + "年"
+
+  .back.card_margin
+    = link_to "戻る", :back
+
+.confirm
+  = form_tag(action: :pay, method: :post) do
+    %button.confirm__btn
+      購入を確定する 
+      %br/
+      （キャンセルはできません）
+
+
+= render partial: "template/footer"
