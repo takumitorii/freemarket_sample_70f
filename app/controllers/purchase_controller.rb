@@ -2,7 +2,6 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   def index
-    # @product = Product.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "card", action: "new"
