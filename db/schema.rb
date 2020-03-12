@@ -62,8 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_044646) do
     t.string "price", null: false
     t.string "description", null: false
     t.string "status", null: false
-    t.integer "judgment", null: false
-    t.integer "images_id", null: false
+    t.integer "judgment"
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "user_id", null: false
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_03_12_044646) do
     t.string "cost", null: false
     t.string "prefecture_id", null: false
     t.string "days", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

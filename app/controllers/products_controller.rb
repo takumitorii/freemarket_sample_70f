@@ -15,10 +15,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    # binding.pry
     if @product.save
       params[:product_images]['image'].each do |a|
-        @images = @product.product_images.create!(image: a)
+        @images = @product.images.create!(image: a)
       end
+      @product.judgment = 1
+      @product.save
       redirect_to product_path(@product)
     else
       redirect_to new_product_path
@@ -69,11 +72,12 @@ class ProductsController < ApplicationController
       :description, 
       :status, 
       :images_id,
+      :judgment,
       images_attributes: [{image: []}, :product_id],
-      category_attributes: [:category_name], 
+      category_attributes: [:name], 
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
-    ).merge(category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
+    ).merge(user_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
   end
 
 end
