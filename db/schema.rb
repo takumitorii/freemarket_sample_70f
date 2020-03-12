@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_044646) do
     t.string "description", null: false
     t.string "status", null: false
     t.integer "judgment", null: false
+    t.integer "images_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "user_id", null: false
