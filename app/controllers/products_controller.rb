@@ -74,7 +74,6 @@ class ProductsController < ApplicationController
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
     ).merge(category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
-
   end
 
 end
