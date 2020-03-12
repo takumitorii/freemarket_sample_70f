@@ -1,4 +1,4 @@
-- if user_signed_in? && current_user.id != @products.seller.user_id
+- if user_signed_in? && current_user.id != @products.user_id
   .purchase
     = link_to "/purchase" do
       %p

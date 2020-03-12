@@ -10,19 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_025825) do
+ActiveRecord::Schema.define(version: 2020_03_12_044646) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_brands_on_name"
-  end
-
-  create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,17 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "security_code", null: false
-    t.string "card_number", null: false
-    t.string "expiration_year", null: false
-    t.string "expiration_month", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "destination_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "family_name", null: false
     t.string "first_name", null: false
@@ -66,8 +50,11 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "product_image", null: false
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.integer "product_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,26 +64,24 @@ ActiveRecord::Schema.define(version: 2020_03_11_025825) do
     t.string "price", null: false
     t.string "description", null: false
     t.string "status", null: false
+    t.integer "judgment", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
-    t.integer "seller_id", null: false
-    t.integer "buyer_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
-  create_table "sellers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.integer "user_id", null: false
-    t.integer "shipping_info_id", null: false
+    t.integer "images_id", null: false
+    t.integer "shipping_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "shipping_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "shipping_cost", null: false
-    t.string "shipping_area", null: false
-    t.string "shipping_days", null: false
-    t.integer "seller_id", null: false
+
+  create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "cost", null: false
+    t.string "prefecture_id", null: false
+    t.string "days", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,3 @@
-.selle_icon
-  = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
-
 .selle_contents
   = form_for @product do |f|
     .selle_contents__content
@@ -12,8 +9,9 @@
       .selle_contents__content--info
         10枚までアップロード出来ます。
       .selle_contents__content--form
-        = f.label :image, class: "fa fa-image file_icon" do
-          = f.file_field :image, style: "display: none;"
+        = f.fields_for :product_images, @images do |i|
+          = i.label :image, class: "fa fa-image file_icon" 
+          = i.file_field :image, multiple: true, type: 'file', name: "product_images[image][]" 
     .border_bottom
 
 
@@ -44,8 +42,9 @@
         %h1 カテゴリー
         .requir
           必須
-      .selle_contents__content--category
-        = f.select :category, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
+      .selle_contents__content--catefory
+        = f.fields_for :category, @category do |n|
+          = n.select :name, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
       .split
 
       .selle_contents__content--title
@@ -61,7 +60,40 @@
         .any
           任意
       .selle_contents__content--form
-        = f.text_field :name, class: "input", placeholder: "例）Apple"
+        = f.fields_for :brand, @brand do |b|
+          = b.text_field :name, class: "input", placeholder: "例）Apple"
+    .border_bottom
+
+
+    .selle_contents__content
+      .selle_contents__content--navi 
+        配送について
+      .selle_contents__content--title
+        %h1 配送量の負担
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping_info, @shipping do |c|
+          = c.select :shipping_cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
+      .split
+
+      .selle_contents__content--title
+        %h1 発送元の地域
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping_info, @shipping do |a|
+          = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+      .split
+
+      .selle_contents__content--title
+        %h1 発送までの日数
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping_info, @shipping do |d|
+          = d.select :shipping_days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
+      .split
     .border_bottom
 
 
