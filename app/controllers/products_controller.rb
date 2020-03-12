@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # binding.pry
     if @product.save
       params[:product_images]['image'].each do |a|
         @images = @product.product_images.create!(image: a)
@@ -54,7 +53,7 @@ class ProductsController < ApplicationController
       product_images_attributes: [{image: []}, :product_id],
       category_attributes: [:category_name], 
       brand_attributes: [:name],
-      shipping_info_attributes: [:shipping_cost, :shipping_area, :shipping_days]
+      shipping_info_attributes: [:shipping_cost, :shipping_days, :prefecture_id]
     ).merge(seller_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_info_id:current_user.id )
   end
 
