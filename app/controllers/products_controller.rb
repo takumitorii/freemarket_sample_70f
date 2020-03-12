@@ -50,11 +50,12 @@ class ProductsController < ApplicationController
       :name, :price, 
       :description, 
       :status, 
+      :product_image_id,
       product_images_attributes: [{image: []}, :product_id],
       category_attributes: [:category_name], 
       brand_attributes: [:name],
       shipping_info_attributes: [:shipping_cost, :shipping_area, :shipping_days]
-    ).merge(seller_id: current_user.id, category_id: current_user.id, buyer_id: current_user.id, brand_id: current_user.id, product_image_id:current_user.id, shipping_info_id:current_user.id )
+    ).merge(seller_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_info_id:current_user.id )
   end
 
 end

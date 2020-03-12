@@ -10,4 +10,6 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :brand, allow_destroy: true
   accepts_nested_attributes_for :product_images, allow_destroy: true
   accepts_nested_attributes_for :shipping_info, allow_destroy: true
+
+  validates :name, :price, :description, presence: true
 end
