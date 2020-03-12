@@ -73,8 +73,8 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping_info, @shipping do |c|
-          = c.select :shipping_cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
+        = f.fields_for :shipping, @shipping do |c|
+          = c.select :cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
       .split
 
       .selle_contents__content--title
@@ -82,7 +82,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping_info, @shipping do |a|
+        = f.fields_for :shipping, @shipping do |a|
           = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
       .split
 
@@ -91,8 +91,8 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping_info, @shipping do |d|
-          = d.select :shipping_days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
+        = f.fields_for :shipping, @shipping do |d|
+          = d.select :days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
       .split
     .border_bottom
 

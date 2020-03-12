@@ -7,10 +7,10 @@ class ProductsController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
           @category_parent_array << parent.name
       end
-    @images = ProductImage.new
+    @images = Image.new
     @category = Category.new
     @brand = Brand.new
-    @shipping = ShippingInfo.new
+    @shipping = Shipping.new
   end
 
   def create
