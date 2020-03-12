@@ -6,10 +6,10 @@
     .parents-categories
       -@parents.each do |parent|
         .parents-category
-          = link_to "#{parent.name}", categories_path(parent, anchor: "#{parent.name}")
+          = link_to "#{parent.name}", { anchor: "category-#{parent.id}" }
     -@parents.each do |parent|
       .children-categories
-        = link_to "#{parent.name}", category_path(parent), class:"main-title", id:"#{parent.name}"
+        = link_to "#{parent.name}", category_path(parent), class:"main-title", id:"category-#{parent.id}"
         -parent.children.each do |child|
           .children-category
             .child-category

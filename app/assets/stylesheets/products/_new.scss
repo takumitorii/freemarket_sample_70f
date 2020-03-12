@@ -126,9 +126,9 @@ $form-color:    rgb(161, 161, 161);
       border      : 1px solid gainsboro;
       color       : gray;
     }
-    #product_category{
+    .product_category{
       @include select();
-      width: 60%;
+      width: 40%;
       outline: none;
     }
     #product_brand{

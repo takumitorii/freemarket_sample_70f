@@ -42,9 +42,9 @@
         %h1 カテゴリー
         .requir
           必須
-      .selle_contents__content--form
+      .selle_contents__content--catefory
         = f.fields_for :category, @category do |n|
-          = n.select :category_name, [["衣類","衣類"], ["家電","家電"]], class: "category"
+          = n.select :name, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
       .split
 
       .selle_contents__content--title

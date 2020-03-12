@@ -8,6 +8,7 @@ class Product < ApplicationRecord
 
   has_many   :images, dependent: :destroy
 
+
   accepts_nested_attributes_for :category, allow_destroy: true
   accepts_nested_attributes_for :brand, allow_destroy: true
   accepts_nested_attributes_for :product_images, allow_destroy: true
