@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DestinationInfoTest < ActiveSupport::TestCase
+class DestinationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

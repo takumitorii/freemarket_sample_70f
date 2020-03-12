@@ -3,8 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :destination_infos
-  has_many :credit_cards
-  has_many :sellers
-  has_many :buyers
+      
+  # 購入者
+  belongs_to  :card
+  belongs_to  :destinations
+
+  # 出品者及び出品中商品
+  has_many :products
+  has_many :shippings
 end
