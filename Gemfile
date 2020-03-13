@@ -68,7 +68,6 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'devise'
@@ -78,12 +77,11 @@ gem "carrierwave"
 gem 'mini_magick'
 gem 'pry-rails'
 gem 'ancestry'
-
+gem 'dotenv-rails'
 gem 'gon'
 gem 'active_hash'
 gem 'payjp'
-gem "jquery-rails"
-gem 'dotenv-rails'
-gem 'dropzonejs-rails'
 
+gem "jquery-rails"
+gem 'dropzonejs-rails'
 

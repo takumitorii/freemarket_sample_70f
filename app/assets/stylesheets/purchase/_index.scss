@@ -47,14 +47,15 @@ $background-color:  rgb(245, 245, 245);
 }
 
 .confirm{
+  width: 100%;
   text-align: center;
-  margin: 50px;
+  margin: 50px 0;
   &__btn{
     font-size: 18px;
     padding: 8px;
     color: $form-color;
     font-weight: bold;
-    width: 50%;
+    width: 100%;
     border: 1px solid $border-color; 
     outline: none;
   }

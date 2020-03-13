@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "tops#index"
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :products do
+    collection do
+      post 'pay', to: 'products#pay'
+    end
     #Ajaxで動くアクションのルートを作成
     collection do
       get 'get_category_children', defaults: { format: 'json' }
