@@ -16,8 +16,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      params[:product_images]['image'].each do |a|
-        @images = @product.product_images.create!(image: a)
+      params[:images]['image'].each do |a|
+        @images = @product.images.create!(image: a)
       end
       redirect_to product_path(@product)
     else
@@ -42,13 +42,34 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @category = Category.find(params[:id])
     @brand = Brand.find(params[:id])
-    gon.product = @product
-    gon.image = @product.image
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
+    @parents = Category.where(ancestry: nil)
+    if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes") 
+      if @product.valid?
+        if params[:product].keys.include?("image") 
+          update_images_ids = params[:product][:image].values #投稿済み画像 
+          before_images_ids = @product.images.ids
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy unless update_image_ids.include?("#{before_img_id}") 
+          end
+
+        else
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy 
+          end
+        end
+        @product.update(product_params)
+        @size = @product.categories[1].sizes[0]
+        @product.update(size: nil) unless @size
+        redirect_to product_path(@products), notice: "商品を更新しました"
+      else
+        render 'edit'
+      end
+    else
+      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+    end
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -69,11 +90,11 @@ class ProductsController < ApplicationController
       :description, 
       :status, 
       :images_id,
-      images_attributes: [{image: []}, :product_id],
-      category_attributes: [:category_name], 
+      images_attributes: [{image: []}, :_destroy, :product_id],
+      category_attributes: [:name], 
       brand_attributes: [:name],
-      shipping_attributes: [:cost, :days, :prefecture_id]
-    ).merge(category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
+      shipping_attributes: [:cost, :days, :prefecture_id, :user_id]
+    ).merge(user_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
 
   end
 
