@@ -25,6 +25,23 @@
     }
   }
 }
+
+.sold_main{
+  padding-top: 0px;
+}
+.sold{
+  width: 100%;
+  height: 80px;
+  font-size: 40px;
+  letter-spacing: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+  line-height: 80px;
+  background-color: red;
+}
+
 .show-main {
   width: auto;
   height: 100％;
@@ -38,6 +55,10 @@
   }
   .product-name {
     text-align: center;
+    h2{
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
   }
   .product-image {
     &__main {
