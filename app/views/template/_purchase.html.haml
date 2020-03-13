@@ -1,4 +1,4 @@
-- if user_signed_in? && current_user.id != @products.user_id
+- if user_signed_in? && current_user.id != @products.user_id && @products.judgment == 1
   .purchase
     = link_to purchase_index_path(@products.id) do
       %p

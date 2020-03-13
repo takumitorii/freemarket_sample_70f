@@ -89,25 +89,26 @@
     %h1.color 新規投稿商品
     .pick_up__category--flex
       - @products.each do |p|
-        = link_to product_path(p) do
-          .product
-            .image
-              %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
-            .info
-              %p 
-                = p.name 
-                %br/
-                = p.price
-                %br/
-                (税込)
-                %i.fas.fa-star
-                  0
+        - if p.judgment == 1
+          = link_to product_path(p) do
+            .product
+              .image
+                %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+              .info
+                %p 
+                  = p.name 
+                  %br/
+                  = p.price
+                  %br/
+                  (税込)
+                  %i.fas.fa-star
+                    0
   .pick_up__brand
     %h1 ピックアップブランド
     %h1.color アーカイバ
     .pick_up__brand--flex
-      .pick_up__category--flex
-        - @products.each do |p|
+      - @products.each do |p|
+        - if p.judgment == 1
           = link_to product_path(p) do
             .product
               .image
