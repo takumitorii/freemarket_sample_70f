@@ -64,7 +64,7 @@
           %span (税込)
           %span 送料込み
       .product-detail
-        %p 商品名
+        %p 商品情報
       .table
         %table
           %tbody
@@ -92,9 +92,11 @@
             %tr
               %th 商品のサイズ
               %td
+                = @products.size
             %tr
               %th 商品の状態
-              %td 新品に近い
+              %td
+                = @products.status
             %tr
               %th 配送料の負担
               %td 
@@ -107,7 +109,6 @@
               %th 発送日の目安
               %td 
                 = @products.shipping.days
-                日
       .option-area
         %ul
           %li.optional-btn.like-btn#like-btn
