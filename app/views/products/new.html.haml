@@ -11,7 +11,7 @@
       .selle_contents__content--form
         = f.fields_for :images, @images do |i|
           = i.label :image, class: "fa fa-image file_icon" 
-          = i.file_field :image, multiple: true, type: 'file', name: "product_images[image][]" 
+          = i.file_field :image, multiple: true, type: 'file', name: "images[image][]" 
     .border_bottom
 
 
@@ -68,6 +68,13 @@
     .selle_contents__content
       .selle_contents__content--navi 
         配送について
+      .selle_contents__content--title
+        %h1 商品のサイズ
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.select :size, [["60サイズ", "60サイズ"], ["80サイズ","80サイズ"],  ["100サイズ","100サイズ"],  ["120サイズ","120サイズ"],  ["140サイズ","140サイズ"],  ["160サイズ","160サイズ"],  ["170サイズ","170サイズ"]]
+      .split
       .selle_contents__content--title
         %h1 配送量の負担
         .requir

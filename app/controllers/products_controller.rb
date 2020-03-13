@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # binding.pry
     if @product.save
-      params[:product_images]['image'].each do |a|
+      params[:images]['image'].each do |a|
         @images = @product.images.create!(image: a)
       end
       @product.judgment = 1
@@ -72,6 +72,7 @@ class ProductsController < ApplicationController
       :description, 
       :status, 
       :images_id,
+      :size,
       :judgment,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
