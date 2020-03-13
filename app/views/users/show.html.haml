@@ -19,9 +19,6 @@
     .show_title
       売却済み
     .user_show__product--sold 
-    .show_title
-      購入一覧
-    .user_show__product--buy
   .user_show__devise
     .user_show__devise--title
       ユーザー情報
@@ -92,6 +89,9 @@
               = f.text_field :adress, class: "show_user_input", placeholder: "丁目番地"
             .building_name
               = f.text_field :building_name, class: "show_user_input", placeholder: "建物名、号室"
+    .user_show__devise--sold
+      - if user_signed_in?
+        = link_to "購入履歴", "https://pay.jp/d/"
     .user_show__devise--credit_card
       - if user_signed_in?
         = link_to "クレジットカード情報", card_index_path
