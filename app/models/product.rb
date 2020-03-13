@@ -15,5 +15,4 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :shipping, allow_destroy: true
 
   validates :name, :price, :description, presence: true
-
 end
