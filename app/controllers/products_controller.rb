@@ -93,6 +93,7 @@ class ProductsController < ApplicationController
       :description, 
       :status, 
       :images_id,
+      :size,
       :judgment,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
