@@ -83,4 +83,7 @@ gem 'gon'
 gem 'active_hash'
 gem 'payjp'
 gem "jquery-rails"
+gem 'dotenv-rails'
+gem 'dropzonejs-rails'
+
 

@@ -2,7 +2,7 @@
   = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 
 .selle_contents
-  = form_for @product do |f|
+  = form_for @product, class: "form", id: "product-form-edit" do |f|
     .selle_contents__content
       .selle_contents__content--title
         %h1 商品の情報を入力
@@ -13,29 +13,23 @@
       .selle_contents__content--info
         %p 最大10枚までアップロードできます
       .selle_contents__content--form
-        = f.fields_for :product_images, @product.product_images.first do |image|
-          .product__image__dropzone.clearfix
-            #preview
-            .product__image__dropzone__input
-              = image.label :product_image, for: "upload-image" do
-                .input__area
-                  = image.file_field :product_image, id: "upload-image", class: "upload-image", 'data-image': 0
-                .product__image__dropzone__input__description
-                  .product__image__dropzone__input__description__text
-                    ドラッグアンドドロップ
-                    %br/
-                    またはクリックしてファイルをアップロード
-          .product__image__dropzone2.clearfix
-            #preview2
-            .product__image__dropzone2__input2
-              = image.label :product_image, for: "upload-image" do
-                .input-area
-                  = image.file_field :product_image, id: "upload-image", class: "upload-image", 'data-image': 0
-                .product__image__dropzone2__input2__description
-                  .product__image__dropzone2__input2__description__text
+        %ul#previews
+          = f.fields_for :images, @product.images.first do |image|
+            - @product.images.each_with_index do |img, i|
+              %li.image-preview
+                %label.upload-label{style:"display: none;"}
+                  .upload-label__text
                     ドラッグアンドドロップ
                     %br
                     またはクリックしてファイルをアップロード
+                    .input-area
+                      = image.file_field :image, value: img.image ,class: "hidden image_upload"
+                      = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
+                .image-preview__wapper
+                  = image_tag img.image.to_s, class:"preview"
+                .image-preview_btn
+                  .image-preview_btn_edit 編集
+                  .image-preview_btn_delete 削除
     .border_bottom
 
     .selle_contents__content
@@ -65,7 +59,7 @@
           必須
       .selle_contents__content--form
         = f.fields_for :category, @category do |category|
-          = category.select :category_name, [["家電","家電"],["衣類","衣類"]], class: "category"
+          = category.select :name, [["家電","家電"],["衣類","衣類"]], class: "category"
       .split
 
       .selle_contents__content--title
@@ -85,6 +79,36 @@
           = brand.text_field :name, class: "input", placeholder: "例) Apple"
     .border_bottom
 
+    .selle_contents__content
+      .selle_contents__content--navi
+        配送について
+      .selle_contents__content--title
+        %h1 配送量の負担
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping, @shipping do |c|
+          = c.select :cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
+      .split
+
+      .selle_contents__content--title
+        %h1 発送元の地域
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping, @shipping do |a|
+          = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+      .split
+
+      .selle_contents__content--title
+        %h1 発送までの日数
+        .requir
+          必須
+      .selle_contents__content--form
+        = f.fields_for :shipping, @shipping do |d|
+          = d.select :days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
+      .split
+    .border_bottom
 
     .selle_contents__content
       .selle_contents__content--navi 
