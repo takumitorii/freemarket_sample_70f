@@ -4,8 +4,8 @@
 .selle_contents
   .user_show__devise--info
     .show_title
-      本人情報
-      = form_for @destination, url: users_path do |f|
+      配送先住所登録
+      = form_for @destination do |f|
         .real_name
           .first_name
             .name_title
@@ -39,6 +39,8 @@
               丁目番地
             .show_user_title
               建物名、号室
+            .show_user_title
+              電話番号
           .show_user_form
             .post_code
               = f.text_field :post_code, class: "show_user_input", placeholder: "郵便番号"
@@ -51,8 +53,8 @@
             .building_name
               = f.text_field :building_name, class: "show_user_input", placeholder: "建物名、号室"
             .password
-              = f.text_field :phone_number, class: "show_user_input", placeholder: "パスワード"
+              = f.text_field :phone_number, class: "show_user_input", placeholder: "電話番号"
             .selle_submit
               = f.submit "変更する", class: "submit"
-              = link_to "もどる", root_path, class: "return"
+              -# = link_to "もどる", root_path, class: "return"
 = render partial: "template/footer"

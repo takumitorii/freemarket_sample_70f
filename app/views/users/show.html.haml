@@ -23,22 +23,21 @@
     .user_show__devise--title
       ユーザー情報
     .user_show__devise--icon
-      = form_for ("#") do |f|
-        .icon
-          = image_tag current_user.user_image.to_s
-        .nickname
-          = current_user.nickname
-        .profile
-          = current_user.introduction
-          .destination_btn
-            = link_to"ユーザー情報変更", edit_user_path
+      .icon
+        = image_tag current_user.user_image.to_s
+      .nickname
+        = current_user.nickname
+      .profile
+        = current_user.introduction
+        .destination_btn
+          = link_to"ユーザー情報変更", edit_user_path
     .user_show__devise--info
       .show_title
         本人情報
         .real_name
           .first_name
             .name_title
-              名前 
+              名前
         .show_form_flex
           .show_user_titles
             .show_user_title
@@ -57,7 +56,9 @@
               建物名、号室
           
     .destination_btn
-      = link_to"配送先住所登録", "/users/new"
+      = link_to "配送先住所登録", new_destination_path
+    .destination_btn
+      = link_to "配送先住所編集", edit_destination_path(current_user.id)
     .user_show__devise--sold
       - if user_signed_in?
         = link_to "購入履歴", "https://pay.jp/d/"

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "tops#index"
-  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :destinations, only: [:new, :create, :edit, :update]
   resources :products do
     collection do
       post 'pay', to: 'products#pay'

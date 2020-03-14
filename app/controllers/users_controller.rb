@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @destination = Destination.new(destination_params)
+    
     @destination.save
     redirect_to user_path(current_user.id)
   end
