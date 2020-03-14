@@ -2,34 +2,23 @@
   = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 
 .selle_contents
-  = form_for @product, class: "form", id: "product-form-edit" do |f|
+  = form_for @product, url: "/products" do |f|
     .selle_contents__content
       .selle_contents__content--title
-        %h1 商品の情報を入力
+        %p.main-title 商品の情報を入力
         %br
         %h1 出品画像
         .requir
           必須
       .selle_contents__content--info
         %p 最大10枚までアップロードできます
-      .selle_contents__content--form
-        %ul#previews
-          = f.fields_for :images, @product.images.first do |image|
-            - @product.images.each_with_index do |img, i|
-              %li.image-preview
-                %label.upload-label{style:"display: none;"}
-                  .upload-label__text
-                    ドラッグアンドドロップ
-                    %br
-                    またはクリックしてファイルをアップロード
-                    .input-area
-                      = image.file_field :image, value: img.image ,class: "hidden image_upload"
-                      = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
-                .image-preview__wapper
-                  = image_tag img.image.to_s, class:"preview"
-                .image-preview_btn
-                  .image-preview_btn_edit 編集
-                  .image-preview_btn_delete 削除
+      #image-box-1
+        .item-num-0#image-box__container
+          = f.fields_for :images do |i|
+            .input-area
+              = i.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+              %label{for: "img-file"}
+                %i.fas.fa-camera
     .border_bottom
 
     .selle_contents__content
@@ -59,7 +48,7 @@
           必須
       .selle_contents__content--form
         = f.fields_for :category, @category do |category|
-          = category.select :name, [["家電","家電"],["衣類","衣類"]], class: "category"
+          = category.collection_select :name, Category.all, :id, :name, {class: 'product_category', id: 'product_category'}
       .split
 
       .selle_contents__content--title

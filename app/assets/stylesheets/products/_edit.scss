@@ -1,0 +1,59 @@
+.main-title {
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+#image-box-1{
+  display: flex;
+  border: 1px dashed;
+  height: 192px;
+  width: 700px;
+  margin: 0 auto;
+}
+#image-box__container {
+  text-align: center;
+  line-height: 100px;
+}
+.item-num-0{
+  width: 100%;
+}
+.item-num-1{
+  width: 491px;
+}
+.item-num-2{
+  width: 363px;
+}
+.item-num-3{
+  width: 234px;
+}
+.item-num-4{
+  width: 106px;
+}
+//下段のfile_field
+.item-num-5{
+  width: 100%;
+}
+.item-num-6{
+  width: 491px;
+}
+.item-num-7{
+  width: 363px;
+}
+.item-num-8{
+  width: 234px;
+}
+.item-num-9{
+  width: 106px;
+}
+.item-image__operetion {
+  height: 30px;
+  background-color: black;
+  color: white;
+  .item-image__operetion--delete {
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+  }
+}
+i.fas.fa-camera {
+  cursor: pointer;
+}

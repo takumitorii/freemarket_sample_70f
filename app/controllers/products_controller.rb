@@ -43,36 +43,16 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @category_parent_array = ["---"]
+      Category.where(ancestry: nil).each do |parent|
+          @category_parent_array << parent.name
+      end
     @category = Category.find(params[:id])
     @brand = Brand.find(params[:id])
   end
 
   def update
-    @parents = Category.where(ancestry: nil)
-    if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes") 
-      if @product.valid?
-        if params[:product].keys.include?("image") 
-          update_images_ids = params[:product][:image].values #投稿済み画像 
-          before_images_ids = @product.images.ids
-          before_images_ids.each do |before_img_id|
-            Image.find(before_img_id).destroy unless update_image_ids.include?("#{before_img_id}") 
-          end
-
-        else
-          before_images_ids.each do |before_img_id|
-            Image.find(before_img_id).destroy 
-          end
-        end
-        @product.update(product_params)
-        @size = @product.categories[1].sizes[0]
-        @product.update(size: nil) unless @size
-        redirect_to product_path(@products), notice: "商品を更新しました"
-      else
-        render 'edit'
-      end
-    else
-      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
-    end
+    @product = Product.find(params[:id])
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -99,6 +79,14 @@ class ProductsController < ApplicationController
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
     ).merge(user_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
+  end
+
+  def registered_image_params
+    params.require(:registered_images_ids).permit({ids: []})
+  end
+
+  def new_image_params
+    params.require(:new_images).permit({images: []})
   end
 
 end
