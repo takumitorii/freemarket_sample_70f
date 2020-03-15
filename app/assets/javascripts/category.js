@@ -1,15 +1,14 @@
 $(function(){
-  console.log("ok")
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html = `<option value="${category.id}" data-category="${category.name}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
   function appendChidrenBox(insertHTML){
     let childSelectHtml = '';
     childSelectHtml = `<div class='selle_contents__content--category' id= 'children_wrapper'>
-                        <select class="product_category" id="child_category" name="category">
+                        <select class="product_category" id="child_category" name="product[category_id]">
                           <option value="---" data-category="---">---</option>
                           ${insertHTML}
                         <select>
@@ -20,7 +19,7 @@ $(function(){
   function appendGrandchidrenBox(insertHTML){
     let grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='selle_contents__content--category' id= 'grandchildren_wrapper'>
-                              <select class="product_category" id="grandchild_category" name="category">
+                              <select class="product_category" id="grandchild_category" name="product[category_id]">
                                 <option value="---" data-category="---">---</option>
                                 ${insertHTML}
                               </select>
@@ -29,7 +28,6 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#product_category').on('change', function(){
-    console.log("ok2")
     let parentCategory = document.getElementById('product_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
