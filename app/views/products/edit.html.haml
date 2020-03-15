@@ -48,7 +48,7 @@
           必須
       .selle_contents__content--form
         = f.fields_for :category, @category do |category|
-          = category.collection_select :name, Category.all, :id, :name, {class: 'product_category', id: 'product_category'}
+          = category.select :name, options_for_select(@category_parent_array.map{|c|[c, {}]}, @product.category.name), {}, {class: 'product_category', id: 'product_category'}
       .split
 
       .selle_contents__content--title
