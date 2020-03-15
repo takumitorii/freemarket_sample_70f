@@ -4,41 +4,33 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
-    @destination = Destination.new
-  end
-
-  def create
-    binding.pry
-    @destination = Destination.new(destination_params)
-    
-    @destination.save
-    redirect_to user_path(current_user.id)
-  end
+  
 
   def edit
     @user = User.find(params[:id])
   end
 
   def update
-    
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    @user.save!
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
     
   end
 
-  def destination_params
-    params.require(:destination).permit(
+  def user_params
+    params.require(:user).permit(
       :family_name,
       :family_name_kana,
       :first_name,
       :first_name_kana,
-      :post_code,
-      :prefecture,
-      :city, :adress,
-      :building_name,
-      :phone_number, :user_id
+      :nickname,
+      :introduction,
+      :user_image, :email,
+      :birth_day,
     )
   end
 end
