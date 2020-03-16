@@ -72,6 +72,10 @@
               %td
                 = @products.user.nickname
             %tr
+              %th 商品説明
+              %td
+                = @products.description
+            %tr
               %th カテゴリー
               %td
                 =link_to category_path(@parent), class:"transition table__category" do
