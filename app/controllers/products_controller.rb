@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @tax_in_price = @products.price * 1.1
     @grandchild = Category.find(@products.category_id)
     @child = @grandchild.parent
     @parent = @child.parent if @child
@@ -88,7 +89,8 @@ class ProductsController < ApplicationController
   def product_params
 
     params.require(:product).permit(
-      :name, :price, 
+      :name, 
+      :price, 
       :description, 
       :status, 
       :images_id,
@@ -99,8 +101,12 @@ class ProductsController < ApplicationController
       category_attributes: [:name], 
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
-    ).merge(user_id: current_user.id)
-  end
 
+    ).merge(
+      user_id: current_user.id, 
+      brand_id: current_user.id, 
+      shipping_id: current_user.id 
+    )
+  end
 end
 
