@@ -76,12 +76,12 @@ class ProductsController < ApplicationController
 
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children
   end
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-    @category_grandchildren = Category.find_by(name: "#{params[:child_id]}").children
+    @category_grandchildren = Category.find_by(name: params[:child_id]).children
   end
 
   private
