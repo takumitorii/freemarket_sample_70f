@@ -8,13 +8,15 @@
           必須
       .selle_contents__content--info
         10枚までアップロード出来ます。
-      .selle_contents__content--form
-        = f.fields_for :images, @images do |i|
-          = i.label :image, class: "fa fa-image file_icon" 
-          = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", style: "display: none;"
+     #image-box-1
+        .item-num-0#image-box__container
+          = f.fields_for :images, @images do |i|
+            .input-area
+              = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", style: "display: none;", id:"img-file"
+              %label{for: "img-file"}
+                %i.fas.fa-camera
+   
     .border_bottom
-
-
     .selle_contents__content
       .selle_contents__content--title
         %h1 商品名
