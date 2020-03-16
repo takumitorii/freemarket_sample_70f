@@ -58,11 +58,10 @@
       .product-price
         %span
           ¥
-          = @products.price
+          = @tax_in_price.round
           円
         .product-price__detail
-          %span (税込)
-          %span 送料込み
+          %span (税込み)
       .product-detail
         %p 商品情報
       .table
@@ -151,11 +150,10 @@
       .product-price
         %span
           ¥
-          = @products.price
+          = @tax_in_price.round
           円
         .product-price__detail
           %span (税込)
-          %span 送料込み
       .product-detail
         %p 商品情報
       .table

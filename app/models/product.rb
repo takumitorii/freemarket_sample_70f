@@ -1,6 +1,4 @@
 class Product < ApplicationRecord
-
-
   belongs_to :user
   belongs_to :category, dependent: :destroy, optional: true
   belongs_to :brand, dependent: :destroy, optional: true
