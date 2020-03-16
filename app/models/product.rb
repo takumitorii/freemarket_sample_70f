@@ -6,11 +6,14 @@ class Product < ApplicationRecord
 
   has_many   :images, dependent: :destroy
 
-
   accepts_nested_attributes_for :category, allow_destroy: true
   accepts_nested_attributes_for :brand, allow_destroy: true
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :shipping, allow_destroy: true
 
   validates :name, :price, :description, presence: true
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  
 end
