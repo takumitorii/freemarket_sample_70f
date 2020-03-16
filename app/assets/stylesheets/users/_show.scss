@@ -123,7 +123,6 @@ $background-color:  rgb(245, 245, 245);
     &--info{
       height:         30%;
       width:          100%;
-      border-bottom:  1px solid $border-color;
       margin-bottom:  30px;
       .real_name{
         margin-bottom:    10px;
@@ -197,4 +196,10 @@ $background-color:  rgb(245, 245, 245);
     }
 
   }
+}
+
+
+.destination_btn{
+  text-align: center;
+  margin-top: 60px;
 }
