@@ -55,27 +55,40 @@
         = current_user.introduction
     .user_show__devise--info
       .show_title
-        本人情報
-        .real_name
-          .first_name
-            .name_title
-              名前
+        本人情報             
         .show_form_flex
           .show_user_titles
             .show_user_title
-              メールアドレス
+              名前 : 
             .show_user_title
-              パスワード
+              メールアドレス : 
             .show_user_title
-              郵便番号
+              郵便番号 : 
             .show_user_title
-              都道府県
+              都道府県 : 
             .show_user_title
-              市区町村
+              市区町村 : 
             .show_user_title
-              丁目番地
+              丁目番地 : 
             .show_user_title
-              建物名、号室
+              建物名、号室 : 
+
+          .show_user_titles
+            .show_user_title 
+              = @destination.family_name
+              = @destination.first_name
+            .show_user_title 
+              = @user.email
+            .show_user_title
+              = @destination.post_code
+            .show_user_title
+              = @destination.prefecture
+            .show_user_title
+              = @destination.city
+            .show_user_title
+              = @destination.adress
+            .show_user_title
+              = @destination.building_name
 
 
     

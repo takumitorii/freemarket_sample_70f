@@ -53,11 +53,11 @@ $background-color:  rgb(245, 245, 245);
   font-size:    24px;
   font-weight:  bold;
   text-align:   center;
-  margin:       30px 0 10px;
+  margin:       30px 0;
 }
 
 .show_form_flex{
-  margin-top:       20px;
+  margin-top:       40px;
   display:          flex;
   justify-content:  space-between;
   .show_user_title{
@@ -95,7 +95,7 @@ $background-color:  rgb(245, 245, 245);
     }
   }
   &__devise{
-    height:       1900px;
+    height:       1400px;
     width:        40%;
     padding:      30px 50px;
     margin-left:  20px;
@@ -162,7 +162,7 @@ $background-color:  rgb(245, 245, 245);
     &--destination{
       @include btns();
       a{
-        bottom:           350px;
+        bottom:           450px;
       }
     }
     &--edit{
