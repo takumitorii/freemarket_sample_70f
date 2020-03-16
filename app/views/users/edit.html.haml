@@ -1,21 +1,72 @@
 = render partial: "template/header"
 = render partial: "template/exhibition"
 
-.selle_contents
-  .user_show__devise
-    .user_show__devise--title
-      ユーザー情報
-    .user_show__devise--icon
-      = form_for @user do |f|
-        .icon
-          = f.label :user_image, class: "fas fa-smile" do
-            = f.file_field :user_image, style: "display: none;"
-        .nickname
-          nickname
-        .profile
-          プロフィール
-        .description
-          = f.text_area :introduction, placeholder: "ご自身のプロフィール", class: "text_area"
-        .selle_submit
-          = f.submit "変更する", class: "submit"
+.section
+  .registration
+    = form_for @user do |f|
+      .form-registration
+        .form-registration__info
+          .form-registration__title.sign_color
+            ユーザー情報
+          .field.sign_color
+            = f.label :nickname
+            .requir
+              必須
+            %br/
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class:"size"
+          .field.sign_color
+            = f.label :email
+            .requir
+              必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class:"size"
+          .field.sign_color
+            = f.label :password
+            .requir
+              必須
+            - if @minimum_password_length
+              %em
+            %br/
+            = f.password_field :password, autocomplete: "new-password", placeholder:"半角７文字以上", class:"size"
+          .field.sign_color
+            = f.label :password_confirmation
+            .requir
+              必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード確認", class:"size"
+          .user-confirmation
+            .user-confirmation__title.sign_color
+              本人確認編集
+              .confirmation-box
+                .confirmation-box__form
+                  .field
+                    = f.label :お名前
+                    .requir
+                      必須
+                    %br/
+                    = f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"姓", class:"confi"
+                    = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"名", class:"confi"
+                  .field
+                    = f.label :ふりがな
+                    .requir
+                      必須
+                    %br/
+                    = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"せい", class:"confi"
+                    = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"めい", class:"confi"
+                  .field
+                    = f.label :生年月日
+                    .requir
+                      必須
+                    %br/
+                    = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例） 1999-05-07", class:"confi"
+        .form-registration__profile
+          = f.label :user_image do
+            .profile-image
+              = icon("fas","image", class:"image-icon")
+              = f.file_field :user_image, autofocus: true, autocomplete: "user_image", style: "display: none;"
+
+          .user_profile
+            = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"profile", placeholder:"プロフィールを入力してください"
+      .actions
+        = f.submit "新規登録", class:"actions__b"
 = render partial: "template/footer"
