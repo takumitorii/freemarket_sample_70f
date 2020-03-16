@@ -24,7 +24,7 @@ $form-color:    rgb(161, 161, 161);
   padding-right:  10px;
 }
 
-#_category{
+#product_category{
   @include select();
 }
 
