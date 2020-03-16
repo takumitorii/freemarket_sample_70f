@@ -1,0 +1,21 @@
+= render partial: "template/header"
+= render partial: "template/exhibition"
+
+.selle_contents
+  .user_show__devise
+    .user_show__devise--title
+      ユーザー情報
+    .user_show__devise--icon
+      = form_for @user do |f|
+        .icon
+          = f.label :user_image, class: "fas fa-smile" do
+            = f.file_field :user_image, style: "display: none;"
+        .nickname
+          nickname
+        .profile
+          プロフィール
+        .description
+          = f.text_area :introduction, placeholder: "ご自身のプロフィール", class: "text_area"
+        .selle_submit
+          = f.submit "変更する", class: "submit"
+= render partial: "template/footer"

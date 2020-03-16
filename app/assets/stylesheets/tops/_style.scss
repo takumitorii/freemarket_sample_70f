@@ -24,9 +24,9 @@ $basic-color: rgb(93, 250, 255);
 }
 
 @mixin pic_up_flex(){
-  width:            100%;
+  width:            80%;
   height:           100%;
-  margin-top:       60px;
+  margin:           0 auto 60px;
   display:          flex;
   justify-content:  space-between;
 }
@@ -205,11 +205,13 @@ $basic-color: rgb(93, 250, 255);
 }
 
 
-
 .pick_up{
   height:           1200px;
   width:            100vw;
   background-color: rgb(250, 250, 250);
+  a{
+    height: 50%;
+  }
   &__category{
     @include pic_up_content();
     h1{
@@ -220,6 +222,7 @@ $basic-color: rgb(93, 250, 255);
     }
     &--flex{
       @include pic_up_flex();
+      overflow:         auto;
       .product{
         position: relative;
         p{
@@ -232,10 +235,12 @@ $basic-color: rgb(93, 250, 255);
           right: 10px;
         }
       }
-      
       :hover{
         opacity: 0.8;
       }
+    }
+    &--flex::-webkit-scrollbar{
+      display:none;
     }
   }
   &__brand{
