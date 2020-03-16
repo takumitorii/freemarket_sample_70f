@@ -14,10 +14,11 @@ class PurchaseController < ApplicationController
 
   def pay
     @product = Product.find(params[:format])
+    price = @product.price*1.1
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-    :amount => @product.price,
+    :amount => price.truncate,
     :customer => card.customer_id,
     :currency => 'jpy',
     )
