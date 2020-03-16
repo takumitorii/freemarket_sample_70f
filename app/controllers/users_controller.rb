@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     
   end
 
+  private
   def user_params
     params.require(:user).permit(
       :family_name,
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
       :introduction,
       :user_image, :email,
       :birth_day,
+      :encrypted_password
     )
   end
 end
