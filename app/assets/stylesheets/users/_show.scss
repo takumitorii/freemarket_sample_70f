@@ -32,6 +32,23 @@ $background-color:  rgb(245, 245, 245);
   }
 }
 
+@mixin btns(){
+  height:       5%;
+  width:        100%;
+  text-align:   center;
+  font-size:    22px;
+  font-weight:  bold;
+  a{
+    color:            $font-color;
+    width:            18%;
+    background-color: $basic-color;
+    padding:          15px;
+    border-radius:    5px;
+    position:         absolute;
+    right:            11%;
+  }
+}
+
 .show_title{
   font-size:    24px;
   font-weight:  bold;
@@ -142,55 +159,34 @@ $background-color:  rgb(245, 245, 245);
         }
       }
     }
-    &--sold{
-      height:       5%;
-      width:        100%;
-      text-align:   center;
-      font-size:    22px;
-      font-weight:  bold;
+    &--destination{
+      @include btns();
       a{
-        color:            $font-color;
-        width:            18%;
-        background-color: $basic-color;
-        padding:          15px;
-        border-radius:    5px;
-        position:         absolute;
+        bottom:           350px;
+      }
+    }
+    &--edit{
+      @include btns();
+      a{
+        bottom:           350px;
+      }
+    }
+    &--sold{
+      @include btns();
+      a{
         bottom:           250px;
-        right:            11%;
       }
     }
     &--credit_card{
-      height:       5%;
-      width:        100%;
-      text-align:   center;
-      font-size:    22px;
-      font-weight:  bold;
+      @include btns();
       a{
-        color:            $font-color;
-        width:            18%;
-        background-color: $basic-color;
-        padding:          15px;
-        border-radius:    5px;
-        position:         absolute;
         bottom:           150px;
-        right:            11%;
       }
     }
     &--log_out{
-      height:       5%;
-      width:        100%;
-      text-align:   center;
-      font-size:    22px;
-      font-weight:  bold;
+      @include btns();
       a{
-        color:            $font-color;
-        width:            18%;
-        background-color: $basic-color;
-        padding:          15px;
-        border-radius:    5px;
-        position:         absolute;
         bottom:           50px;
-        right:            11%;
       }
     }
 

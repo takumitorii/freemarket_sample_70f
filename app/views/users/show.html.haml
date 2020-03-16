@@ -53,8 +53,6 @@
         = current_user.nickname
       .profile
         = current_user.introduction
-        .destination_btn
-          = link_to"ユーザー情報変更", edit_user_path
     .user_show__devise--info
       .show_title
         本人情報
@@ -78,12 +76,18 @@
               丁目番地
             .show_user_title
               建物名、号室
-    -if @destination
-      .destination_btn
+
+
+    
+
+    .user_show__devise--destination
+      -if @destination
         = link_to "配送先住所編集", edit_destination_path(@destination.id)
-    -else
-      .destination_btn
+      -else
         = link_to "配送先住所登録", new_destination_path
+    .user_show__devise--edit
+      - if user_signed_in?
+        = link_to"ユーザー情報変更", edit_user_path
     .user_show__devise--sold
       - if user_signed_in?
         = link_to "購入履歴", "https://pay.jp/d/"
