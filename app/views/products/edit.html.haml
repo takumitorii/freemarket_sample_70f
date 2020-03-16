@@ -10,6 +10,10 @@
         %h1 出品画像
         .requir
           必須
+
+
+
+
       .selle_contents__content--info
         %p 最大10枚までアップロードできます
       #image-box-1
@@ -19,6 +23,11 @@
               = i.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
               %label{for: "img-file"}
                 %i.fas.fa-camera
+
+
+
+
+
     .border_bottom
 
     .selle_contents__content
