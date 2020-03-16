@@ -92,10 +92,10 @@ class ProductsController < ApplicationController
       :name, 
       :price, 
       :description, 
-      :status, 
-      :images_id,
+      :status,
       :size,
       :judgment,
+      :images_id,
       :category_id,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
@@ -104,7 +104,7 @@ class ProductsController < ApplicationController
     ).merge(
       user_id: current_user.id, 
       brand_id: current_user.id, 
-      shipping_id: current_user.id 
+      shipping_id: current_user.id
     )
   end
 end
