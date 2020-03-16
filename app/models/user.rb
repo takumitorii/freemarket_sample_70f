@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   # 出品者及び出品中商品
   has_many :products, dependent: :destroy
-  has_many :shippings, dependent: :destroy
 
   mount_uploader :user_image, ImageUploader
 

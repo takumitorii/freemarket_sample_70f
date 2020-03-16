@@ -103,15 +103,15 @@
             %tr
               %th 配送料の負担
               %td 
-                = @products.shipping.cost
+                = @products.cost
             %tr
               %th 発送元の地域
               %td
-                = @products.shipping.prefecture.name
+                = @products.prefecture.name
             %tr
               %th 発送日の目安
               %td 
-                = @products.shipping.days
+                = @products.days
       .option-area
         %ul
           %li.optional-btn.like-btn#like-btn

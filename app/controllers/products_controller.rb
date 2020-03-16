@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
     @images = Image.new
     @category = Category.new
     @brand = Brand.new
-    @shipping = Shipping.new
   end
 
   def create
@@ -82,14 +81,13 @@ class ProductsController < ApplicationController
       :judgment,
       :images_id,
       :category_id,
+      :cost, :days, :prefecture_id,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
-      brand_attributes: [:name],
-      shipping_attributes: [:cost, :days, :prefecture_id]
+      brand_attributes: [:name]
     ).merge(
       user_id: current_user.id, 
-      brand_id: current_user.id, 
-      shipping_id: current_user.id
+      brand_id: current_user.id,
     )
   end
   
