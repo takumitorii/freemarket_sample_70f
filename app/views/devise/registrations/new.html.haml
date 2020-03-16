@@ -61,12 +61,18 @@
                     %br/
                     = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day", placeholder:"例） 1999-05-07", class:"confi"
         .form-registration__profile
+          写真
+          .requir
+            任意
           = f.label :user_image do
             .profile-image
               = icon("fas","image", class:"image-icon")
               = f.file_field :user_image, autofocus: true, autocomplete: "user_image", style: "display: none;"
 
           .user_profile
+            プロフィール
+            .requir
+              任意
             = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"profile", placeholder:"プロフィールを入力してください"
       .actions
         = f.submit "新規登録", class:"actions__b"
