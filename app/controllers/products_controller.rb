@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @category_parent_array = ["---"]
       Category.where(ancestry: nil).each do |parent|
-          @category_parent_array << parent.name
+        @category_parent_array << parent.name
       end
     @images = Image.new
     @category = Category.new
@@ -77,12 +77,12 @@ class ProductsController < ApplicationController
 
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children
   end
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @category_grandchildren = Category.find_by(name: params[:child_id]).children
   end
 
   private
@@ -96,13 +96,13 @@ class ProductsController < ApplicationController
       :images_id,
       :size,
       :judgment,
+      :category_id,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
     ).merge(
       user_id: current_user.id, 
-      category_id: current_user.id, 
       brand_id: current_user.id, 
       shipping_id: current_user.id 
     )
