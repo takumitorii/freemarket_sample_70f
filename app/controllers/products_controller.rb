@@ -101,7 +101,6 @@ class ProductsController < ApplicationController
       category_attributes: [:name], 
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
-
     ).merge(
       user_id: current_user.id, 
       brand_id: current_user.id, 
