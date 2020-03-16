@@ -57,6 +57,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @product.update(product_update_params)
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -84,13 +85,11 @@ class ProductsController < ApplicationController
       shipping_attributes: [:cost, :days, :prefecture_id]
     ).merge(user_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
   end
-
-  def registered_image_params
-    params.require(:registered_images_ids).permit({ids: []})
-  end
-
-  def new_image_params
-    params.require(:new_images).permit({images: []})
+  
+  def product_update_params
+    params.require(:product).permit(
+      :name,
+      [images_attributes: [:image, :_destroy, :id]])
   end
 
 end
