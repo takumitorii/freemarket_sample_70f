@@ -15,8 +15,9 @@
     .purchase_okay__flex--name
       値段
     .purchase_okay__flex--info
-      = @product.price
-      円
+      - price = @product.price*1.1
+      = price.truncate
+      円(税込み)
 
 .purchase_space
 
