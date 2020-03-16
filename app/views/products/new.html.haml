@@ -73,7 +73,7 @@
         .requir
           必須
       .selle_contents__content--form
-        -# = image_tag "material/pict/サイズ一覧.png", height: "200", with: "400"
+        = image_tag "material/pict/サイズ一覧.png", height: "200", with: "400"
         = f.select :size, [["60サイズ", "60サイズ"], ["80サイズ","80サイズ"],  ["100サイズ","100サイズ"],  ["120サイズ","120サイズ"],  ["140サイズ","140サイズ"],  ["160サイズ","160サイズ"],  ["170サイズ","170サイズ"]]
       .split
       .selle_contents__content--title
@@ -116,13 +116,13 @@
             .requir
               必須
           .selle_contents__content--form
-            = f.text_field :price, class: "input yen", style: "text-align: right;"
-            円
+            ¥
+            = f.text_field :price, class: "input yen", id: "price_calc", style: "text-align: right;"
         .final_value
           .commission
             販売手数料(10%)
           .total_price
-            ー
+            ¥ ー
             
       .split
       .selle_border
@@ -133,7 +133,7 @@
           .profit
             利益
           .total_profit
-            ー
+            ¥ ー
         .selle_submit
           = f.submit "出品する", class: "submit"
           = link_to "もどる", root_path, class: "return"
