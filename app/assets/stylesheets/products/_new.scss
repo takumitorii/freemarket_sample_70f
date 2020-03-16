@@ -150,7 +150,7 @@ $form-color:    rgb(161, 161, 161);
     }
     .product_category{
       @include select();
-      width: 40%;
+      width: 50%;
       outline: none;
     }
     #product_brand{
