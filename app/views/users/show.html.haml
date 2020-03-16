@@ -78,11 +78,12 @@
               丁目番地
             .show_user_title
               建物名、号室
-          
-    .destination_btn
-      = link_to "配送先住所登録", new_destination_path
-    .destination_btn
-      = link_to "配送先住所編集", edit_destination_path(current_user.id)
+    -if @destination
+      .destination_btn
+        = link_to "配送先住所編集", edit_destination_path(@destination.id)
+    -else
+      .destination_btn
+        = link_to "配送先住所登録", new_destination_path
     .user_show__devise--sold
       - if user_signed_in?
         = link_to "購入履歴", "https://pay.jp/d/"
