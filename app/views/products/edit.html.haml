@@ -10,10 +10,6 @@
         %h1 出品画像
         .requir
           必須
-
-
-
-
       .selle_contents__content--info
         %p 最大10枚までアップロードできます
       #image-box-1
@@ -23,13 +19,7 @@
               = i.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
               %label{for: "img-file"}
                 %i.fas.fa-camera
-
-
-
-
-
     .border_bottom
-
     .selle_contents__content
       .selle_contents__content--title
         %h1 商品名
@@ -85,8 +75,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping, @shipping do |c|
-          = c.select :cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
+        = f.select :cost, [["送料込み（出品者負担）","送料込み（出品者負担）"], ["着払い（購入者負担）","着払い（購入者負担）"]], class: "category"
       .split
 
       .selle_contents__content--title
@@ -94,8 +83,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping, @shipping do |a|
-          = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
       .split
 
       .selle_contents__content--title
@@ -103,8 +91,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.fields_for :shipping, @shipping do |d|
-          = d.select :days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
+        = f.select :days, [["１〜２日で発送", "１〜２日で発送"], ["２〜３日で発送","２〜３日で発送"],  ["４〜７日で発送","４〜７日で発送"]]
       .split
     .border_bottom
 
