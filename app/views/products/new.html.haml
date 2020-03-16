@@ -11,7 +11,7 @@
       .selle_contents__content--form
         = f.fields_for :images, @images do |i|
           = i.label :image, class: "fa fa-image file_icon" 
-          = i.file_field :image, multiple: true, type: 'file', name: "images[image][]" 
+          = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", style: "display: none;"
     .border_bottom
 
 
@@ -43,8 +43,7 @@
         .requir
           必須
       .selle_contents__content--category
-        = f.fields_for :category, @category do |n|
-          = n.select :name, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
+        = f.select :category_id, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
       .split
 
       .selle_contents__content--title
@@ -68,6 +67,14 @@
     .selle_contents__content
       .selle_contents__content--navi 
         配送について
+      .selle_contents__content--title
+        %h1 商品のサイズ
+        .requir
+          必須
+      .selle_contents__content--form
+        = image_tag "material/pict/サイズ一覧.png", height: "200", with: "400", style: "display: block;"
+        = f.select :size, [["60サイズ", "60サイズ"], ["80サイズ","80サイズ"],  ["100サイズ","100サイズ"],  ["120サイズ","120サイズ"],  ["140サイズ","140サイズ"],  ["160サイズ","160サイズ"],  ["170サイズ","170サイズ"]]
+      .split
       .selle_contents__content--title
         %h1 配送量の負担
         .requir
@@ -102,18 +109,19 @@
       .selle_contents__content--navi 
         価格(300~9,999,999円)
       .selle_contents__content--price
-        .selling_price
+        .selling_price.flex
           .selle_contents__content--title
             %h1 販売価格
             .requir
               必須
           .selle_contents__content--form
-            = f.text_field :price, class: "input yen", value: "円", style: "text-align: right;"
+            ¥
+            = f.text_field :price, class: "input yen", id: "price_calc", style: "text-align: right;"
         .final_value
           .commission
             販売手数料(10%)
           .total_price
-            ー
+            ¥ ー
             
       .split
       .selle_border
@@ -124,7 +132,7 @@
           .profit
             利益
           .total_profit
-            ー
+            ¥ ー
         .selle_submit
           = f.submit "出品する", class: "submit"
           = link_to "もどる", root_path, class: "return"

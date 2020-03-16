@@ -7,60 +7,61 @@
       出品一覧
     .user_show__product--sell
       .objects
-        .object
-          .image
-            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-          .parts
-            商品名 : (name)
-          .parts
-            値段 : (price)円
-          .parts
-            = link_to "詳細", "#"
+        - @products.each do |p|
+          - if p.judgment == 1
+            = link_to product_path(p.id) do
+              .object
+                .image
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                .parts 
+                  商品名 : 
+                  = p.name
+                .parts
+                  値段 : 
+                  - price = p.price*1.1
+                  = price.truncate
+                  円
+                .parts
+                  = link_to "詳細", "#"
     .show_title
       売却済み
     .user_show__product--sold 
-    .show_title
-      購入一覧
-    .user_show__product--buy
+      .objects
+        - @products.each do |p|
+          - if p.judgment == 2
+            = link_to product_path(p.id) do
+              .object
+                .image
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                .parts
+                  商品名 :
+                  = p.name
+                .parts
+                  値段 : 
+                  - price = p.price*1.1
+                  = price.truncate
+                  円
+                .parts
+                  = link_to "詳細", "#"
   .user_show__devise
     .user_show__devise--title
       ユーザー情報
     .user_show__devise--icon
-      = form_for ("#") do |f|
-        .icon
-          = f.label :user_image, class: "fas fa-smile" do
-            = f.file_field :user_image, style: "display: none;"
-        .nickname
-          nickname
-        .profile
-          プロフィール
-        .description
-          = f.text_area :description, placeholder: "ご自身のプロフィール", class: "text_area"
+      .icon
+        = image_tag current_user.user_image.to_s
+      .nickname
+        = current_user.nickname
+      .profile
+        = current_user.introduction
+        .destination_btn
+          = link_to"ユーザー情報変更", edit_user_path
     .user_show__devise--info
       .show_title
         本人情報
-      = form_for ("#") do |f|
         .real_name
           .first_name
             .name_title
-              性
-            .name_title
-              せい
-          .first_name_form
-            .name_form
-              = f.text_field :family_name, class: "user_input_name", placeholder: "性"
-            .name_form
-              = f.text_field :family_name_kana, class: "user_input_name", placeholder: "せい"
-          .first_name
-            .name_title
-              名
-            .name_title
-              めい
-          .first_name_form
-            .name_form
-              = f.text_field :first_name, class: "user_input_name", placeholder: "名"
-            .name_form
-              = f.text_field :first_name_kana, class: "user_input_name", placeholder: "めい"
+              名前
         .show_form_flex
           .show_user_titles
             .show_user_title
@@ -77,21 +78,14 @@
               丁目番地
             .show_user_title
               建物名、号室
-          .show_user_form
-            .email
-              = f.text_field :email, class: "show_user_input", placeholder: "メールアドレス"
-            .password
-              = f.text_field :password, class: "show_user_input", placeholder: "パスワード"
-            .post_code
-              = f.text_field :post_code, class: "show_user_input", placeholder: "郵便番号"
-            .prefecture
-              = f.text_field :prefecture, class: "show_user_input", placeholder: "都道府県"
-            .city
-              = f.text_field :city, class: "show_user_input", placeholder: "市区町村"
-            .adress
-              = f.text_field :adress, class: "show_user_input", placeholder: "丁目番地"
-            .building_name
-              = f.text_field :building_name, class: "show_user_input", placeholder: "建物名、号室"
+          
+    .destination_btn
+      = link_to "配送先住所登録", new_destination_path
+    .destination_btn
+      = link_to "配送先住所編集", edit_destination_path(current_user.id)
+    .user_show__devise--sold
+      - if user_signed_in?
+        = link_to "購入履歴", "https://pay.jp/d/"
     .user_show__devise--credit_card
       - if user_signed_in?
         = link_to "クレジットカード情報", card_index_path

@@ -115,3 +115,7 @@ textarea{
     resize: none;
 }
 
+// 全てのinput,textareaの選択された時に表示される青い枠を消しました。
+input, textarea{
+    outline: none;
+}

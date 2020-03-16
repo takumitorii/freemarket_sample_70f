@@ -38,96 +38,156 @@
       >
     %p.category-btn
       =@products.name
-.show-main
-  .product-main
-    .product-name
-      %h2 
-        = @products.name
-    .product-image
-      .product-image__main
-        =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
-      .product-image__sub
-        .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-        .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
-        .product-image__second
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
-    .product-price
-      %span
-        ¥
-        = @products.price
-        円
-      .product-price__detail
-        %span (税込)
-        %span 送料込み
-    .product-detail
-      %p 商品名
-    .table
-      %table
-        %tbody
-          %tr
-            %th 出品者
-            %td
-              = @products.user.nickname
-          %tr
-            %th カテゴリー
-            %td
-              =link_to category_path(@parent), class:"transition table__category" do
-                =@parent.name
-              %br
-              =link_to category_path(@child), class:"transition table__category" do
-                =@child.name
-              %br
-              =link_to category_path(@grandchild), class:"transition table__category" do
-                =@grandchild.name
-          %tr
-            %th 
-              ブランド
-            %td
-              - if @products.brand.name.present?
-                = @products.brand.name
-          %tr
-            %th 商品のサイズ
-            %td
-          %tr
-            %th 商品の状態
-            %td 新品に近い
-          %tr
-            %th 配送料の負担
-            %td 
-              = @products.shipping.cost
-          %tr
-            %th 発送元の地域
-            %td
-              = @products.shipping.prefecture.name
-          %tr
-            %th 発送日の目安
-            %td 
-              = @products.shipping.days
-              日
-    .option-area
-      %ul
-        %li.optional-btn.like-btn#like-btn
-          %i.fa.fa-star
-          お気に入り 0
-      %ul
-        %li.optional-btn
-          =link_to "#" do
-            %i.fa.fa-flag
-            不適切な商品の通報
 
-  .product-form
-    = form_for(@products) do |f|
-      %textarea
-      %p.notice-message
-        相手のことを考え丁寧なコメントを心がけましょう。
-        %br
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %br
-      %button.comment-btn{ type: 'submit' }
-        %i.fa.fa-comment
-        コメントする
+.show-main
+  - if @products.judgment == 1
+    .product-main
+      .product-name
+        %h2 
+          = @products.name
+      .product-image
+        .product-image__main
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
+        .product-image__sub
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
+      .product-price
+        %span
+          ¥
+          = @tax_in_price.round
+          円
+        .product-price__detail
+          %span (税込み)
+      .product-detail
+        %p 商品情報
+      .table
+        %table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = @products.user.nickname
+            %tr
+              %th 商品説明
+              %td
+                = @products.description
+            %tr
+              %th カテゴリー
+              %td
+                =link_to category_path(@parent), class:"transition table__category" do
+                  =@parent.name
+                %br
+                =link_to category_path(@child), class:"transition table__category" do
+                  =@child.name
+                %br
+                =link_to category_path(@grandchild), class:"transition table__category" do
+                  =@grandchild.name
+            %tr
+              %th 
+                ブランド
+              %td
+                - if @products.brand.name.present?
+                  = @products.brand.name
+            %tr
+              %th 商品のサイズ
+              %td
+                = @products.size
+            %tr
+              %th 商品の状態
+              %td
+                = @products.status
+            %tr
+              %th 配送料の負担
+              %td 
+                = @products.shipping.cost
+            %tr
+              %th 発送元の地域
+              %td
+                = @products.shipping.prefecture.name
+            %tr
+              %th 発送日の目安
+              %td 
+                = @products.shipping.days
+      .option-area
+        %ul
+          %li.optional-btn.like-btn#like-btn
+            %i.fa.fa-star
+            お気に入り 0
+        %ul
+          %li.optional-btn
+            =link_to "#" do
+              %i.fa.fa-flag
+              不適切な商品の通報
+    .product-form
+      = form_for(@products) do |f|
+        %textarea
+        %p.notice-message
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %br
+        %button.comment-btn{ type: 'submit' }
+          %i.fa.fa-comment
+          コメントする
+
+  - else
+    .product-main.sold_main
+      .product-name
+        .sold
+          Sold
+        %h2 
+          = @products.name
+      .product-image
+        .product-image__main
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
+        .product-image__sub
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+          .product-image__second
+            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
+      .product-price
+        %span
+          ¥
+          = @tax_in_price.round
+          円
+        .product-price__detail
+          %span (税込)
+      .product-detail
+        %p 商品情報
+      .table
+        %table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = @products.user.nickname
+            %tr
+              %th 商品説明
+              %td
+                = @products.description
+            %tr
+              %th カテゴリー
+              %td
+                =link_to category_path(@parent), class:"transition table__category" do
+                  =@parent.name
+                %br
+                =link_to category_path(@child), class:"transition table__category" do
+                  =@child.name
+                %br
+                =link_to category_path(@grandchild), class:"transition table__category" do
+                  =@grandchild.name
+            %tr
+              %th 
+                ブランド
+              %td
+                - if @products.brand.name.present?
+                  = @products.brand.name
   .links
     %p.links_left
       = link_to "#" do

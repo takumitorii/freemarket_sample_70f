@@ -6,7 +6,7 @@ class User < ApplicationRecord
       
   # 購入者
   belongs_to  :card,  optional: true, dependent: :destroy
-  belongs_to  :destinations,  optional: true, dependent: :destroy
+  belongs_to  :destination,  optional: true, dependent: :destroy
 
   # 出品者及び出品中商品
   has_many :products, dependent: :destroy

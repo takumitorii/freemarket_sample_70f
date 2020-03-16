@@ -12,11 +12,10 @@ $background-color:  rgb(245, 245, 245);
   overflow:         auto;
   .objects{
     display:            flex;
-    justify-content:    space-between;
     flex-wrap:          wrap;
     .object{
       width:          30%;
-      margin-top:     30px;
+      margin:         30px 10px 0;
       border:         1px solid $border-color;
       img{
         width:      100%;
@@ -123,7 +122,6 @@ $background-color:  rgb(245, 245, 245);
     &--info{
       height:         30%;
       width:          100%;
-      border-bottom:  1px solid $border-color;
       margin-bottom:  30px;
       .real_name{
         margin-bottom:    10px;
@@ -142,6 +140,23 @@ $background-color:  rgb(245, 245, 245);
             padding:    5px;
           }
         }
+      }
+    }
+    &--sold{
+      height:       5%;
+      width:        100%;
+      text-align:   center;
+      font-size:    22px;
+      font-weight:  bold;
+      a{
+        color:            $font-color;
+        width:            18%;
+        background-color: $basic-color;
+        padding:          15px;
+        border-radius:    5px;
+        position:         absolute;
+        bottom:           250px;
+        right:            11%;
       }
     }
     &--credit_card{
@@ -174,10 +189,16 @@ $background-color:  rgb(245, 245, 245);
         padding:          15px;
         border-radius:    5px;
         position:         absolute;
-        bottom:           60px;
+        bottom:           50px;
         right:            11%;
       }
     }
 
   }
+}
+
+
+.destination_btn{
+  text-align: center;
+  margin-top: 60px;
 }

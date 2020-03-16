@@ -37,7 +37,7 @@
       .product-lists
         - if @parent
           - @products.each do |product|
-            - if true
+            - if product.judgment == 1
               .product-list
                 =link_to product_path(product) do
                   %figure.product-list__image
@@ -75,7 +75,7 @@
         -elsif @child
           - @products.each do |products|
             -products.each do |product|
-              - if true
+              - if product.judgment == 1
                 .product-list
                   =link_to product_path(product) do
                     %figure.product-list__image
@@ -112,7 +112,7 @@
         -else
           - @products.each do |products|
             -products.each do |product|
-              - if true
+              - if product.judgment == 1
                 .product-list
                   =link_to product_path(product) do
                     %figure.product-list__image

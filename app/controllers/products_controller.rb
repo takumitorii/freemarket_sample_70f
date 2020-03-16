@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @category_parent_array = ["---"]
       Category.where(ancestry: nil).each do |parent|
-          @category_parent_array << parent.name
+        @category_parent_array << parent.name
       end
     @images = Image.new
     @category = Category.new
@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # binding.pry
     if @product.save
       params[:images]['image'].each do |a|
         @images = @product.images.create!(image: a)
@@ -30,6 +29,7 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @tax_in_price = @products.price * 1.1
     @grandchild = Category.find(@products.category_id)
     @child = @grandchild.parent
     @parent = @child.parent if @child
@@ -62,28 +62,35 @@ class ProductsController < ApplicationController
 
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children
   end
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @category_grandchildren = Category.find_by(name: params[:child_id]).children
   end
 
   private
   def product_params
 
     params.require(:product).permit(
-      :name, :price, 
+      :name, 
+      :price, 
       :description, 
-      :status, 
-      :images_id,
+      :status,
+      :size,
       :judgment,
+      :images_id,
+      :category_id,
       images_attributes: [{image: []}, :product_id],
       category_attributes: [:name], 
       brand_attributes: [:name],
       shipping_attributes: [:cost, :days, :prefecture_id]
-    ).merge(user_id: current_user.id, category_id: current_user.id, brand_id: current_user.id, shipping_id:current_user.id )
+    ).merge(
+      user_id: current_user.id, 
+      brand_id: current_user.id, 
+      shipping_id: current_user.id
+    )
   end
   
   def product_update_params

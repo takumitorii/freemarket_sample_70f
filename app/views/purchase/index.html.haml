@@ -10,12 +10,14 @@
     .purchase_okay__flex--name
       商品名
     .purchase_okay__flex--info
-      商品ごとに変わります
+      = @product.name
   .purchase_okay__flex
     .purchase_okay__flex--name
       値段
     .purchase_okay__flex--info
-      商品ごtに変わります
+      - price = @product.price*1.1
+      = price.truncate
+      円(税込み)
 
 .purchase_space
 
@@ -41,11 +43,10 @@
     = link_to "戻る", :back
 
 .confirm
-  = form_tag(action: :pay, method: :post) do
-    %button.confirm__btn
-      購入を確定する 
+  = link_to pay_purchase_index_path(@product.id), method: :post do
+    .confirm__btn
+      購入を確定する
       %br/
       （キャンセルはできません）
-
 
 = render partial: "template/footer"

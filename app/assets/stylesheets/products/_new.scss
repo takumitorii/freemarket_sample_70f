@@ -16,7 +16,7 @@ $form-color:    rgb(161, 161, 161);
 }
 
 @mixin select(){
-  width:          95%;
+  width:          50%;
   height:         50px;
   font-size:      18px;
   border:         1px solid $border-color;
@@ -24,11 +24,28 @@ $form-color:    rgb(161, 161, 161);
   padding-right:  10px;
 }
 
-#_category{
+#product_category{
   @include select();
 }
 
-#_status{
+#product_status{
+  @include select();
+}
+
+#product_size{
+  @include select();
+  margin-top: 10px;
+}
+
+#product_shipping_attributes_cost{
+  @include select();
+}
+
+#product_shipping_attributes_prefecture_id{
+  @include select();
+}
+
+#product_shipping_attributes_days{
   @include select();
 }
 
@@ -52,10 +69,10 @@ $form-color:    rgb(161, 161, 161);
 }
 
 .input{
-  width:      90%;
+  width:      40%;
   font-size:  24px;
   padding:    10px;
-  color:    gray;
+  color:    $form-color;
 }
 
 .file_icon{
@@ -101,16 +118,16 @@ $form-color:    rgb(161, 161, 161);
 }
 
 .selle_contents{
+  width             : 60%;
+  height            : auto;
+  margin            : 0 auto 60px;
+  background-color  : rgb(245, 245, 245);
   h1{
     display:        inline-block;
     font-size:      18px;
     margin-right:    20px;
     letter-spacing:   6px;
   }
-  width             : 80%;
-  height            : auto;
-  margin            : 0 auto 60px;
-  background-color  : rgb(245, 245, 245);
   &__content{
     padding   : 60px;
     height    : auto;
@@ -133,7 +150,7 @@ $form-color:    rgb(161, 161, 161);
     }
     .product_category{
       @include select();
-      width: 40%;
+      width: 50%;
       outline: none;
     }
     #product_brand{
