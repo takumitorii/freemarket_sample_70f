@@ -80,10 +80,10 @@
               建物名、号室
     -if @destination
       .destination_btn
-        = link_to "配送先住所編集", edit_destination_path(@destination.id)
+        = link_to "配送先情報編集", edit_destination_path(@destination.id)
     -else
       .destination_btn
-        = link_to "配送先住所登録", new_destination_path
+        = link_to "配送先情報登録", new_destination_path
     .user_show__devise--sold
       - if user_signed_in?
         = link_to "購入履歴", "https://pay.jp/d/"
