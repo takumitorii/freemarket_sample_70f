@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :category_edit, only: [:edit,:update]
   
   def new
     @product = Product.new
@@ -42,21 +43,16 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @category_parent_array = []
-      Category.where(ancestry: nil).each do |parent|
-          @category_parent_array << parent.name
-      end
-      @category_child_array = @product.category.children
-      @category_child_array.each do |child|
-        @category_grandchild_array = child.category.children
-      end
-    @category = Category.find(params[:id])
     @brand = Brand.find(params[:id])
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_update_params)
+    if @product.update(product_update_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -69,7 +65,26 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find_by(name: params[:child_id]).children
   end
 
+  def get_category_id_children
+    @children_ids = Category.find_by(id: Product.find(params[:id]).category_id)
+  end
   private
+
+  def category_edit
+    parent_category = Category.find_by(id: Product.find(params[:id]).category_id).root
+    @category_parent_array = [parent_category.name, "---"]
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name if parent_category != parent
+      end
+    child_category = Category.find_by(id: Product.find(params[:id]).category_id).parent
+    @category_child_array = [child_category.name, "---"]
+      parent_category.children.each do |child|
+        @category_child_array << child.name if child_category != child
+      end
+    @grandchild_id = Category.find_by(id: Product.find(params[:id]).category_id).name
+    @category_grandchild_array = Category.find_by(id: Product.find(params[:id]).category_id).parent.children
+  end
+
   def product_params
 
     params.require(:product).permit(
@@ -87,14 +102,28 @@ class ProductsController < ApplicationController
       brand_attributes: [:name]
     ).merge(
       user_id: current_user.id, 
-      brand_id: current_user.id,
     )
   end
   
   def product_update_params
     params.require(:product).permit(
-      :name,
-      [images_attributes: [:image, :_destroy, :id]])
+      :name, 
+      :price, 
+      :description, 
+      :status,
+      :size,
+      :judgment,
+      :images_id,
+      :category_id,
+      :cost, :days, :prefecture_id,
+      category_attributes: [:name], 
+      brand_attributes: [:name]
+    ).merge(
+      user_id: current_user.id, 
+    )
+    # params.require(:product).permit(
+    #   :name,
+    #   [images_attributes: [:image, :_destroy, :id]])
   end
 
 end
