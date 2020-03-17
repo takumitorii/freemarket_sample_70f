@@ -131,6 +131,9 @@ $form-color:    rgb(161, 161, 161);
   &__content{
     padding   : 60px;
     height    : 100%;
+    label{
+      font-size: 22px;
+    }
     &--category {
       select {
         margin-bottom: 20px;
@@ -165,6 +168,7 @@ $form-color:    rgb(161, 161, 161);
     }
     &--info{
       color: $form-color;
+      display: inline-block;
       font-size       : 18px;
       padding-bottom  : 20px;
     }
