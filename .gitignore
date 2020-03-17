@@ -28,4 +28,4 @@
 public/uploads/*
 .DS_Store
 db/schema.rb
-/.env
+*.env
