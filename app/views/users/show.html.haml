@@ -72,23 +72,23 @@
               丁目番地 : 
             .show_user_title
               建物名、号室 : 
-        - if @destination
           .show_user_titles
-            .show_user_title 
-              = @destination.family_name
-              = @destination.first_name
-            .show_user_title 
-              = @user.email
-            .show_user_title
-              = @destination.post_code
-            .show_user_title
-              = @destination.prefecture
-            .show_user_title
-              = @destination.city
-            .show_user_title
-              = @destination.adress
-            .show_user_title
-              = @destination.building_name
+            - if @destination
+              .show_user_title 
+                = @destination.family_name
+                = @destination.first_name
+              .show_user_title 
+                = @user.email
+              .show_user_title
+                = @destination.post_code
+              .show_user_title
+                = @destination.prefecture
+              .show_user_title
+                = @destination.city
+              .show_user_title
+                = @destination.adress
+              .show_user_title
+                = @destination.building_name
 
 
     
