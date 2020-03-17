@@ -63,11 +63,10 @@
           写真
           .requir
             任意
-          = f.label :user_image, class:"proimage" do
+          = f.label :user_image do
             .profile-image
-              = icon("fas","image", class:"image-icon")
+              = image_tag current_user.user_image.to_s, id: :img_prev, class:"gazo", onerror: "this.src='https://placehold.jp/150x150.png?text=NoImage'", height: "200", with: "200"
               = f.file_field :user_image, autofocus: true, autocomplete: "user_image", style: "display: none;"
-
           .user_profile
             プロフィール
             .requir
