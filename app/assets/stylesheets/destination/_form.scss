@@ -1,3 +1,62 @@
-// Place all the styles related to the destinations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.show_title_destination {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 0 10px;
+  span {
+    padding: 10px;
+    background-color: rgb(93, 250, 255);
+    color: white;
+    border-radius: 10px;
+  }
+  .real_name {
+    margin: 60px 70px 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .show_form_flex{
+    margin: 20px 70px 0;
+    display: flex;
+    justify-content: start;
+    position: relative;
+    .show_user_titles {
+      margin-bottom:    33px;
+      font-size:        18px;
+      padding-right: 40px;
+    }
+    .show_user_form{
+      .post_code {
+        .show_post_input {
+          font-size:      16px;
+          height:         30%;
+          padding:        5px;
+          width:          40%;
+          margin-bottom:  19px;
+          float: left;
+        }
+      }
+      .show_user_input{
+        font-size:      16px;
+        height:         30%;
+        padding:        5px;
+        width:          120%;
+        margin-bottom:  19px;
+      }
+    }
+    .submit {
+      position: absolute;
+      bottom: 60px;
+      right: 80px;
+      width: 120px;
+      height: 60px;
+      background-color: rgb(93, 250, 255);
+      font-size: 25px;
+      color: white;
+      border-radius: 10px;
+      &:hover {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+}

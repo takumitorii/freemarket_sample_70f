@@ -3,30 +3,30 @@
 
 .selle_contents
   .user_show__devise--info
-    .show_title
-      配送先住所登録
+    .show_title_destination
+      %span 配送先情報登録
       = form_for @destination do |f|
         .real_name
           .first_name
             .name_title
               性
             .name_title
-              せい
+              名
           .first_name_form
             .name_form
               = f.text_field :family_name, class: "user_input_name", placeholder: "性"
             .name_form
-              = f.text_field :family_name_kana, class: "user_input_name", placeholder: "せい"
+              = f.text_field :first_name, class: "user_input_name", placeholder: "名"
           .first_name
             .name_title
-              名
+              セイ
             .name_title
-              めい
+              メイ
           .first_name_form
             .name_form
-              = f.text_field :first_name, class: "user_input_name", placeholder: "名"
+              = f.text_field :family_name_kana, class: "user_input_name", placeholder: "セイ"
             .name_form
-              = f.text_field :first_name_kana, class: "user_input_name", placeholder: "めい"
+              = f.text_field :first_name_kana, class: "user_input_name", placeholder: "メイ"
         .show_form_flex
           .show_user_titles
             .show_user_title
@@ -43,7 +43,7 @@
               電話番号
           .show_user_form
             .post_code
-              = f.text_field :post_code, class: "show_user_input", placeholder: "郵便番号"
+              = f.text_field :post_code, class: "show_post_input", placeholder: "郵便番号"
             .prefecture
               = f.text_field :prefecture, class: "show_user_input", placeholder: "都道府県"
             .city
@@ -55,6 +55,5 @@
             .password
               = f.text_field :phone_number, class: "show_user_input", placeholder: "電話番号"
             .selle_submit
-              = f.submit "変更する", class: "submit"
-              -# = link_to "もどる", root_path, class: "return"
+          = f.submit "登録する", class: "submit"
 = render partial: "template/footer"
