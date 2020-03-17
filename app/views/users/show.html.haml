@@ -48,7 +48,7 @@
       ユーザー情報
     .user_show__devise--icon
       .icon
-        = image_tag current_user.user_image.to_s
+        = image_tag current_user.user_image.to_s, class:"gazo", onerror: "this.src='https://placehold.jp/150x150.png?text=NoImage'"
       .nickname
         = current_user.nickname
       .profile
