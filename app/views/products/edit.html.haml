@@ -13,6 +13,13 @@
       .selle_contents__content--info
         %p 最大10枚までアップロードできます
       #image-box-1
+        - @product.images.each do |image|
+          .item-image{"data-image" => "${file.name}"}
+            .item-image__content
+              .item-image__content--icon
+                = image_tag image.image.url, size: "114x80"
+            .item-image__operetion
+              .item-image__operetion--delete 削除
         .item-num-0#image-box__container
           = f.fields_for :images do |i|
             .input-area
@@ -45,9 +52,12 @@
         %h1 カテゴリー
         .requir
           必須
-      .selle_contents__content--form
+      .selle_contents__content--category
         = f.fields_for :category, @category do |category|
-          = category.select :name, options_for_select(@category_parent_array.map{|c|[c, {}]}, @product.category.name), {}, {class: 'product_category', id: 'product_category'}
+          = category.select :name, options_for_select(Category.where(ancestry: nil).map{|c|[c[:name], c[:name],{}]}, @product.category.parent.parent.name), {}, {class: 'product_category', id: 'product_category'}
+          = category.select :name, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:name],{}]}, @product.category.parent.name), {}, {class: 'product_category', id: 'product_category'}
+          = category.select :name, options_for_select(@product.category.parent.children.map{|c|[c[:name], c[:name],{}]}, @product.category.name), {}, {class: 'product_category', id: 'product_category'}
+
       .split
 
       .selle_contents__content--title
