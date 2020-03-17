@@ -66,23 +66,23 @@ class ProductsController < ApplicationController
   end
 
   def get_category_id_children
-    @children_ids = Category.find_by(id: Product.find(params[:id]).category_id)
+    @children_ids = Category.find(Product.find(params[:id]).category_id)
   end
   private
 
   def category_edit
-    parent_category = Category.find_by(id: Product.find(params[:id]).category_id).root
+    parent_category = Category.find(Product.find(params[:id]).category_id).root
     @category_parent_array = [parent_category.name, "---"]
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name if parent_category != parent
       end
-    child_category = Category.find_by(id: Product.find(params[:id]).category_id).parent
+    child_category = Category.find(Product.find(params[:id]).category_id).parent
     @category_child_array = [child_category.name, "---"]
       parent_category.children.each do |child|
         @category_child_array << child.name if child_category != child
       end
-    @grandchild_id = Category.find_by(id: Product.find(params[:id]).category_id).name
-    @category_grandchild_array = Category.find_by(id: Product.find(params[:id]).category_id).parent.children
+    @grandchild_id = Category.find(Product.find(params[:id]).category_id).name
+    @category_grandchild_array = Category.find(Product.find(params[:id]).category_id).parent.children
   end
 
   def product_params
@@ -121,9 +121,6 @@ class ProductsController < ApplicationController
     ).merge(
       user_id: current_user.id, 
     )
-    # params.require(:product).permit(
-    #   :name,
-    #   [images_attributes: [:image, :_destroy, :id]])
   end
 
 end
