@@ -9,15 +9,40 @@
       .objects
         - @products.each do |p|
           - if p.judgment == 1
-            = render partial: "template/object", locals:{p: p}
-              
+            = link_to product_path(p.id) do
+              .object
+                .image
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                .parts 
+                  商品名 : 
+                  = p.name
+                .parts
+                  値段 : 
+                  - price = p.price*1.1
+                  = price.truncate
+                  円
+                .parts
+                  = link_to "詳細", "#"
     .show_title
       売却済み
     .user_show__product--sold 
       .objects
         - @products.each do |p|
           - if p.judgment == 2
-            = render partial: "template/object", locals:{p: p}
+            = link_to product_path(p.id) do
+              .object
+                .image
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                .parts
+                  商品名 :
+                  = p.name
+                .parts
+                  値段 : 
+                  - price = p.price*1.1
+                  = price.truncate
+                  円
+                .parts
+                  = link_to "詳細", "#"
   .user_show__devise
     .user_show__devise--title
       ユーザー情報
@@ -36,6 +61,8 @@
             .show_user_title
               名前 : 
             .show_user_title
+              メールアドレス : 
+            .show_user_title
               郵便番号 : 
             .show_user_title
               都道府県 : 
@@ -50,6 +77,8 @@
               .show_user_title 
                 = @destination.family_name
                 = @destination.first_name
+              .show_user_title 
+                = @user.email
               .show_user_title
                 = @destination.post_code
               .show_user_title
@@ -60,6 +89,9 @@
                 = @destination.adress
               .show_user_title
                 = @destination.building_name
+
+
+    
 
     .user_show__devise--destination
       -if @destination

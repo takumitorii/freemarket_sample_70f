@@ -1,7 +1,5 @@
 $basic-color: rgb(93, 250, 255);
 $font-color:  white;
-$border-color:      rgb(201, 201, 201);
-$background-color:  rgb(245, 245, 245);
 
 @mixin btn(){
   width:            150px;
@@ -70,44 +68,44 @@ $background-color:  rgb(245, 245, 245);
 }
 
 .header{
-  height:     auto;
+  height:     110px;
   width:      100%;
-  // margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid $background-color;
   position:   relative;
-  &__flex{
-    display: flex;
-    justify-content: left;
-    padding: 40px 50px;
-    &--image{
-      width:    25%;
+  &__image{
+    width:    25%;
+    position: absolute;
+    top:      20px;
+    left:     14%;
+  }
+  &__form{
+    width:    75%;
+    position: absolute;
+    top:      20px;
+    left:     25%;
+    .input{
+      height:     20px;
+      width:      70%;
+      padding:    5px;
+      font-size:  16px;
     }
-    &--form{
-      width:    75%;
-      .input{
-        height:     20px;
-        width:      70%;
-        padding:    5px;
-        font-size:  16px;
-      }
-      .submit{
-        padding:          8px 15px;
-        background-color: $basic-color;
-        outline:          none;
-        i{
-          color:        $font-color;
-          font-size:    14px;
-        }
+    .submit{
+      padding:          8px 15px;
+      background-color: $basic-color;
+      outline:          none;
+      i{
+        color:        $font-color;
+        font-size:    14px;
       }
     }
   }
-  
   &__btns{
     display:         flex;
     justify-content: space-between;
-    a{
-      margin:      0 40px;
+    .btn{
+      padding-top:   80px;
+      a{
+        margin:      0 40px;
+      }
     }
   }
 }

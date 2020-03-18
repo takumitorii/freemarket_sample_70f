@@ -26,9 +26,9 @@ $basic-color: rgb(93, 250, 255);
 @mixin pic_up_flex(){
   width:            80%;
   height:           100%;
-  margin:           30px auto 60px;
+  margin:           0 auto 60px;
   display:          flex;
-  justify-content:  left;
+  justify-content:  space-between;
 }
 
 .download{
