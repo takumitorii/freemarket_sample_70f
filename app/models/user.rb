@@ -11,6 +11,8 @@ class User < ApplicationRecord
   # 出品者及び出品中商品
   has_many :products, dependent: :destroy
 
+  validates :nickname, :email, :family_name, :family_name_kana, :first_name, :first_name_kana, :birth_day, presence: true
+
   mount_uploader :user_image, ImageUploader
 
 end

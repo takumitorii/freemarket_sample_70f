@@ -1,7 +1,6 @@
 .selle_icon
   = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 
-
 .selle_contents
   = form_for @product do |f|
     .selle_contents__content
@@ -95,7 +94,7 @@
         .requir
           必須
       .selle_contents__content--form
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください"
       .split
 
       .selle_contents__content--title
@@ -139,5 +138,4 @@
             ¥ ー
         .selle_submit
           = f.submit "出品する", class: "submit"
-          = link_to "もどる", root_path, class: "return"
 = render partial: "template/footer"
