@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "tops#index"
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :destinations, only: [:new, :create, :edit, :update]
+
+  
   resources :products do
     collection do
       post 'pay', to: 'products#pay'
@@ -12,7 +14,15 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
   end
+
+
+
+
   resources :categories, only: [:index, :new, :create, :show]
   resources :card, only: [:new, :show] do
     collection do
