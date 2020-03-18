@@ -9,40 +9,14 @@
       .objects
         - @products.each do |p|
           - if p.judgment == 1
-            = link_to product_path(p.id) do
-              .object
-                .image
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-                .parts 
-                  商品名 : 
-                  = p.name
-                .parts
-                  値段 : 
-                  - price = p.price*1.1
-                  = price.truncate
-                  円
-                .parts
-                  = link_to "詳細", "#"
+           = render "template/object" {p: p}
     .show_title
       売却済み
     .user_show__product--sold 
       .objects
         - @products.each do |p|
           - if p.judgment == 2
-            = link_to product_path(p.id) do
-              .object
-                .image
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-                .parts
-                  商品名 :
-                  = p.name
-                .parts
-                  値段 : 
-                  - price = p.price*1.1
-                  = price.truncate
-                  円
-                .parts
-                  = link_to "詳細", "#"
+            = render "template/object" {p: p}
   .user_show__devise
     .user_show__devise--title
       ユーザー情報
