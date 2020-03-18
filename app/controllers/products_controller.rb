@@ -62,12 +62,9 @@ class ProductsController < ApplicationController
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-    @category_grandchildren = Category.find_by(name: params[:child_id]).children
+    @category_grandchildren = Category.find_by(id: params[:child_id]).children
   end
 
-  def get_category_id_children
-    @children_ids = Category.find(Product.find(params[:id]).category_id)
-  end
   private
 
   def category_edit
@@ -76,12 +73,9 @@ class ProductsController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name if parent_category != parent
       end
-    child_category = Category.find(Product.find(params[:id]).category_id).parent
-    @category_child_array = [child_category.name, "---"]
-      parent_category.children.each do |child|
-        @category_child_array << child.name if child_category != child
-      end
-    @grandchild_id = Category.find(Product.find(params[:id]).category_id).name
+    @child_name = Category.find(Product.find(params[:id]).category_id).parent.name
+    @category_child_array =Category.find(Product.find(params[:id]).category_id).root.children
+    @grandchild_name = Category.find(Product.find(params[:id]).category_id).name
     @category_grandchild_array = Category.find(Product.find(params[:id]).category_id).parent.children
   end
 
@@ -122,6 +116,5 @@ class ProductsController < ApplicationController
       user_id: current_user.id, 
     )
   end
-
 end
 

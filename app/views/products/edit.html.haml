@@ -49,9 +49,10 @@
       .selle_contents__content--category
         = f.select :category_id, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
         #children_wrapper.selle_contents__content--category
-          = f.select :category_id, @category_child_array, {}, {class: 'product_category', id: 'child_category'}
+          -# = f.select :category_id, @category_child_array, {}, {class: 'product_category', id: 'child_category'}
+          = f.collection_select :category_id, @category_child_array, :id, :name, {prompt: "#{@child_name}"}, class: 'product_category', id: 'child_category'
           #grandchildren_wrapper.selle_contents__content--category
-            = f.collection_select :category_id, @category_grandchild_array, :id, :name,{prompt: "#{@grandchild_id}"}, class: 'product_category', id: 'grandchild_category'
+            = f.collection_select :category_id, @category_grandchild_array, :id, :name, {prompt: "#{@grandchild_name}"}, class: 'product_category', id: 'grandchild_category'
       .split
 
       .selle_contents__content--title
