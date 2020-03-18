@@ -1,11 +1,12 @@
 .header
-  .header__image
-    = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
-  .header__form
-    %form
-      %input.input{type: "text", placeholder: "キーワードで検索"}
-      = button_tag type: 'submit', class: "submit" do
-        = icon('fa', 'search')
+  .header__flex
+    .header__flex--image
+      = link_to (image_tag "material/logo/logo.png", height: "40", with: "60"), root_path
+    .header__flex--form
+      %form
+        %input.input{type: "text", placeholder: "キーワードで検索"}
+        = button_tag type: 'submit', class: "submit" do
+          = icon('fa', 'search')
   .header__btns
     .btn
       = link_to categories_path do
