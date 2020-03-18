@@ -68,44 +68,39 @@ $font-color:  white;
 }
 
 .header{
-  height:     110px;
+  height:     auto;
   width:      100%;
-  position:   relative;
-  &__image{
-    width:    25%;
-    position: absolute;
-    top:      20px;
-    left:     14%;
-  }
-  &__form{
-    width:    75%;
-    position: absolute;
-    top:      20px;
-    left:     25%;
-    .input{
-      height:     20px;
-      width:      70%;
-      padding:    5px;
-      font-size:  16px;
+  &__flex{
+    display: flex;
+    padding: 50px 40px 30px;
+    justify-content: center;
+    &--image{
+      width: 15%;
     }
-    .submit{
-      padding:          8px 15px;
-      background-color: $basic-color;
-      outline:          none;
-      i{
-        color:        $font-color;
-        font-size:    14px;
+    &--form{
+      width:    85%;
+      .input{
+        height:     20px;
+        width:      70%;
+        padding:    5px;
+        font-size:  16px;
+      }
+      .submit{
+        padding:          8px 15px;
+        background-color: $basic-color;
+        outline:          none;
+        i{
+          color:        $font-color;
+          font-size:    14px;
+        }
       }
     }
   }
   &__btns{
     display:         flex;
     justify-content: space-between;
-    .btn{
-      padding-top:   80px;
-      a{
-        margin:      0 40px;
-      }
+    a{
+      margin: 0 40px 20px;
     }
   }
 }
