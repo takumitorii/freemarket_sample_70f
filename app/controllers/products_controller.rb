@@ -87,6 +87,8 @@ class ProductsController < ApplicationController
     @category_grandchild_array = Category.find(Product.find(params[:id]).category_id).parent.children
   end
 
+
+  private
   def product_params
 
     params.require(:product).permit(
