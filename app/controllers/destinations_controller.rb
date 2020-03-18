@@ -8,6 +8,7 @@ class DestinationsController < ApplicationController
     
     @destination = Destination.new(destination_params)
     @destination.save!
+    flash[:notice] = "配送情報の登録が完了しました！"
     redirect_to user_path(current_user.id)
   end
 
@@ -19,6 +20,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.find(params[:id])
     @destination.update(destination_params)
     @destination.save!
+    flash[:notice] = "配送情報の更新が完了しました！"
     redirect_to user_path(current_user.id)
   end
 

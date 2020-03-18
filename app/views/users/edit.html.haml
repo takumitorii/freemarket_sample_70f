@@ -20,20 +20,7 @@
               必須
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", class:"size"
-          .field.sign_color
-            = f.label :password
-            .requir
-              必須
-            - if @minimum_password_length
-              %em
-            %br/
-            = f.password_field :password, autocomplete: "new-password", placeholder:"半角７文字以上", class:"size"
-          .field.sign_color
-            = f.label :password_confirmation
-            .requir
-              必須
-            %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード確認", class:"size"
+          
           .user-confirmation
             .user-confirmation__title.sign_color
               本人確認情報編集
@@ -73,5 +60,5 @@
               任意
             = f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"profile", placeholder:"プロフィールを入力してください"
       .actions
-        = f.submit "変更", class:"actions__b"
+        = f.submit "変更する", class:"actions__b"
 = render partial: "template/footer"
