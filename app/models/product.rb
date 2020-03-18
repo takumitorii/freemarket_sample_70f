@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :shipping, allow_destroy: true
 
-  validates :name, :price, :description, presence: true
+  validates :name, :price, :prefecture_id, :category_id, :description, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture

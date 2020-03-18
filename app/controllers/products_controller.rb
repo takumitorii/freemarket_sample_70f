@@ -16,13 +16,13 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       params[:images]['image'].each do |a|
-        @images = @product.images.create!(image: a)
+        @images = @product.images.create(image: a)
       end
       @product.judgment = 1
       @product.save
       redirect_to product_path(@product)
     else
-      redirect_to new_product_path
+      redirect_to new_product_path, alert: "入力に誤りがあります。"
     end
   end
 

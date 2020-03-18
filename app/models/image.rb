@@ -5,17 +5,17 @@ class Image < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def self.create_product_by(product_params)
+  # def self.create_product_by(product_params)
 
-    return false if product_params[:image].nil?
+  #   return false if product_params[:image].nil?
 
-    Product.transaction do 
-      product_params[:image].each do |photo|
-        new_photo = Product.new(image: photo)
-        return false unless new_photo.save!
-      end
-    end
+  #   Product.transaction do 
+  #     product_params[:image].each do |photo|
+  #       new_photo = Product.new(image: photo)
+  #       return false unless new_photo.save!
+  #     end
+  #   end
 
-    true
-  end
+  #   true
+  # end
 end
