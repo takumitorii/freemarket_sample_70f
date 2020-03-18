@@ -2,7 +2,7 @@
   = link_to (image_tag "material/logo/logo.png", height: "60", with: "180"), root_path
 
 .selle_contents
-  = form_for @product, url: "/products" do |f|
+  = form_with model: @product, local: true do |f|
     .selle_contents__content
       .selle_contents__content--title
         %p.main-title 商品の情報を入力
@@ -46,9 +46,12 @@
         %h1 カテゴリー
         .requir
           必須
-      .selle_contents__content--form
-        = f.fields_for :category, @category do |category|
-          = category.select :name, options_for_select(@category_parent_array.map{|c|[c, {}]}, @product.category.name), {}, {class: 'product_category', id: 'product_category'}
+      .selle_contents__content--category
+        = f.select :category_id, @category_parent_array, {}, {class: 'product_category', id: 'product_category'}
+        #children_wrapper.selle_contents__content--category
+          = f.select :category_id, @category_child_array, {}, {class: 'product_category', id: 'child_category'}
+          #grandchildren_wrapper.selle_contents__content--category
+            = f.collection_select :category_id, @category_grandchild_array, :id, :name,{prompt: "#{@grandchild_id}"}, class: 'product_category', id: 'grandchild_category'
       .split
 
       .selle_contents__content--title
