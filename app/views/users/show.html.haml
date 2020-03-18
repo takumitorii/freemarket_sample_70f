@@ -9,14 +9,14 @@
       .objects
         - @products.each do |p|
           - if p.judgment == 1
-           = render "template/object" {p: p}
+            = render partial: "template/object", locals: {p: p}
     .show_title
       売却済み
     .user_show__product--sold 
       .objects
         - @products.each do |p|
           - if p.judgment == 2
-            = render "template/object" {p: p}
+            = render partial: "template/object", locals: {p: p}
   .user_show__devise
     .user_show__devise--title
       ユーザー情報
