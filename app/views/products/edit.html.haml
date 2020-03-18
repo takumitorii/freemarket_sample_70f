@@ -15,6 +15,13 @@
       %label{for: "img-file"}
         %i.fas.fa-camera
       #image-box-1
+        - @product.images.each do |image|
+          .item-image{"data-image" => "${file.name}"}
+            .item-image__content
+              .item-image__content--icon
+                = image_tag image.image.url, size: "114x80"
+            .item-image__operetion
+              .item-image__operetion--delete 削除
         .item-num-0#image-box__container
           = f.fields_for :images do |i|
             .input-area
