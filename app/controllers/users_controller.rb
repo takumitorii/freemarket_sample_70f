@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     @user.save!
+    flash[:notice] = "ユーザー情報の更新が完了しました！"
     redirect_to user_path(current_user.id)
   end
 

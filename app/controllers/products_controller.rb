@@ -18,12 +18,14 @@ class ProductsController < ApplicationController
     if @product.save
       params[:images]['image'].each do |a|
         @images = @product.images.create(image: a)
+      flash[:notice] = "出品が完了しました！"
       end
       @product.judgment = 1
       @product.save
       redirect_to product_path(@product)
     else
-      redirect_to new_product_path, alert: "入力に誤りがあります。"
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
+      redirect_to new_product_path
     end
   end
 
@@ -85,6 +87,8 @@ class ProductsController < ApplicationController
     @category_grandchild_array = Category.find(Product.find(params[:id]).category_id).parent.children
   end
 
+
+  
   def product_params
 
     params.require(:product).permit(
