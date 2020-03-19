@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     if @product.update(product_update_params)
       redirect_to product_path(@product)
     else
-      render :edit
+      redirect_to edit_product_path(@product)
     end
   end
 
@@ -95,7 +95,7 @@ class ProductsController < ApplicationController
       :images_id,
       :category_id,
       :cost, :days, :prefecture_id,
-      images_attributes: [{image: []}, :product_id],
+      images_attributes: [{image: []}, :product_id, :id, :image],
       category_attributes: [:name], 
       brand_attributes: [:name]
     ).merge(
@@ -111,9 +111,9 @@ class ProductsController < ApplicationController
       :status,
       :size,
       :judgment,
-      :images_id,
       :category_id,
       :cost, :days, :prefecture_id,
+      images_attributes: [{image: []}, :product_id, :id, :image],
       category_attributes: [:name], 
       brand_attributes: [:name]
     ).merge(
