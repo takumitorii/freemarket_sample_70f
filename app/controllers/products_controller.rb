@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    binding.pry
     if @product.update(product_update_params)
       redirect_to product_path(@product)
     else
@@ -113,7 +114,7 @@ class ProductsController < ApplicationController
       :judgment,
       :category_id,
       :cost, :days, :prefecture_id,
-      images_attributes: [{image: []}, :product_id, :id, :image],
+      images_attributes: [{image: [:image]}, :product_id, :id],
       category_attributes: [:name], 
       brand_attributes: [:name]
     ).merge(

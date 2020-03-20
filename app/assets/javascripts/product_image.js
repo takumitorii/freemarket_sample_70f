@@ -31,7 +31,38 @@ $(function(){
   });
   $(document).on("click", '.item-image__operetion--delete', function(){
     var target_image = $(this).parent().parent()
-    target_image.remove();
-    file_field.val("");
-  })
+    var target_name = $(target_image).data('image')
+    if(file_field.files.length==1){
+      $('input[type=file]').val(null)
+      dataBox.clearData();
+      console.log(dataBox)
+    }else{
+      $.each(file_field.files, function(i,input){
+        if(input.name==target_name){
+          dataBox.items.remove(i) 
+        }
+      })
+      file_field.files = dataBox.files
+    }
+    target_image.remove()
+    var num = $('.item-image').length
+    $('#image-box__container').show()
+    $('#image-box__container').attr('class', `item-num-${num}`)
+  });
+
+
+
+  $('#image-box').on('click', '.item-image__operetion--delete', function() {
+    const targetIndex = $(this).parent().data('index');
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-checkbox`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
+
+    // 画像入力欄が0個にならないようにしておく
+    if ($('img').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  });
 });
