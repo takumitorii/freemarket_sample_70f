@@ -51,18 +51,22 @@ $(function(){
   });
 
 
-
-  $('#image-box').on('click', '.item-image__operetion--delete', function() {
-    const targetIndex = $(this).parent().data('index');
-    // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-checkbox`);
-    // もしチェックボックスが存在すればチェックを入れる
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-
-    // 画像入力欄が0個にならないようにしておく
-    if ($('img').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-  });
+  $(document).on("click", '.item-image__operetion--delete', function(){
+    let productID = $(this).data('index');
+    let imageID = $(this).data('id');
+    console.log(imageID);
+    $.ajax({
+      url: '/products/' + productID + '/image_destroy',
+      type: 'POST',
+      data: {'image_id': imageID,
+            '_method': 'DELETE'},
+      dataType: 'json'
+    })
+    .done(function(data){
+      console.log(data);
+    })
+    .fail(function(){
+      console.log("NG");
+    })
+  })
 });

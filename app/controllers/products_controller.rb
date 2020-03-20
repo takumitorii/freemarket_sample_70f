@@ -50,10 +50,10 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    binding.pry
     if @product.update(product_update_params)
       redirect_to product_path(@product)
     else
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
       redirect_to edit_product_path(@product)
     end
   end
@@ -66,6 +66,11 @@ class ProductsController < ApplicationController
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+  def image_destroy
+    @image = Image.find(params[:image_id])
+    @image.destroy
   end
 
   private
