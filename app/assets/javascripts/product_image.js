@@ -30,12 +30,17 @@ $(function(){
     });
   });
   $(document).on("click", '.item-image__operetion--delete', function(){
-    var target_image = $(this).parent().parent()
-    var target_name = $(target_image).data('image')
+    const targetIndex = $(this).parent().find('.item-image__operetion--delete').data('index');
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
+
+    var target_image = $(this).parent().parent();
+    var target_name = $(target_image).data('image');
     if(file_field.files.length==1){
       $('input[type=file]').val(null)
       dataBox.clearData();
-      console.log(dataBox)
     }else{
       $.each(file_field.files, function(i,input){
         if(input.name==target_name){
@@ -44,30 +49,9 @@ $(function(){
       })
       file_field.files = dataBox.files
     }
-    target_image.remove()
-    var num = $('.item-image').length
+    target_image.remove();
+    var num = $('.item-image').length;
     $('#image-box__container').show()
     $('#image-box__container').attr('class', `item-num-${num}`)
   });
-
-
-  // $(document).on("click", '.item-image__operetion--delete', function(){
-  //   let productID = $(this).data('index');
-  //   let imageID = $(this).data('id');
-  //   $.ajax({
-  //     url: '/products/' + productID + '/image_destroy',
-  //     type: 'POST',
-  //     data: {'image_id': imageID,
-  //           '_method': 'DELETE'},
-  //     dataType: 'json'
-  //   })
-  // });
-  $(document).on('click', '.item-image__operetion--delete', function() {
-    const targetIndex = $(this).parent().data('index')
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    console.log(hiddenCheck);
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-  })
 });

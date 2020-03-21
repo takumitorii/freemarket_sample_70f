@@ -68,11 +68,6 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
-  def image_destroy
-    @image = Image.find(params[:image_id])
-    @image.destroy
-  end
-
   private
 
   def category_edit
