@@ -53,6 +53,7 @@ class ProductsController < ApplicationController
     if @product.update(product_update_params)
       redirect_to product_path(@product)
     else
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
       redirect_to edit_product_path(@product)
     end
   end
@@ -113,7 +114,7 @@ class ProductsController < ApplicationController
       :judgment,
       :category_id,
       :cost, :days, :prefecture_id,
-      images_attributes: [{image: []}, :product_id, :id, :image],
+      images_attributes: [{image: [:image]}, :_destroy, :product_id, :id],
       category_attributes: [:name], 
       brand_attributes: [:name]
     ).merge(
