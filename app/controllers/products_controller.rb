@@ -119,7 +119,7 @@ class ProductsController < ApplicationController
       :judgment,
       :category_id,
       :cost, :days, :prefecture_id,
-      images_attributes: [{image: [:image]}, :product_id, :id],
+      images_attributes: [{image: [:image]}, :_destroy, :product_id, :id],
       category_attributes: [:name], 
       brand_attributes: [:name]
     ).merge(

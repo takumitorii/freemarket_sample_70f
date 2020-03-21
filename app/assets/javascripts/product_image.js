@@ -17,7 +17,7 @@ $(function(){
         var html= `<div class='item-image' data-image="${file.name}">
                     <div class=' item-image__content'>
                       <div class='item-image__content--icon'>
-                        <img src=${src} width="114" height="80" >
+                        <img src=${src} width="114" height="80" data={index: index}>
                       </div>
                     </div>
                     <div class='item-image__operetion'>
@@ -51,22 +51,23 @@ $(function(){
   });
 
 
-  $(document).on("click", '.item-image__operetion--delete', function(){
-    let productID = $(this).data('index');
-    let imageID = $(this).data('id');
-    console.log(imageID);
-    $.ajax({
-      url: '/products/' + productID + '/image_destroy',
-      type: 'POST',
-      data: {'image_id': imageID,
-            '_method': 'DELETE'},
-      dataType: 'json'
-    })
-    .done(function(data){
-      console.log(data);
-    })
-    .fail(function(){
-      console.log("NG");
-    })
+  // $(document).on("click", '.item-image__operetion--delete', function(){
+  //   let productID = $(this).data('index');
+  //   let imageID = $(this).data('id');
+  //   $.ajax({
+  //     url: '/products/' + productID + '/image_destroy',
+  //     type: 'POST',
+  //     data: {'image_id': imageID,
+  //           '_method': 'DELETE'},
+  //     dataType: 'json'
+  //   })
+  // });
+  $(document).on('click', '.item-image__operetion--delete', function() {
+    const targetIndex = $(this).parent().data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    console.log(hiddenCheck);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
   })
 });
