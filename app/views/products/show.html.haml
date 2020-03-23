@@ -146,16 +146,18 @@
           Sold
         %h2 
           = @products.name
-      .product-image
-        .product-image__main
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
-        .product-image__sub
-          .product-image__second
-            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-          .product-image__second
-            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
-          .product-image__second
-            =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
+      .swiper-container.gallery-top
+        .swiper-wrapper
+          - @products.images.each do |image|
+            .swiper-slide
+              = image_tag image.image.url
+        .swiper-button-next.swiper-button-white
+        .swiper-button-prev.swiper-button-white
+      .swiper-container.gallery-thumbs
+        .swiper-wrapper
+          - @products.images.each do |image|
+            .swiper-slide
+              = image_tag image.image.url, claass:"ima"
       .product-price
         %span
           ¥
