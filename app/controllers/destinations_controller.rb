@@ -19,7 +19,7 @@ class DestinationsController < ApplicationController
   def update
     @destination = Destination.find(params[:id])
     @destination.update(destination_params)
-    @destination.save!
+    @destination.save
     flash[:notice] = "配送情報の更新が完了しました！"
     redirect_to user_path(current_user.id)
   end
@@ -34,7 +34,7 @@ class DestinationsController < ApplicationController
       :first_name_kana,
       :post_code,
       :prefecture,
-      :city, :adress,
+      :city, :address,
       :building_name,
       :phone_number
     ).merge(user_id: current_user.id)

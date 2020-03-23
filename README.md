@@ -39,7 +39,6 @@ Things you may want to cover:
 
 ### Association
 - has_many   :products       dependent: :destroy
-- has_many   :shippings      dependent: :destroy
 - belongs_to :destination    dependent: :destroy
 - belongs_to :card           dependent: :destroy
 
@@ -93,6 +92,9 @@ Things you may want to cover:
 | description   | string  | null: false |
 | status        | string  | null: false |
 | size          | string  | null: false |
+| shipping_cost | string  | null: false |
+| shipping_days | string  | null: false |
+| prefecture_id | string  | null: false |
 | judgment      | string  ||
 | category_id   | integer | null: false, foreign_key: true |
 | brand_id      | integer | null: false, foreign_key: true |
@@ -103,8 +105,9 @@ Things you may want to cover:
 - belongs_to :user       dependent: :destroy
 - belongs_to :category   dependent: :destroy
 - belongs_to :brand      dependent: :destroy
-- belongs_to :shipping   dependent: :destroy
 - has_many   :images     dependent: :destroy
+
+- belongs_to_active_hash :prefecture
 
 
 ## imageテーブル
@@ -124,17 +127,3 @@ Things you may want to cover:
 
 ### Association
 - has_many :products
-
-
-## shippingテーブル
-|Column|Type|Options|
-|------|----|-------|
-| shipping_cost | string | null:false |
-| shipping_days | string | null:false |
-| prefecture_id | string | null:false |
-
-### Association
-- has_many   :products
-- belongs_to :user
-
-- belongs_to_active_hash :prefecture
