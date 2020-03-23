@@ -1,5 +1,5 @@
-%link{href: "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css", rel: "stylesheet"}/
-%script{src: "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"}
+%link{href: "https://unpkg.com/swiper/css/swiper.min.css", rel: "stylesheet"}/
+%script{src: "https://unpkg.com/swiper/js/swiper.min.js"}
 
 = render partial: "template/header"
 = render partial: "template/exhibition"
@@ -53,13 +53,13 @@
           - @products.images.each do |image|
             .swiper-slide
               = image_tag image.image.url
-        .swiper-button-next.swiper-button-white
-        .swiper-button-prev.swiper-button-white
+        .swiper-button-next.swiper-button-gray
+        .swiper-button-prev.swiper-button-gray
       .swiper-container.gallery-thumbs
         .swiper-wrapper
           - @products.images.each do |image|
             .swiper-slide
-              = image_tag image.image.url, claass:"ima"
+              = image_tag image.image.url, claass:"ima",  width: "200px", height: "200px"
       .product-price
         %span
           ¥
@@ -157,7 +157,7 @@
         .swiper-wrapper
           - @products.images.each do |image|
             .swiper-slide
-              = image_tag image.image.url, claass:"ima"
+              = image_tag image.image.url, claass:"ima", width: "200px", height: "200px"
       .product-price
         %span
           ¥
@@ -208,3 +208,26 @@
       
 = render partial: "template/content_download"
 = render partial: "template/footer"
+
+:javascript
+  var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    loop: false,
+    freeMode: true,
+    loopedSlides: 5,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+  });
+  var galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    loop: false,
+    loopedSlides: 5,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: galleryThumbs,
+    },
+  });
