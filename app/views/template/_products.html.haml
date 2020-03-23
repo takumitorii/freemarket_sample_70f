@@ -4,7 +4,7 @@
       = link_to product_path(p) do
         .product
           .image
-            %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+            = image_tag p.images.first.image.to_s
           .info
             %p 
               = p.name 
