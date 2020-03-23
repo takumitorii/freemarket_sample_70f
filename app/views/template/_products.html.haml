@@ -4,7 +4,7 @@
       = link_to product_path(p) do
         .product
           .image
-            = image_tag p.images.first.image.to_s
+            = image_tag p.images.first.image.to_s, width: "200px", height: "200px"
           .info
             %p 
               = p.name 

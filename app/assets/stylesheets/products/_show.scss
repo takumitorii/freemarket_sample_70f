@@ -281,6 +281,10 @@ $form-color:    rgb(161, 161, 161);
   text-align: center;
 }
 
+.swiper-container.gallery-thumbs .swiper-wrapper {
+  overflow: scroll;
+}
+
 .ima{
   margin-left: 15px;
 }

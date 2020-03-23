@@ -1,7 +1,7 @@
 = link_to product_path(p.id) do
   .object
     .image
-      = image_tag p.images.first.image.to_s
+      = image_tag p.images.first.image.to_s, width: "200px", height: "200px"
     .parts 
       商品名 : 
       = p.name
