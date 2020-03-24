@@ -15,10 +15,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    @user.save!
-    flash[:notice] = "ユーザー情報の更新が完了しました！"
-    redirect_to user_path(current_user.id)
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報の更新が完了しました！"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
+      redirect_to edit_user_path(current_user.id)
+    end
   end
 
   def destroy
