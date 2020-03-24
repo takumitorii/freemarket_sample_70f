@@ -5,11 +5,14 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    
     @destination = Destination.new(destination_params)
-    @destination.save!
-    flash[:notice] = "配送情報の登録が完了しました！"
-    redirect_to user_path(current_user.id)
+    if @destination.save
+      flash[:notice] = "配送情報の登録が完了しました！"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
+      redirect_to new_destination_path
+    end
   end
 
   def edit
@@ -18,10 +21,13 @@ class DestinationsController < ApplicationController
 
   def update
     @destination = Destination.find(params[:id])
-    @destination.update(destination_params)
-    @destination.save
-    flash[:notice] = "配送情報の更新が完了しました！"
-    redirect_to user_path(current_user.id)
+    if @destination.update(destination_params)
+      flash[:notice] = "配送情報の更新が完了しました！"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "入力に誤りがあります。もう一度入力してください。"
+      redirect_to edit_destination_path(@destination.id)
+    end
   end
 
 
