@@ -55,17 +55,3 @@ $(function(){
     $('#image-box__container').attr('class', `item-num-${num}`)
   });
 });
-
-$(window).on('load',function(){
-    if(document.URL.match("edit")) {
-    if ($('.item-image__operetion').length <= 1){
-      $('.item-image__operetion').remove();
-    }else{
-     $('.item-image__operetion--delete').on("click",function(){
-       if ($('.item-image__content--icon').length <= 2){
-        $('.item-image__operetion').remove();
-       }
-      });
-    }
-  }
-});
