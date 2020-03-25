@@ -20,15 +20,15 @@
             .item-image{"data-image" => "${file.name}"}
               .item-image__content
                 .item-image__content--icon
-                  = image_tag image.image.to_s, size: "114x80", data: {index: index}, name: "product[images_attributes][image][image]"
+                  = image_tag image.image.to_s, size: "114x80", data: {index: index}, name: "images[image][]"
               .item-image__operetion
                 .item-image__operetion--delete{data:{index: index}}
                   削除
                 
         .item-num-0#image-box__container
-          = f.fields_for :images do |i|
+          = f.fields_for :images, @images do |i|
             .input-area
-              = i.file_field :image, multiple: true, type: 'file', name: "product[images_attributes][image][image]", style: "display:none", id:"img-file"
+              = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", style: "display: none;", id:"img-file"
               = i.check_box :_destroy, data:{ index: i.index }, style: 'display:none', class: 'hidden-destroy'
               
     .border_bottom

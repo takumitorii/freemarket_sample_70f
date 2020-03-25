@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 
   validates_associated :images
   validates :name, :price, :prefecture_id, :category_id, :description, :user_id, presence: true
-  validates :images, presence: true
+  validates :images, presence: true, on: :update
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
