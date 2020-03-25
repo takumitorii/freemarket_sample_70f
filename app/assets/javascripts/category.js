@@ -96,7 +96,7 @@ $(function(){
 
 // editページのみJS
 $(window).on('load',function(){
-  　if(document.URL.match("edit")) {
+    if(document.URL.match("edit")) {
     function appendOption(category){
       let html = `<option value="${category.id}" data-category="${category.name}">${category.name}</option>`;
       return html;

@@ -15,14 +15,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      params[:images]['image'].each do |a|
-        @images = @product.images.create(image: a)
-      flash[:notice] = "出品が完了しました！"
+    if params[:images]
+      if @product.save
+        params[:images]['image'].each do |a|
+          @images = @product.images.create(image: a)
+        end
+        @product.judgment = 1
+        @product.save
+        flash[:notice] = "出品が完了しました！"
+        redirect_to product_path(@product)
+      else
+        flash[:error] = "入力に誤りがあります。もう一度入力してください。"
+        redirect_to new_product_path
       end
-      @product.judgment = 1
-      @product.save
-      redirect_to product_path(@product)
     else
       flash[:error] = "入力に誤りがあります。もう一度入力してください。"
       redirect_to new_product_path
