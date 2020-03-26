@@ -127,3 +127,29 @@ Things you may want to cover:
 
 ### Association
 - has_many :products
+
+# FURIMA
+
+## 概要
+
+
+## 本番環境
+
+http://18.180.99.238/
+
+## 制作背景
+
+
+## DEMO
+
+
+
+## 工夫したポイント
+
+
+
+## 使用技術
+
+HTML,SCSS,jQuery,Ruby,Rails,MySQL,AWS
+
+## 課題や今後実装したい機能
